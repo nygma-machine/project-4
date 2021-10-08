@@ -6,7 +6,7 @@ function App() {
 	return (
 		<Router>
 			<div className="App">
-				<h1>Nygma</h1>
+				<h1>Nygma Project</h1>
 				<Route exact path='/' >
 					<HomePage />
 				</Route>
