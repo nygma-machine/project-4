@@ -1,8 +1,11 @@
+import { useEffect } from "react";
+
 const Results = () => {
-    return ( 
+
+	return ( 
         <>
           <div className="wrapper">
-
+			<p>You won person name</p>
           </div>
         </>
     )

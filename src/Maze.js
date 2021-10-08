@@ -1,10 +1,11 @@
 const Maze = () => {
-    return ( 
-        <>
-          <div className="wrapper">
+	return (
+		<>
+			<div className="wrapper">
+				<p>Here's a maze!</p>
 
-          </div>
-        </>
-    )
+			</div>
+		</>
+	)
 }
 export default Maze;
