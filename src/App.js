@@ -10,13 +10,18 @@ function App() {
 			<div className="App">
 				<h1>Nygma</h1>
 				<nav>
-				<ul>
-					<li></li>
-					<li></li>
-					<li></li>
-				</ul>
-				
-					</nav>
+					<ul>
+						<Link to="/">
+							HomePage
+						</Link>
+						<Link to="/Maze">
+							<li></li>
+						</Link>
+						<Link to="/Results">
+							<li></li>
+						</Link>
+					</ul>
+				</nav>
 				<Route exact path='/' >
 					<HomePage />
 				</Route>
