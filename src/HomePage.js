@@ -1,11 +1,10 @@
+const HomePage = () => {
+    return ( 
+        <>
+            <div className="wrapper">
 
-
-const HomePage = () =>{
-    return(
-        <div>
-            <p>test test</p>
-        </div>
+            </div>
+        </>
     )
 }
-
 export default HomePage;
