@@ -230,6 +230,22 @@ html {
   overflow: hidden;
 }
 
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ul a, li a {
+  color: blue;
+}
+
+ul {
+  display: flex;
+}
+ul li {
+  margin: 1%;
+}
+
 .homePage {
   background: linear-gradient(90deg, #1d3548 10%, #298776 50%, #298776 75%, #1d3548 100%);
 }/*# sourceMappingURL=styles.css.map */

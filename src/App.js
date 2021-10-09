@@ -1,4 +1,4 @@
-import './styles/styles.css';
+import './styles/scss/styles.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import HomePage from './HomePage'
 import Maze from './Maze'
