@@ -1,0 +1,22 @@
+.maze {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .block {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .Block0 {
+    background-color: peachpuff;
+  }
+  
+  .Block1 {
+    background-color: black;
+  }
+  

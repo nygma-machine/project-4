@@ -1,7 +1,10 @@
-@import "setup";
-@import "HomePage";
-@import "vars";
-@import "typography";
+@import 'setup';
+@import 'App';
+@import 'HomePage';
+@import 'Maze';
+@import 'vars';
+@import 'typography'; 
+
 
 body {
   background: linear-gradient(
@@ -12,3 +15,4 @@ body {
     rgba(29, 53, 72, 1) 100%
   );
 }
+

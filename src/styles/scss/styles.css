@@ -230,6 +230,23 @@ html {
   overflow: hidden;
 }
 
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ul a, li a {
+  color: blue;
+}
+
+ul {
+  display: flex;
+}
+ul li {
+  margin: 1%;
+}
+
+.homePage {
 body {
   color: #fff;
   font-weight: 600;
