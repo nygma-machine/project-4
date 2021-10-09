@@ -4,17 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Maze = (props) => {
 
-	const [mazeMap, setMazeMap] = useState([
-		[0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0],
-		[1, 0, 1, 0, 0, 0, 0],
-		[1, 0, 1, 0, 0, 0, 0],
-		[0, 0, 1, 0, 0, 0, 0],
-		[0, 0, 1, 0, 0, 0, 0],
-		[0, 0, 1, 0, 0, 0, 0],
-		[0, 1, 1, 0, 0, 0, 0]
-	])
+	const [mazeMap, setMazeMap] = useState([])
 
 	const [player, setPlayer] = useState({})
 
@@ -24,72 +14,82 @@ const Maze = (props) => {
 	}
 
 	useEffect(() => {
-		setPlayer({ x: 1, y: 1 })
-		let tempMaze = mazeMap.map((element) => element)
+		setPlayer({ x: 0, y: 0 })
+		let tempMaze = [
+			[0, 0, 0, 0, 0, 0, 0],
+			[0, 1, 1, 0, 1, 0, 0],
+			[0, 0, 0, 0, 1, 1, 1],
+			[1, 0, 1, 0, 1, 0, 0],
+			[1, 0, 1, 0, 1, 0, 0],
+			[0, 0, 1, 0, 1, 0, 0],
+			[0, 0, 1, 0, 1, 0, 0],
+			[0, 0, 1, 0, 0, 0, 0],
+			[0, 1, 1, 0, 0, 0, 0]
+		]
 		tempMaze[nygmaMachine.y][nygmaMachine.x] = 2
 		setMazeMap(tempMaze)
-	}, [nygmaMachine.x, nygmaMachine.y])
-
-	const handleKeypress = (event) => {
-		event.preventDefault()
-		if (event.key === "ArrowUp" || event.key === "w") {
-			checkMovement("up")
-		} else if (event.key === "ArrowDown" || event.key === "s") {
-			checkMovement("down")
-		} else if (event.key === "ArrowRight" || event.key === "d") {
-			checkMovement("right")
-		} else if (event.key === "ArrowLeft" || event.key === "a") {
-			checkMovement("left")
-		}
-	}
+	}, [
+		nygmaMachine.x, nygmaMachine.y
+	])
 
 	useEffect(() => {
+		const handleKeypress = (event) => {
+			event.preventDefault()
+			if (event.key === "ArrowUp" || event.key === "w") {
+				checkMovement("up")
+			} else if (event.key === "ArrowDown" || event.key === "s") {
+				checkMovement("down")
+			} else if (event.key === "ArrowRight" || event.key === "d") {
+				checkMovement("right")
+			} else if (event.key === "ArrowLeft" || event.key === "a") {
+				checkMovement("left")
+			}
+		}
+		// make sure player can legally make the move
+		const checkMovement = (direction) => {
+
+			let playerTemp = { ...player }
+			let playerX = playerTemp.x
+			let playerY = playerTemp.y
+
+			if (playerY !== 0 && direction === "up") {
+				if (mazeMap[playerY - 1][playerX] === 0 ||
+					mazeMap[playerY - 1][playerX] === 2
+				) {
+					setPlayer({ x: playerX, y: playerY - 1 });
+				}
+			}
+
+			if (playerY !== mazeMap.length - 1 && direction === "down") {
+				if (mazeMap[playerY + 1][playerX] === 0 ||
+					mazeMap[playerY + 1][playerX] === 2
+				) {
+					setPlayer({ x: playerX, y: playerY + 1 });
+				}
+			}
+
+			if (direction === "left" && playerX !== 0) {
+				if (mazeMap[playerY][playerX - 1] === 0 ||
+					mazeMap[playerY][playerX - 1] === 2
+				) {
+					setPlayer({ x: playerX - 1, y: playerY });
+				}
+			}
+
+			if (playerX !== mazeMap[0].length - 1 && direction === "right") {
+				if (mazeMap[playerY][playerX + 1] === 0 ||
+					mazeMap[playerY][playerX + 1] === 2
+				) {
+					setPlayer({ x: playerX + 1, y: playerY });
+				}
+			}
+
+		}
 		document.addEventListener('keydown', handleKeypress)
-		return () => {document.removeEventListener('keydown', handleKeypress) }
-	}, [handleKeypress])
+		return () => { document.removeEventListener('keydown', handleKeypress) }
+	}, [mazeMap, player])
 
-	// make sure player can legally make the move
-	const checkMovement = (direction) => {
 
-		let playerTemp = { ...player }
-		let playerX = playerTemp.x
-		let playerY = playerTemp.y
-
-		if (playerY !== 0 && direction === "up") {
-			if (mazeMap[playerY - 1][playerX] === 0 ||
-				mazeMap[playerY - 1][playerX] === 2
-				)
-			{
-				setPlayer({ x: playerX, y: playerY - 1 });
-			}
-		}
-
-		if (playerY !== mazeMap.length - 1 && direction === "down") {
-			if (mazeMap[playerY + 1][playerX] === 0 ||
-				mazeMap[playerY + 1][playerX] === 2
-				)
-			{
-				setPlayer({ x: playerX, y: playerY + 1 });
-			}
-		}
-
-		if (direction === "left" && playerX !== 0 ) {
-			if (mazeMap[playerY][playerX - 1] === 0 ||
-				mazeMap[playerY][playerX - 1] === 2
-				) {
-				setPlayer({ x: playerX - 1, y: playerY });
-			}
-		}
-
-		if (playerX !== mazeMap[0].length -1 &&direction === "right") {
-			if (mazeMap[playerY][playerX + 1] === 0 ||
-				mazeMap[playerY][playerX + 1] === 2
-				) {
-				setPlayer({ x: playerX + 1, y: playerY });
-			}
-		}
-
-	}
 
 	return (
 		<>
