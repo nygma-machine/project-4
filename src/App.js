@@ -1,12 +1,16 @@
-import './styles/styles.css';
+import './styles/scss/styles.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import HomePage from './HomePage'
 import Maze from './Maze'
 import Results from './Results'
-import axios from 'axios';
+import Advice from './Advice';
 import { useState } from 'react';
 
 function App() {
+
+	const [userName, setUserName] = useState('');
+	const [userKeyWord, setUserKeyWord] = useState('time');
+	const [userQuestion, setUserQuestion] = useState('');
 
 	// const [advice, setAdvice] = useState('')
 	// const [userName, setUserName] = useState('')
@@ -23,6 +27,13 @@ function App() {
 	// 		setAdvice(res.data.slip.advice)
 	// 	})	
 	// }
+
+	const showValues = (event) => {
+		event.preventDefault();
+		console.log(userName);
+		console.log(userKeyWord);
+		console.log(userQuestion)
+}
 
 
 	return (
@@ -42,25 +53,48 @@ function App() {
 							</Link>
 						</li>
 						<li>
-							<Link to="/Results">
+							{userKeyWord !== "etc" ? (
+							<Link to={`/Results/${userKeyWord}`}>
 								<p>Results</p>
 							</Link>
+							) : (
+							<Link to='/Advice'>
+								<p>Results</p>
+							</Link>
+							)
+							}
 						</li>
 					</ul>
 				</nav>
-				<Route exact path='/'>
-					<HomePage />
-					{/* // setTopics={setQueryTopic} 
-					// setAdvice={setAdvice} 
-					// setUserName={setUserName} 
-					/> */}
+				<Route exact path="/">
+					<HomePage
+					setUserName={setUserName}
+					setUserKeyword={setUserKeyWord}
+					setUserQuestion={setUserQuestion}
+					submitPrompts={showValues}
+					userName={userName}
+					userKeyWord={userKeyWord}
+					userQuestion={userQuestion} />
 				</Route>
 				<Route exact path='/Maze' >
 					<Maze />
 				</Route>
-				<Route exact path='/Results' >
-					<Results />
+				{userKeyWord !== "etc" ? 
+				(
+				<Route exact path={`/Results/:query`}>
+					<Results
+					question={userQuestion}
+					name={userName} />
 				</Route>
+				) 
+			: (
+				<Route exact path={`/Advice`}>
+					<Advice
+					question={userQuestion}
+					name={userName}
+					/>
+				</Route>
+				)}
 			</div>
 		</Router >
 	)

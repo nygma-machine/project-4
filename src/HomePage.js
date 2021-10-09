@@ -1,10 +1,9 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 
 const HomePage = (props) => {
 	//set state for all inputs and selects so that we can control our inputs
-	const [userName, setUserName] = useState('');
-	const [userKeyWord, setUserKeyword] = useState('time');
-	const [userQuestion, setUserQuestion] = useState('');
+    const {setUserName, setUserQuestion, setUserKeyword} = props
+    const {userName, userQuestion, userKeyWord} = props
 
 	const handleTopicChange = (event) => {
 		setUserKeyword(event.target.value)
@@ -18,18 +17,11 @@ const HomePage = (props) => {
 		setUserQuestion(event.target.value)
 	}
 
-    const showValues = (event) => {
-        event.preventDefault();
-        console.log(userName);
-        console.log(userKeyWord);
-        console.log(userQuestion)
-    }
-
 	return (
 		<>
 			<div className="homePage">
 				<div className="wrapper">
-					<form onSubmit={showValues}>
+					<form onSubmit={props.submitPrompts}>
                         <label htmlFor="userName">Input your Name</label>
                         <input type="text" name="userName" id="userName" value={userName} onChange={handleUserName}/>
                         <label htmlFor="userKeyword"></label>
