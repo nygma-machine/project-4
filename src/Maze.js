@@ -4,82 +4,98 @@ import { Link } from 'react-router-dom'
 
 const Maze = (props) => {
 
-	let mazeMap = [
+	const [mazeMap, setMazeMap] = useState([
 		[0, 0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0],
-		[1, 0, 1, 0, 2, 0, 0],
+		[1, 0, 1, 0, 0, 0, 0],
 		[1, 0, 1, 0, 0, 0, 0],
 		[0, 0, 1, 0, 0, 0, 0],
 		[0, 0, 1, 0, 0, 0, 0],
 		[0, 0, 1, 0, 0, 0, 0],
 		[0, 1, 1, 0, 0, 0, 0]
-	]
+	])
 
-	let [player,setPlayer] = useState(
-		{
-			x: 0,
-			y: 0
-		}		
-	) 
+	const [player, setPlayer] = useState({})
 
 	let nygmaMachine = {
-		x: 0,
-		y: 0
+		x: 5,
+		y: 3
 	}
 
 	useEffect(() => {
-		window.addEventListener('keydown', (event) => {
-			console.log("testing key presses", event.key);
-			if (event.key === "ArrowUp" || event.key === "w") {
-				checkMovement("up")
-			} else if (event.key === "ArrowDown" || event.key === "s") {
-				checkMovement("down")
-			} else if (event.key === "ArrowRight" || event.key === "d") {
-				checkMovement("right")
-			} else if (event.key === "ArrowLeft" || event.key === "a") {
-				checkMovement("left")
-			}
-		})
-	}, [])
-	
+		setPlayer({ x: 1, y: 1 })
+		let tempMaze = mazeMap.map((element) => element)
+		tempMaze[nygmaMachine.y][nygmaMachine.x] = 2
+		setMazeMap(tempMaze)
+	}, [nygmaMachine.x, nygmaMachine.y])
+
+	const handleKeypress = (event) => {
+		event.preventDefault()
+		if (event.key === "ArrowUp" || event.key === "w") {
+			checkMovement("up")
+		} else if (event.key === "ArrowDown" || event.key === "s") {
+			checkMovement("down")
+		} else if (event.key === "ArrowRight" || event.key === "d") {
+			checkMovement("right")
+		} else if (event.key === "ArrowLeft" || event.key === "a") {
+			checkMovement("left")
+		}
+	}
+
+	useEffect(() => {
+		document.addEventListener('keydown', handleKeypress)
+		return () => {document.removeEventListener('keydown', handleKeypress) }
+	}, [handleKeypress])
+
 	// make sure player can legally make the move
-	function checkMovement(direction) {
-		
-		let x = player.x;
-		let y = player.y;
-		
-		if (direction ==="up") {
-			if (mazeMap[y + 1][x] === 0) {
-				player.y = player.y + 1;
+	const checkMovement = (direction) => {
+
+		let playerTemp = { ...player }
+		let playerX = playerTemp.x
+		let playerY = playerTemp.y
+
+		if (playerY !== 0 && direction === "up") {
+			if (mazeMap[playerY - 1][playerX] === 0 ||
+				mazeMap[playerY - 1][playerX] === 2
+				)
+			{
+				setPlayer({ x: playerX, y: playerY - 1 });
 			}
 		}
-		
-		if (direction ==="down") {
-			if (mazeMap[y - 1][x] === 0) {
-				player.y = player.y - 1;
+
+		if (playerY !== mazeMap.length - 1 && direction === "down") {
+			if (mazeMap[playerY + 1][playerX] === 0 ||
+				mazeMap[playerY + 1][playerX] === 2
+				)
+			{
+				setPlayer({ x: playerX, y: playerY + 1 });
 			}
 		}
-		
-		if (direction ==="left") {
-			if (mazeMap[y][x - 1] === 0) {
-				player.x = player.x - 1;
+
+		if (direction === "left" && playerX !== 0 ) {
+			if (mazeMap[playerY][playerX - 1] === 0 ||
+				mazeMap[playerY][playerX - 1] === 2
+				) {
+				setPlayer({ x: playerX - 1, y: playerY });
 			}
 		}
-		
-		if (direction ==="right") {
-			if (mazeMap[y][x + 1] === 0) {
-				player.x = player.x + 1;
+
+		if (playerX !== mazeMap[0].length -1 &&direction === "right") {
+			if (mazeMap[playerY][playerX + 1] === 0 ||
+				mazeMap[playerY][playerX + 1] === 2
+				) {
+				setPlayer({ x: playerX + 1, y: playerY });
 			}
 		}
-		
+
 	}
 
 	return (
 		<>
-			<div className="wrapper test">
+			<div className="wrapper">
 				<div className="maze">
-					
+					<p>Player x: {player.x}, Player y: {player.y}</p>
 					{
 						mazeMap.map((row, index) => {
 							return (
@@ -87,29 +103,30 @@ const Maze = (props) => {
 									key={`row${index}`}
 									rowValue={row}
 									rowIndex={index}
+									player={player}
 								/>
 							)
 						})
 					}
 				</div>
-				<div>
-				{player.x === nygmaMachine.x && player.y === nygmaMachine.y ? (
-					<>
-					{props.query !== "etc" ? (
-									<Link to={`/Results/${props.query}`}>
-										<button className="goToResults">Seek the Answer!</button>
-									</Link>
-									) : (
-									<Link to='/Advice'>
-										<button className="goToResults">Seek the Answer!</button>
-									</Link>
-									)
-						}
+				<div className="answerButton">
+					{player.x === nygmaMachine.x && player.y === nygmaMachine.y ? (
+						<>
+							{props.query !== "etc" ? (
+								<Link to={`/Results/${props.query}`}>
+									<button className="goToResults">Seek the Answer!</button>
+								</Link>
+							) : (
+								<Link to='/Advice'>
+									<button className="goToResults">Seek the Answer!</button>
+								</Link>
+							)
+							}
 						</>
-				) :(
-					<>
-					</>
-				) }
+					) : (
+						<>
+						</>
+					)}
 				</div>
 			</div>
 		</>

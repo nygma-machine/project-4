@@ -1,6 +1,6 @@
 import Block from './Block.js'
 
-const Row = ({rowValue, rowIndex}) => {
+const Row = ({rowValue, rowIndex, player}) => {
 	return (
 		<div
             key={`row${rowIndex}`}
@@ -14,6 +14,7 @@ const Row = ({rowValue, rowIndex}) => {
                             blockValue={block}
                             y={rowIndex}
                             x={index}
+							player={player}
                         />
 					)
                 })

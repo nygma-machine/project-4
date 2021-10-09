@@ -1,7 +1,7 @@
-.test{
+
+.answerButton{
   margin: 1rem auto;
 }
-
 .maze {
     display: flex;
     flex-direction: column;
@@ -9,6 +9,7 @@
   
   .row {
     display: flex;
+    margin: 0 auto;
   }
   
   .block, .player {

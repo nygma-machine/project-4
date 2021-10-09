@@ -1,17 +1,13 @@
-const Block = ({ blockValue, x, y}) => {
+const Block = ({ blockValue, x, y, player}) => {
 
 	const playerHere = () => {
-		return true
+		return (player.x === x && player.y === y)
 	}
 
 	return (
-		<>
-			{playerHere() ? <div className="player"></div> : null}
-			
 			<div className={`block block${blockValue}`}>
-
+				{playerHere() ? <div className="player"></div> : null}
 			</div>
-		</>
 	)
 }
 

@@ -246,13 +246,18 @@ ul li {
   margin: 1%;
 }
 
-.homePage .wrapper {
+.homePage form {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .test {
+  margin: 1rem auto;
+}
+
+.answerButton {
   margin: 1rem auto;
 }
 
@@ -263,6 +268,7 @@ ul li {
 
 .row {
   display: flex;
+  margin: 0 auto;
 }
 
 .block, .player {
@@ -297,6 +303,8 @@ a {
   text-decoration: none;
 }
 
-body {
+html {
   background: linear-gradient(90deg, #1d3548 10%, #298776 50%, #298776 75%, #1d3548 100%);
+  -webkit-backdrop-filter: blur(50px);
+          backdrop-filter: blur(50px);
 }/*# sourceMappingURL=styles.css.map */

@@ -31,8 +31,17 @@ const Results = (props) => {
         <>
           <div className="wrapper">
             <div class="results">
-              <h2>Congratulations{` "${name}" `}! You Have Completed the Maze</h2>
-              <p>You asked <span>{`${question}`}</span></p>
+              {name !== "" ? (
+                  <h2>Congratulations {name}! You Have Conquered the Maze</h2>
+                ): (
+                  <h2>Congradulations! You have Conquered the Maze</h2>
+              )}
+              {question !== " " ? (
+                <p>You asked <span>{`"${question}"`}</span></p>
+              ):(
+              <>
+              </>
+              )}
               <p>The NYGMA Machine Advises You:</p>
               <p>{advice.advice}</p>
               <Link to='/'>
