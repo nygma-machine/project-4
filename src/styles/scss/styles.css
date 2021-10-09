@@ -247,5 +247,16 @@ ul li {
 }
 
 .homePage {
+body {
+  color: #fff;
+  font-weight: 600;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+body {
   background: linear-gradient(90deg, #1d3548 10%, #298776 50%, #298776 75%, #1d3548 100%);
 }/*# sourceMappingURL=styles.css.map */

@@ -1,10 +1,11 @@
+// Page that renders if the user does not select one of the suggested keywords
+
 import { useState, useEffect } from "react";
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from "axios";
 
-const Results = (props) => {
+const Advice = (props) => {
 
-  const { query } = useParams()
 
   const [advice, setAdvice] = useState([])
   
@@ -12,20 +13,14 @@ const Results = (props) => {
 
   useEffect(() => {
     axios({
-      url: `https://api.adviceslip.com/advice/search/${query}`,
+      url: `https://api.adviceslip.com/advice`,
       method:'GET',
       dataResponse:'json'
     }).then((res) =>{
-      const getAdvice = res.data.slips;
-      const selectAdvice = random(getAdvice)
-      setAdvice(selectAdvice)
+      const adviceResult = res.data.slip
+      setAdvice(adviceResult.advice)
     })
-  }, [query])
-
-  const random = (array) => {
-    const index = Math.floor(Math.random() * array.length)
-    return array[index]
-  }
+  }, [])
 
 	return ( 
         <>
@@ -33,7 +28,7 @@ const Results = (props) => {
             <h2>Congratulations {name}! You Have Completed the Maze</h2>
             <p>You asked "{question}"</p>
             <p>The NYGMA Machine Advises You:</p>
-            <p>{advice.advice}</p>
+            <p>{advice}</p>
             <Link to='/'>
               <button>Play Again?</button>
             </Link>
@@ -41,7 +36,7 @@ const Results = (props) => {
         </>
     )
   }
-export default Results;
+export default Advice;
 
 
 // Get keyword from App.js
