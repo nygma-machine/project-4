@@ -1,6 +1,6 @@
-const Block = ({}) => {
+const Block = ({blockValue}) => {
     return (
-        <div className="block block${}"></div>
+        <div className={`block block${blockValue}`}></div>
     )
 }
 

@@ -10,7 +10,8 @@ const Row = ({rowValue, rowIndex}) => {
                 rowValue.map((block, index) => {
 					return (
 						<Block
-                        
+                            key={`block${index} in row${rowIndex}`}
+                            blockValue={block}
                         />
 					)
                 })
