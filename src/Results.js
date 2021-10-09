@@ -30,13 +30,15 @@ const Results = (props) => {
 	return ( 
         <>
           <div className="wrapper">
-            <h2>Congratulations {name}! You Have Completed the Maze</h2>
-            <p>You asked "{question}"</p>
-            <p>The NYGMA Machine Advises You:</p>
-            <p>{advice.advice}</p>
-            <Link to='/'>
-              <button>Play Again?</button>
-            </Link>
+            <div class="results">
+              <h2>Congratulations{` "${name}" `}! You Have Completed the Maze</h2>
+              <p>You asked <span>{`${question}`}</span></p>
+              <p>The NYGMA Machine Advises You:</p>
+              <p>{advice.advice}</p>
+              <Link to='/'>
+                <button>Play Again?</button>
+              </Link>
+            </div>
           </div>
         </>
     )

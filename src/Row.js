@@ -12,6 +12,8 @@ const Row = ({rowValue, rowIndex}) => {
 						<Block
                             key={`block${index} in row${rowIndex}`}
                             blockValue={block}
+                            y={rowIndex}
+                            x={index}
                         />
 					)
                 })

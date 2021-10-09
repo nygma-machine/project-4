@@ -1,3 +1,7 @@
+.test{
+  margin: 1rem auto;
+}
+
 .maze {
     display: flex;
     flex-direction: column;
@@ -7,16 +11,24 @@
     display: flex;
   }
   
-  .block {
+  .block, .player {
     width: 25px;
     height: 25px;
   }
   
-  .Block0 {
-    background-color: peachpuff;
+  .block0 {
+    background-color: #90E39A;
   }
   
-  .Block1 {
+  .block1 {
     background-color: black;
   }
+
+  .block2 {
+    background-color: red;
+  }
   
+.player {
+	background-color: yellow;
+	position: absolute;
+}

@@ -77,7 +77,8 @@ function App() {
 					userQuestion={userQuestion} />
 				</Route>
 				<Route exact path='/Maze' >
-					<Maze />
+					<Maze 
+					query={userKeyWord}/>
 				</Route>
 				{userKeyWord !== "etc" ? 
 				(
