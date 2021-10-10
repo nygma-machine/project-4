@@ -4,54 +4,54 @@ import axios from "axios";
 
 const Results = (props) => {
 
-  const { query } = useParams()
+	const { query } = useParams()
 
-  const [advice, setAdvice] = useState([])
-  
-  const {question, name} = props
+	const [advice, setAdvice] = useState([])
 
-  useEffect(() => {
-    axios({
-      url: `https://api.adviceslip.com/advice/search/${query}`,
-      method:'GET',
-      dataResponse:'json'
-    }).then((res) =>{
-      const getAdvice = res.data.slips;
-      const selectAdvice = random(getAdvice)
-      setAdvice(selectAdvice)
-    })
-  }, [query])
+	const { question, name } = props
 
-  const random = (array) => {
-    const index = Math.floor(Math.random() * array.length)
-    return array[index]
-  }
+	useEffect(() => {
+		axios({
+			url: `https://api.adviceslip.com/advice/search/${query}`,
+			method: 'GET',
+			dataResponse: 'json'
+		}).then((res) => {
+			const getAdvice = res.data.slips;
+			const selectAdvice = random(getAdvice)
+			setAdvice(selectAdvice)
+		})
+	}, [query])
 
-	return ( 
-        <>
-          <div className="wrapper">
-            <div class="results">
-              {name !== "" ? (
-                  <h2>Congratulations {name}! You Have Conquered the Maze</h2>
-                ): (
-                  <h2>Congradulations! You have Conquered the Maze</h2>
-              )}
-              {question !== " " ? (
-                <p>You asked <span>{`"${question}"`}</span></p>
-              ):(
-              <>
-              </>
-              )}
-              <p>The NYGMA Machine Advises You:</p>
-              <p>{advice.advice}</p>
-              <Link to='/'>
-                <button>Play Again?</button>
-              </Link>
-            </div>
-          </div>
-        </>
-    )
-  }
+	const random = (array) => {
+		const index = Math.floor(Math.random() * array.length)
+		return array[index]
+	}
+
+	return (
+		<>
+			<div className="wrapper">
+				<div class="results">
+					{name !== "" ? (
+						<h2>Congratulations {name}! You Have Conquered the Maze</h2>
+					) : (
+						<h2>Congradulations! You have Conquered the Maze</h2>
+					)}
+					{question !== " " ? (
+						<p>You asked <span>{`"${question}"`}</span></p>
+					) : (
+						<>
+						</>
+					)}
+					<p>The NYGMA Machine Advises You:</p>
+					<p>{advice.advice}</p>
+					<Link to='/'>
+						<button>Play Again?</button>
+					</Link>
+				</div>
+			</div>
+		</>
+	)
+}
 export default Results;
 
 
