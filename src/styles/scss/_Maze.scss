@@ -1,7 +1,21 @@
 
 .answerButton{
-  margin: 1rem auto;
+  font-family: $bodyFont;
+  text-transform: uppercase;
+  color: #f7fff6;
+  font-weight: 600;
+  background: #90e39a;
+  border: #f7fff6 solid 0.05rem;
+  padding: 15px 25px;
+  &:hover,
+  &:focus {
+      color: #298776;
+  }
+  &:active {
+      background: #50c17f;
+  }
 }
+
 .maze {
     display: flex;
     flex-direction: column;

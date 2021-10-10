@@ -7,51 +7,71 @@ import axios from "axios";
 const Advice = (props) => {
 
 
-  const [advice, setAdvice] = useState([])
-  const { question, name, difficulty } = props
+	const [advice, setAdvice] = useState([])
+	const { question, name, difficulty, hallOfFame } = props
 
 
-  useEffect(() => {
-    axios({
-      url: `https://api.adviceslip.com/advice`,
-      method:'GET',
-      dataResponse:'json'
-    }).then((res) =>{
-      const adviceResult = res.data.slip
-      setAdvice(adviceResult.advice)
-    })
-  }, [])
+	useEffect(() => {
+		axios({
+			url: `https://api.adviceslip.com/advice`,
+			method: 'GET',
+			dataResponse: 'json'
+		}).then((res) => {
+			const adviceResult = res.data.slip
+			setAdvice(adviceResult.advice)
+		})
+	}, [])
 
-  return (
+	return (
 		<>
 			<div className="wrapper">
-				<div className="results">
-					{name !== "" ? (
-						<div className="congrats">
-							<h2>Congratulations {name}! You Have Conquered the Maze</h2>
-							<h2>That was a {difficulty} maze.</h2>
+				<div className="resultsFlex">
+					<div className="results">
+						{name !== "" ? (
+							<div className="congrats">
+								<h2>Congratulations {name}! You Have Conquered the Maze</h2>
+								{difficulty === "easy" ? (
+									<h2>That was an {difficulty} maze.</h2>
+								) : (
+									<h2>That was a {difficulty} maze.</h2>
+								)}
+							</div>
+						) : (
+							<div className="congrats">
+								<h2>Congradulations! You have Conquered the Maze</h2>
+								{difficulty === "easy" ? (
+									<h2>That was an {difficulty} maze.</h2>
+								) : (
+									<h2>That was a {difficulty} maze.</h2>
+								)}
+							</div>
+						)}
+						{question !== "" ? (
+							<p className="repeatQuestion">You asked <span>{`"${question}"`}</span></p>
+						) : (
+							<p className="repeatQuestion">You chose to not ask a Quesion...</p>
+						)}
+						<h3 className="adviceHead">The NYGMA Machine Advises You:</h3>
+						<p className="advice">{advice}</p>
+						<Link to='/'>
+							<button className="repeatGame">Play Again?</button>
+						</Link>
+						<div className="leaderboard">
+							<h2>Hall of Fame: </h2>
+							<ul>
+								{hallOfFame.map((element) => {
+									return (
+										<li key={element.key}>{element.usersName}</li>
+									)
+								})}
+							</ul>
 						</div>
-					) : (
-						<div className="congrats">
-							<h2>Congradulations! You have Conquered the Maze</h2>
-							<h2>That was a {difficulty} maze.</h2>
-						</div>
-					)}
-					{question !== "" ? (
-						<p className="repeatQuestion">You asked <span>{`"${question}"`}</span></p>
-					) : (
-						<p className="repeatQuestion">You chose to not ask a Quesion...</p>
-					)}
-					<h3 className="adviceHead">The NYGMA Machine Advises You:</h3>
-					<p className="advice">{advice}</p>
-					<Link to='/'>
-						<button className="repeatGame">Play Again?</button>
-					</Link>
+					</div>
 				</div>
 			</div>
 		</>
-	)        
-  }
+	)
+}
 
 export default Advice;
 

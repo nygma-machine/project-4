@@ -4,15 +4,18 @@ import HomePage from './HomePage'
 import Maze from './Maze'
 import Results from './Results'
 import Advice from './Advice';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import questionMark from './questionMark.png'
+import realtime from './firebase'
+import { ref, onValue } from "firebase/database";
 
 function App() {
-
+	// Top level states
 	const [userName, setUserName] = useState('');
 	const [userKeyWord, setUserKeyWord] = useState('etc');
 	const [mazeDifficulty, setMazeDifficulty] = useState('easy');
 	const [userQuestion, setUserQuestion] = useState('');
+	const [listOfNames, setListOfNames] = useState([])
 
 
 	const showValues = (event) => {
@@ -20,8 +23,25 @@ function App() {
 		console.log(userName);
 		console.log(userKeyWord);
 		console.log(userQuestion)
-}
+	}
 
+	useEffect(() => {
+		const databaseRef = ref(realtime, '/users')
+		onValue(databaseRef, (snapshot) => {
+			const myData = snapshot.val()
+			let tempArray = []
+			for (let propertyName in myData)
+			{
+				const currentName = {
+					key: propertyName,
+					usersName: myData[propertyName]
+				}
+				tempArray.push(currentName)
+			}
+			setListOfNames(tempArray)
+			console.log(tempArray);
+		})
+	}, [])
 
 	return (
 		<Router>
@@ -52,13 +72,13 @@ function App() {
 						</li>
 						<li>
 							{userKeyWord !== "etc" ? (
-							<Link to={`/Results/${userKeyWord}`}>
-								<p>Results</p>
-							</Link>
+								<Link to={`/Results/${userKeyWord}`}>
+									<p>Results</p>
+								</Link>
 							) : (
-							<Link to='/Advice'>
-								<p>Results</p>
-							</Link>
+								<Link to='/Advice'>
+									<p>Results</p>
+								</Link>
 							)
 							}
 						</li>
@@ -66,39 +86,45 @@ function App() {
 				</nav>
 				<Route exact path="/">
 					<HomePage
-					setUserName={setUserName}
-					setUserKeyword={setUserKeyWord}
-					setUserQuestion={setUserQuestion}
-					submitPrompts={showValues}
-					userName={userName}
-					userKeyWord={userKeyWord}
-					userQuestion={userQuestion}
-					mazeDifficulty={mazeDifficulty}
-					setMazeDifficulty={setMazeDifficulty}
+						setUserName={setUserName}
+						setUserKeyword={setUserKeyWord}
+						setUserQuestion={setUserQuestion}
+						submitPrompts={showValues}
+						userName={userName}
+						userKeyWord={userKeyWord}
+						userQuestion={userQuestion}
+						mazeDifficulty={mazeDifficulty}
+						setMazeDifficulty={setMazeDifficulty}
 					/>
 				</Route>
 				<Route exact path='/Maze' >
-					<Maze 
-					query={userKeyWord}/>
+					<Maze
+						query={userKeyWord} />
 				</Route>
-				{userKeyWord !== "etc" ? 
-				(
-				<Route exact path={`/Results/:query`}>
-					<Results
-					question={userQuestion}
-					name={userName}
-					difficulty={mazeDifficulty} />
-				</Route>
-				) 
-			: (
-				<Route exact path={`/Advice`}>
-					<Advice
-					question={userQuestion}
-					name={userName}
-					difficulty={mazeDifficulty}
-					/>
-				</Route>
-				)}
+
+			{/* Conditional that takes 'etc' value and returns a different component link. Essentially, if user does not select etc use the value for a keyword in search Query. If etc get random advice. */}
+				
+				{userKeyWord !== "etc" ?
+					(
+						<Route exact path={`/Results/:query`}>
+							<Results
+								question={userQuestion}
+								name={userName}
+								difficulty={mazeDifficulty}
+								hallOfFame={listOfNames} 
+							/>
+						</Route>
+					)
+					: (
+						<Route exact path={`/Advice`}>
+							<Advice
+								question={userQuestion}
+								name={userName}
+								difficulty={mazeDifficulty}
+								hallOfFame={listOfNames}
+							/>
+						</Route>
+					)}
 			</div>
 			<footer>
 				<a href="https://junocollege.com">Created at Juno College by Brian Canuto, Hal Forrest, Solon Gee, and Corey Hamat</a>
