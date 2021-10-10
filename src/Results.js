@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from 'react-router-dom'
 import axios from "axios";
-import realtime from './firebase'
-import { ref, push } from 'firebase/database'
+import HallOfFame from "./HallOfFame";
 
 const Results = (props) => {
 
@@ -24,11 +23,6 @@ const Results = (props) => {
 		})
 	}, [query])
 
-	useEffect(() => {
-		const databaseRef = ref(realtime, '/users')
-		push(databaseRef, {usersName: 'name'})
-	}, [])
-
 	const random = (array) => {
 		const index = Math.floor(Math.random() * array.length)
 		return array[index]
@@ -37,7 +31,7 @@ const Results = (props) => {
 	return (
 		<>
 			<div className="wrapper">
-				<div class="resultsFlex">
+				<div className="resultsFlex">
 					<div className="results">
 						{name !== "" ? (
 							<div className="congrats">
@@ -68,16 +62,8 @@ const Results = (props) => {
 						<Link to='/'>
 							<button className="repeatGame">Play Again?</button>
 						</Link>
-						<div className="leaderboard">
-							<h2>Hall of Fame: </h2>
-							<ul>
-								{hallOfFame.map((element) => {
-									return (
-										<li key={element.key}>{element.usersName}</li>
-									)
-								})}
-							</ul>
-						</div>
+						<HallOfFame hallOfFame={hallOfFame} name={name} />
+
 					</div>
 				</div>
 			</div>

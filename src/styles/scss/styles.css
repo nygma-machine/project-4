@@ -470,20 +470,24 @@ ul li {
   background-color: #90E39A;
 }
 
-.distance0, .distance1, .player {
+.distance0, .distance1, .distance2, .player {
   opacity: 1;
 }
 
-.distance2 {
-  opacity: 0.75;
-}
-
 .distance3 {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .distance4 {
-  opacity: 0.25;
+  opacity: 0.6;
+}
+
+.distance5 {
+  opacity: 0.4;
+}
+
+.distance6 {
+  opacity: 0.2;
 }
 
 .block1 {
@@ -589,6 +593,11 @@ ul li {
           animation: wait 6s, resultsFade 2s 6s;
 }
 
+.leaderboard {
+  -webkit-animation: wait 8s, resultsFade 2s 8s;
+          animation: wait 8s, resultsFade 2s 8s;
+}
+
 .repeatGame {
   -webkit-animation: wait 10s, resultsFade 2s 10s;
           animation: wait 10s, resultsFade 2s 10s;
@@ -622,7 +631,7 @@ ul li {
   margin: 1rem auto;
   grid-column: 1/span 3;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .downArrow {
@@ -632,7 +641,7 @@ ul li {
 
 .leftArrow {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .keyButton {
