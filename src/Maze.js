@@ -8,7 +8,9 @@ const Maze = (props) => {
 
 	const [player, setPlayer] = useState({})
 
-	const [keyPress, setKeyPress] = useState()
+	// const [keyPress, setKeyPress] = useState()
+
+	// const [keyPress, setKeyPress] = useState()
 
 	let nygmaMachine = {
 		x: 5,
@@ -34,7 +36,7 @@ const Maze = (props) => {
 		nygmaMachine.x, nygmaMachine.y
 	])
 
-	// make sure player can legally make the move
+	// make sure player can legally make the move, and move the player if so
 	const checkMovement = (direction) => {
 
 		let playerTemp = { ...player }
@@ -75,6 +77,8 @@ const Maze = (props) => {
 
 	}
 
+	
+
 	useEffect(() => {
 		const handleKeypress = (event) => {
 			event.preventDefault()
@@ -90,46 +94,45 @@ const Maze = (props) => {
 		}
 
 
-		// // make sure player can legally make the move
-		// const checkMovement = (direction) => {
+		// make sure player can legally make the move
+		const checkMovement = (direction) => {
 
-		// 	let playerTemp = { ...player }
-		// 	let playerX = playerTemp.x
-		// 	let playerY = playerTemp.y
+			let playerTemp = { ...player }
+			let playerX = playerTemp.x
+			let playerY = playerTemp.y
 
-		// 	if (playerY !== 0 && direction === "up") {
-		// 		if (mazeMap[playerY - 1][playerX] === 0 ||
-		// 			mazeMap[playerY - 1][playerX] === 2
-		// 		) {
-		// 			setPlayer({ x: playerX, y: playerY - 1 });
-		// 		}
-		// 	}
+			if (playerY !== 0 && direction === "up") {
+				if (mazeMap[playerY - 1][playerX] === 0 ||
+					mazeMap[playerY - 1][playerX] === 2
+				) {
+					setPlayer({ x: playerX, y: playerY - 1 });
+				}
+			}
 
-		// 	if (playerY !== mazeMap.length - 1 && direction === "down") {
-		// 		if (mazeMap[playerY + 1][playerX] === 0 ||
-		// 			mazeMap[playerY + 1][playerX] === 2
-		// 		) {
-		// 			setPlayer({ x: playerX, y: playerY + 1 });
-		// 		}
-		// 	}
+			if (playerY !== mazeMap.length - 1 && direction === "down") {
+				if (mazeMap[playerY + 1][playerX] === 0 ||
+					mazeMap[playerY + 1][playerX] === 2
+				) {
+					setPlayer({ x: playerX, y: playerY + 1 });
+				}
+			}
 
-		// 	if (direction === "left" && playerX !== 0) {
-		// 		if (mazeMap[playerY][playerX - 1] === 0 ||
-		// 			mazeMap[playerY][playerX - 1] === 2
-		// 		) {
-		// 			setPlayer({ x: playerX - 1, y: playerY });
-		// 		}
-		// 	}
+			if (direction === "left" && playerX !== 0) {
+				if (mazeMap[playerY][playerX - 1] === 0 ||
+					mazeMap[playerY][playerX - 1] === 2
+				) {
+					setPlayer({ x: playerX - 1, y: playerY });
+				}
+			}
 
-		// 	if (playerX !== mazeMap[0].length - 1 && direction === "right") {
-		// 		if (mazeMap[playerY][playerX + 1] === 0 ||
-		// 			mazeMap[playerY][playerX + 1] === 2
-		// 		) {
-		// 			setPlayer({ x: playerX + 1, y: playerY });
-		// 		}
-		// 	}
-
-		// }
+			if (playerX !== mazeMap[0].length - 1 && direction === "right") {
+				if (mazeMap[playerY][playerX + 1] === 0 ||
+					mazeMap[playerY][playerX + 1] === 2
+				) {
+					setPlayer({ x: playerX + 1, y: playerY });
+				}
+			}
+		}
 
 		document.addEventListener('keydown', handleKeypress)
 		return () => { document.removeEventListener('keydown', handleKeypress) }

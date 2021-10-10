@@ -27,6 +27,7 @@ const HomePage = (props) => {
 						<input type="text" name="userName" id="userName" value={userName} onChange={handleUserName} />
 						<label htmlFor="userKeyword">What is your Question about?</label>
 						<select name="userKeyword" id="userKeyword" onChange={handleTopicChange} value={userKeyWord}>
+							<option value="placeholder" disabled>Select One</option>
 							<option value="time">Time</option>
 							<option value="love">Love</option>
 							<option value="money">Finance</option>

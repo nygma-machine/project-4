@@ -9,7 +9,7 @@ import { useState } from 'react';
 function App() {
 
 	const [userName, setUserName] = useState('');
-	const [userKeyWord, setUserKeyWord] = useState('time');
+	const [userKeyWord, setUserKeyWord] = useState('placeholder');
 	const [userQuestion, setUserQuestion] = useState('');
 
 	// const [advice, setAdvice] = useState('')
