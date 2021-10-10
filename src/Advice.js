@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 import axios from "axios";
+import HallOfFame from "./HallOfFame";
 
 const Advice = (props) => {
 
@@ -56,16 +57,7 @@ const Advice = (props) => {
 						<Link to='/'>
 							<button className="repeatGame">Play Again?</button>
 						</Link>
-						<div className="leaderboard">
-							<h2>Hall of Fame: </h2>
-							<ul>
-								{hallOfFame.map((element) => {
-									return (
-										<li key={element.key}>{element.usersName}</li>
-									)
-								})}
-							</ul>
-						</div>
+						<HallOfFame hallOfFame={hallOfFame} name={name} />
 					</div>
 				</div>
 			</div>

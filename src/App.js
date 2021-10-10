@@ -34,8 +34,9 @@ function App() {
 			{
 				const currentName = {
 					key: propertyName,
-					usersName: myData[propertyName]
+					usersName: myData[propertyName].usersName
 				}
+				console.log(myData);
 				tempArray.push(currentName)
 			}
 			setListOfNames(tempArray)

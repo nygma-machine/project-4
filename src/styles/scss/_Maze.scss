@@ -36,17 +36,20 @@
   .block0 {
     background-color: #90E39A;
   }
-.distance0, .distance1, .player {
+.distance0, .distance1, .distance2, .player {
 	opacity: 1;
 }
-.distance2 {
-	opacity: 0.75;
-}
 .distance3 {
-	opacity: 0.5;
+	opacity: 0.80;
 }
 .distance4 {
-	opacity: 0.25;
+	opacity: 0.6;
+}
+.distance5 {
+	opacity: 0.4;
+}
+.distance6 {
+	opacity: 0.2;
 }
   .block1 {
     background-color: black;
