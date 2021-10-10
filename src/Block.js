@@ -7,12 +7,12 @@ const Block = ({ blockValue, x, y, player}) => {
 	const playerNear = () => {
 		const xDist = x - player.x
 		const yDist = y - player.y
-		// const distance = (xDist * xDist + (player.y * player.y)
-		// if 
+		const distance = Math.floor(Math.sqrt(xDist * xDist + yDist * yDist))
+		return `distance${distance}`
 	}
 
 	return (
-			<div className={`block block${blockValue} ${playerNear}`}>
+			<div className={`block block${blockValue} ${playerNear()}`}>
 				{playerHere() ? <div className="player"></div> : null}
 			</div>
 	)

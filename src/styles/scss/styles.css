@@ -450,8 +450,28 @@ ul li {
   height: 25px;
 }
 
+.block {
+  opacity: 0;
+}
+
 .block0 {
   background-color: #90E39A;
+}
+
+.distance0, .distance1, .player {
+  opacity: 1;
+}
+
+.distance2 {
+  opacity: 0.75;
+}
+
+.distance3 {
+  opacity: 0.5;
+}
+
+.distance4 {
+  opacity: 0.25;
 }
 
 .block1 {

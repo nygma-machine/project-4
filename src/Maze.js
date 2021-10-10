@@ -110,7 +110,7 @@ const Maze = (props) => {
 						})
 					}
 				</div>
-				<div className="directionButtons">
+				<div className="buttonContainer">
 					<div className="topArrow">
 						<button className="keyButton"
 							onClick={(e) => { checkMovement(e.target.value) }}

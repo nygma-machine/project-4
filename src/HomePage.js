@@ -44,7 +44,7 @@ const HomePage = (props) => {
 								<option value="etc">Something Else</option>
 							</select>
 						</fieldset>
-						<fieldset>
+						{/* <fieldset>
 							<label htmlFor="mazeDifficulty">What difficulty do you want?</label>
 							<select name="mazeDifficulty" id="mazeDifficulty" onChange={handleDifficultyChange} value={mazeDifficulty}>
 								<option value="default" disabled>Select One</option>
@@ -52,10 +52,47 @@ const HomePage = (props) => {
 								<option value="medium">Medium</option>
 								<option value="hard">Hard</option>
 							</select>
-						</fieldset>
+						</fieldset> */}
 						<fieldset>
 							<label htmlFor="userQuestion">What do you want to ask <span>The Nygma Machine</span>? </label>
 							<input type="text" name="userQuestion" id="userQuestion" onChange={handleQuestion} value={userQuestion} />
+						</fieldset>
+						<fieldset>
+							<label 
+								htmlFor="easy"
+							>Easy </label>
+							<input 
+								name="mazeDifficulty"
+								type="radio" 
+								value="easy"
+								id="easy"
+								onChange={handleDifficultyChange}
+								checked={mazeDifficulty === "easy"}
+							/>
+							<label 
+								htmlFor="medium"
+							>Medium </label>
+							<input 
+								name="mazeDifficulty"
+								type="radio" 
+								value="medium"
+								id="medium"
+								onChange={handleDifficultyChange}
+								checked={mazeDifficulty === "medium"}
+							/>
+
+							<label 
+								htmlFor="hard"
+							>Hard </label>
+							<input 
+								name="mazeDifficulty"
+								type="radio" 
+								value="hard"
+								id="hard"
+								onChange={handleDifficultyChange}
+								checked={mazeDifficulty === "hard"}
+							/>
+							
 						</fieldset>
 						<Link to="/Maze">
 							<button type="Submit">Submit</button>
