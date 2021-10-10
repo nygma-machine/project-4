@@ -11,7 +11,7 @@ function App() {
 
 	const [userName, setUserName] = useState('');
 	const [userKeyWord, setUserKeyWord] = useState('etc');
-	const [mazeDifficulty, setMazeDifficulty] = useState('default');
+	const [mazeDifficulty, setMazeDifficulty] = useState('easy');
 	const [userQuestion, setUserQuestion] = useState('');
 
 
