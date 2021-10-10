@@ -8,7 +8,7 @@ const Results = (props) => {
 
 	const [advice, setAdvice] = useState([])
 
-	const { question, name } = props
+	const { question, name, difficulty } = props
 
 	useEffect(() => {
 		axios({
@@ -35,7 +35,8 @@ const Results = (props) => {
 						<h2>Congratulations {name}! You Have Conquered the Maze</h2>
 					) : (
 						<h2>Congradulations! You have Conquered the Maze</h2>
-					)}
+					)}					
+					<h2>That was a {difficulty} difficulty maze.</h2>
 					{question !== " " ? (
 						<p>You asked <span>{`"${question}"`}</span></p>
 					) : (

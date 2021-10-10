@@ -1,4 +1,4 @@
-const createPath = function(mazeWidth, mazeHeight, player) {
+const createPath = function(mazeWidth, mazeHeight, setNygmaMachine) {
     const pathStack = [];
     const startPosition = [0, 0];
     const newPathArray = createMazeWallArray(mazeWidth , mazeHeight);
@@ -96,10 +96,10 @@ const createPath = function(mazeWidth, mazeHeight, player) {
         newPathArray[y][x] = 0;
       }
       if (type === "start") {
-        newPathArray[y][x] = 2;
+        newPathArray[y][x] = 0;
       }
       if (type === "end") {
-        newPathArray[y][x] = 3;
+        newPathArray[y][x] = 2;
       }
     }
 
@@ -156,6 +156,10 @@ const createPath = function(mazeWidth, mazeHeight, player) {
         pathStack.push(newPathBlock);
       } else if (endOfFirstPath === true) {
         changeWall(currentPosition, "end");
+        setNygmaMachine({
+            x: currentPosition[0],
+            y: currentPosition[1]
+        })
         pathStack.pop();
         endOfFirstPath = false;
       } else {

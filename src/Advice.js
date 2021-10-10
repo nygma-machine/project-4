@@ -7,35 +7,36 @@ import axios from "axios";
 const Advice = (props) => {
 
 
-  const [advice, setAdvice] = useState([])
-  
-  const {question, name} = props
+	const [advice, setAdvice] = useState([])
 
-  useEffect(() => {
-    axios({
-      url: `https://api.adviceslip.com/advice`,
-      method:'GET',
-      dataResponse:'json'
-    }).then((res) =>{
-      const adviceResult = res.data.slip
-      setAdvice(adviceResult.advice)
-    })
-  }, [])
+	const { question, name, difficulty } = props
 
-	return ( 
-        <>
-          <div className="wrapper">
-            <h2>Congratulations {name}! You Have Completed the Maze</h2>
-            <p>You asked "{question}"</p>
-            <p>The NYGMA Machine Advises You:</p>
-            <p>{advice}</p>
-            <Link to='/'>
-              <button>Play Again?</button>
-            </Link>
-          </div>
-        </>
-    )
-  }
+	useEffect(() => {
+		axios({
+			url: `https://api.adviceslip.com/advice`,
+			method: 'GET',
+			dataResponse: 'json'
+		}).then((res) => {
+			const adviceResult = res.data.slip
+			setAdvice(adviceResult.advice)
+		})
+	}, [])
+
+	return (
+		<>
+			<div className="wrapper">
+				<h2>Congratulations {name}! You Have Completed the Maze</h2>
+				<h2>That was a {difficulty} difficulty maze.</h2>
+				<p>You asked "{question}"</p>
+				<p>The NYGMA Machine Advises You:</p>
+				<p>{advice}</p>
+				<Link to='/'>
+					<button>Play Again?</button>
+				</Link>
+			</div>
+		</>
+	)
+}
 export default Advice;
 
 

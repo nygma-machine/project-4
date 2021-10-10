@@ -2,34 +2,36 @@ import { useState, useEffect, useCallback } from 'react';
 import Row from './Row.js';
 import { Link } from 'react-router-dom'
 
+import createPath from './createPath.js';
+
 const Maze = (props) => {
 
 	const [mazeMap, setMazeMap] = useState([])
 
 	const [player, setPlayer] = useState({x: 0, y: 0})
 
-	let nygmaMachine = {
+	const [nygmaMachine, setNygmaMachine] =useState({
 		x: 5,
 		y: 3
-	}
+	});
 
 	useEffect(() => {
-		let tempMaze = [
-			[0, 0, 0, 0, 0, 0, 0],
-			[0, 1, 1, 0, 1, 0, 0],
-			[0, 0, 0, 0, 1, 1, 1],
-			[1, 0, 1, 1, 1, 0, 0],
-			[1, 0, 1, 0, 1, 1, 0],
-			[0, 0, 1, 0, 1, 0, 0],
-			[0, 1, 1, 0, 1, 0, 1],
-			[0, 0, 0, 0, 1, 0, 0],
-			[0, 1, 1, 0, 0, 0, 0]
-		]
-		tempMaze[nygmaMachine.y][nygmaMachine.x] = 2
-		setMazeMap(tempMaze)
-	}, [
-		nygmaMachine.x, nygmaMachine.y
-	])
+		// let tempMaze = [
+		// 	[0, 0, 0, 0, 0, 0, 0],
+		// 	[0, 1, 1, 0, 1, 0, 0],
+		// 	[0, 0, 0, 0, 1, 1, 1],
+		// 	[1, 0, 1, 1, 1, 0, 0],
+		// 	[1, 0, 1, 0, 1, 1, 0],
+		// 	[0, 0, 1, 0, 1, 0, 0],
+		// 	[0, 1, 1, 0, 1, 0, 1],
+		// 	[0, 0, 0, 0, 1, 0, 0],
+		// 	[0, 1, 1, 0, 0, 0, 0]
+		// ]
+		// tempMaze[nygmaMachine.y][nygmaMachine.x] = 2
+		// setMazeMap(tempMaze)
+		const maze = createPath(20, 20, setNygmaMachine);
+		setMazeMap(maze);
+	}, [])
 
 	// make sure player can legally make the move, and move the player if so
 	const checkMovement = useCallback((direction) => {
@@ -110,25 +112,25 @@ const Maze = (props) => {
 				</div>
 				<div className="directionButtons">
 					<div className="topArrow">
-						<button
+						<button className="keyButton"
 							onClick={(e) => { checkMovement(e.target.value) }}
 							value="up"
 						>Up</button>
 					</div>
 					<div className="leftArrow">
-						<button
+						<button className="keyButton"
 							onClick={(e) => { checkMovement(e.target.value) }}
 							value="left"
 						>Left</button>
 					</div>
 					<div className="downArrow">
-						<button
+						<button className="keyButton"
 							onClick={(e) => { checkMovement(e.target.value) }}
 							value="down"
 						>Down</button>
 					</div>
 					<div className="rightArrow">
-						<button
+						<button className="keyButton"
 							onClick={(e) => { checkMovement(e.target.value) }}
 							value="right"
 						>Right</button>

@@ -11,23 +11,9 @@ function App() {
 
 	const [userName, setUserName] = useState('');
 	const [userKeyWord, setUserKeyWord] = useState('etc');
+	const [mazeDifficulty, setMazeDifficulty] = useState('default');
 	const [userQuestion, setUserQuestion] = useState('');
 
-	// const [advice, setAdvice] = useState('')
-	// const [userName, setUserName] = useState('')
-	// const [query, setQuery] = useState('')
-	// const [queryTopic, setQueryTopic] = useState('')
-
-	// const [userObj, setUseObj] = useState({name: })
-
-	// const submitHandler = () => {
-	// 	axios({
-	// 		url:`https://api.adviceslip.com/advice/search/${query}`,
-	// 	}).then((res) =>{
-	// 		console.log(res.data.slip.advice)
-	// 		setAdvice(res.data.slip.advice)
-	// 	})	
-	// }
 
 	const showValues = (event) => {
 		event.preventDefault();
@@ -86,7 +72,10 @@ function App() {
 					submitPrompts={showValues}
 					userName={userName}
 					userKeyWord={userKeyWord}
-					userQuestion={userQuestion} />
+					userQuestion={userQuestion}
+					mazeDifficulty={mazeDifficulty}
+					setMazeDifficulty={setMazeDifficulty}
+					/>
 				</Route>
 				<Route exact path='/Maze' >
 					<Maze 
@@ -97,7 +86,8 @@ function App() {
 				<Route exact path={`/Results/:query`}>
 					<Results
 					question={userQuestion}
-					name={userName} />
+					name={userName}
+					difficulty={mazeDifficulty} />
 				</Route>
 				) 
 			: (
@@ -105,6 +95,7 @@ function App() {
 					<Advice
 					question={userQuestion}
 					name={userName}
+					difficulty={mazeDifficulty}
 					/>
 				</Route>
 				)}
