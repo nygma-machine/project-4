@@ -1,14 +1,27 @@
 body {
-  color: #fff;
-  font-weight: 600;
+    color: #f7fff6;
+    font-weight: 600;
 }
 
 a {
-  color: #fff;
-  text-decoration: none;
+    color: #f7fff6;
+    text-decoration: none;
 }
 
 p,
 footer a {
-  font-size: 0.9rem;
+    font-size: 0.9rem;
+}
+
+.results {
+    font-family: $headerFont;
+    .advice {
+        font-family: $bodyFont;
+    }
+}
+
+h2,
+h3 {
+    // color: #f7fff6;
+    letter-spacing: 0.2rem;
 }

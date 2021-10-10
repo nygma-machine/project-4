@@ -1,0 +1,19 @@
+.congrats {
+    @include fadeIn("0s");
+}
+
+.repeatQuestion {
+    @include fadeIn("2s");
+}
+
+.adviceHead {
+    @include fadeIn("4s");
+}
+
+.advice {
+    @include fadeIn("6s");
+}
+
+.repeatGame {
+    @include fadeIn("10s");
+}

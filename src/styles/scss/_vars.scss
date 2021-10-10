@@ -1,4 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poiret+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poiret+One&display=swap");
 
-$headerFont: 'Poiret One', cursive;
-$bodyFont:'Hind Siliguri', sans-serif;
+$headerFont: "Poiret One", cursive;
+$bodyFont: "Hind Siliguri", sans-serif;
+
+@mixin fadeIn($delayTime) {
+    animation: wait #{$delayTime}, resultsFade 2s #{$delayTime};
+}
+
+@keyframes resultsFade {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes wait {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 0%;
+    }
+}
