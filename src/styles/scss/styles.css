@@ -279,19 +279,64 @@ img {
   display: block;
 }
 
+@-webkit-keyframes resultsFade {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes resultsFade {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+@-webkit-keyframes wait {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
+@keyframes wait {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
 body {
-  color: #fff;
+  color: #f7fff6;
   font-weight: 600;
 }
 
 a {
-  color: #fff;
+  color: #f7fff6;
   text-decoration: none;
 }
 
 p,
 footer a {
   font-size: 0.9rem;
+}
+
+.results {
+  font-family: "Poiret One", cursive;
+}
+.results .advice {
+  font-family: "Hind Siliguri", sans-serif;
+}
+
+h2,
+h3 {
+  letter-spacing: 0.2rem;
 }
 
 ul,
@@ -507,6 +552,31 @@ ul li {
   100% {
     background-position: 0% 100%;
   }
+}
+
+.congrats {
+  -webkit-animation: wait 0s, resultsFade 2s 0s;
+          animation: wait 0s, resultsFade 2s 0s;
+}
+
+.repeatQuestion {
+  -webkit-animation: wait 2s, resultsFade 2s 2s;
+          animation: wait 2s, resultsFade 2s 2s;
+}
+
+.adviceHead {
+  -webkit-animation: wait 4s, resultsFade 2s 4s;
+          animation: wait 4s, resultsFade 2s 4s;
+}
+
+.advice {
+  -webkit-animation: wait 6s, resultsFade 2s 6s;
+          animation: wait 6s, resultsFade 2s 6s;
+}
+
+.repeatGame {
+  -webkit-animation: wait 10s, resultsFade 2s 10s;
+          animation: wait 10s, resultsFade 2s 10s;
 }
 .buttonContainer {
   margin: 2rem auto;
