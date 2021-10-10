@@ -8,8 +8,8 @@ const Advice = (props) => {
 
 
   const [advice, setAdvice] = useState([])
-  
-  const {question, name} = props
+  const { question, name, difficulty } = props
+
 
   useEffect(() => {
     axios({
@@ -27,10 +27,13 @@ const Advice = (props) => {
           <div className="wrapper">
             <div className="results">
             {name !== "" ? (
-              <h2 className="congrats">Congratulations {name}! You Have Conquered the Maze</h2>
-              ) : (
-              <h2 className="congrats">Congradulations! You have Conquered the Maze</h2>
-              )}
+              <div className="congrats">
+                <h2 className="congrats">Congratulations {name}! You Have Conquered the Maze</h2>
+				        <h2>That was a {difficulty} difficulty maze.</h2>
+                ) : (
+                <h2 className="congrats">Congradulations! You have Conquered the Maze</h2>
+				        <h2>That was a {difficulty} difficulty maze.</h2>                  
+                )}
               {question !== "" ? (
               <p className="repeatQuestion">You asked <span>{`"${question}"`}</span></p>
               ) : (
@@ -46,6 +49,7 @@ const Advice = (props) => {
         </>
     )
   }
+
 export default Advice;
 
 
