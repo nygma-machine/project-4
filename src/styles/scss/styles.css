@@ -247,26 +247,12 @@ a {
   text-decoration: none;
 }
 
-.siteHeading {
-  font-family: "Poiret One", cursive;
-}
-.siteHeading h1 {
-  font-size: 4rem;
-}
-.siteHeading span {
-  display: block;
-  text-transform: uppercase;
-  font-style: italic;
-}
-
-ul,
-li {
+ul, li {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-ul a,
-li a {
+ul a, li a {
   color: blue;
 }
 
@@ -327,7 +313,7 @@ ul li {
 }
 
 .block2 {
-  background-color: red;
+  background-color: #90E39A;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -336,28 +322,37 @@ ul li {
 .block2::before {
   width: 100%;
   height: 100%;
-  background: radial-gradient(white 10%, yellow 25%, lime 75%);
   text-align: center;
+  background: radial-gradient(white 10%, yellow 25%, #00ff00 75%);
+  background-position: center;
   border-radius: 50%;
   color: black;
   content: "?";
+  -webkit-animation: glow 1s linear infinite;
+          animation: glow 1s linear infinite;
 }
 
 @-webkit-keyframes glow {
   0% {
-    background: radial-gradient(white 10%, yellow 25%, lime 75%);
+    background-size: 100% 100%;
+  }
+  50% {
+    background-size: 200% 200%;
   }
   100% {
-    background: radial-gradient(white 10%, yellow 25%, lime 75%);
+    background-size: 100% 100%;
   }
 }
 
 @keyframes glow {
   0% {
-    background: radial-gradient(white 10%, yellow 25%, lime 75%);
+    background-size: 100% 100%;
+  }
+  50% {
+    background-size: 200% 200%;
   }
   100% {
-    background: radial-gradient(white 10%, yellow 25%, lime 75%);
+    background-size: 100% 100%;
   }
 }
 .player {
@@ -371,27 +366,25 @@ ul li {
 
 @-webkit-keyframes shifting {
   0% {
-    background: linear-gradient(45deg, green, yellow);
     background-position: 0% 100%;
   }
   50% {
-    background: linear-gradient(90deg, blue, purple);
+    background-position: 100% 0%;
   }
   100% {
-    background: linear-gradient(45deg, orange, white);
+    background-position: 0% 100%;
   }
 }
 
 @keyframes shifting {
   0% {
-    background: linear-gradient(45deg, green, yellow);
     background-position: 0% 100%;
   }
   50% {
-    background: linear-gradient(90deg, blue, purple);
+    background-position: 100% 0%;
   }
   100% {
-    background: linear-gradient(45deg, orange, white);
+    background-position: 0% 100%;
   }
 }
 html {

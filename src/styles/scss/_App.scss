@@ -1,5 +1,4 @@
-ul, 
-li {
+ul, li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -16,15 +15,15 @@ ul {
 }
 
 .siteHeading {
-  font-family:$headerFont;
-  h1 {
-    font-size:4rem;
-  }
-  span {
-    display:block;
-    text-transform:uppercase;
-    font-style:italic;
-  }
+  	font-family:$headerFont;
+  	h1 {
+    	font-size:4rem;
+	  }
+	span {
+		display:block;
+		text-transform:uppercase;
+		font-style:italic;
+  	}
 	p {
 		line-height:1.5rem;
 	}
