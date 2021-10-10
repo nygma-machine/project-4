@@ -18,6 +18,10 @@
     @include fadeIn("6s");
 }
 
+.leaderboard {
+    @include fadeIn('8s');
+}
+
 .repeatGame {
     @include fadeIn("10s");
     font-family: $bodyFont;
