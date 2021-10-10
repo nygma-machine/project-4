@@ -1,9 +1,50 @@
 .homePage {
-    form{
+    .description {
+        font-size: 0.95rem;
+        font-style: italic;
+        line-height: 1rem;
+        margin: 0 auto;
+        width: 85vw;
+        span {
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+    }
+    form {
+        margin: 25px auto;
+        font-family: $bodyFont;
+        font-size: 1.2rem;
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        span {
+            font-style: italic;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        fieldset {
+            flex: 1 1 50%;
+            border: none;
+        }
+        label {
+            margin-right: 10px;
+        }
+    }
+    button[type="submit"] {
+        font-family: $bodyFont;
+        text-transform: uppercase;
+        color: #f7fff6;
+        font-weight: 600;
+        background: #90e39a;
+        border: #f7fff6 solid 0.05rem;
+        padding: 15px 25px;
+        &:hover,
+        &:focus {
+            color: #298776;
+        }
+        &:active {
+            background: #50c17f;
+        }
     }
 }
-
