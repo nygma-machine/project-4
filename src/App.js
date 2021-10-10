@@ -5,6 +5,7 @@ import Maze from './Maze'
 import Results from './Results'
 import Advice from './Advice';
 import { useState } from 'react';
+import questionMark from './questionMark.png'
 
 function App() {
 
@@ -39,10 +40,17 @@ function App() {
 	return (
 		<Router>
 			<div className="App">
-				<div className="siteHeading wrapper">
-					<h1>The <span>Nygma</span> Machine</h1>
-					<p>What comes rows, but goes in stews, Astounds man, but challenges mice, has an ear that cannot hear and a heart that only the clever beat?
-					</p>
+				<div className="headerFlex wrapper">
+					<div className="siteHeading">
+						<Link to='/'>
+							<h1>The <span>Nygma</span> Machine</h1>
+						</Link>
+						<p>What astounds man, but challenges mice? Has an ear that cannot hear, and a heart that only the clever beat?
+						</p>
+					</div>
+					<div className="imgContainer">
+						<img src={questionMark} alt="" />
+					</div>
 				</div>
 				<nav>
 					<ul>
@@ -101,6 +109,11 @@ function App() {
 				</Route>
 				)}
 			</div>
+			<footer>
+				<a href="https://junocollege.com">Created at Juno College by Brian Canuto, Hal Forrest, Solon Gee, and Corey Hamat</a>
+				<p>Commissioned by Edward Nigma</p>
+				<p>Built with the <span><a href="https://api.adviceslip.com/">advice slip API</a></span></p>
+			</footer>
 		</Router >
 	)
 }

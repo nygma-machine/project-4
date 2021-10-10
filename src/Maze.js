@@ -92,7 +92,7 @@ const Maze = (props) => {
 		document.addEventListener('keydown', handleKeypress)
 		return () => { document.removeEventListener('keydown', handleKeypress) }
 	}, [mazeMap, player, checkMovement])
-
+}
 
 
 	return (
