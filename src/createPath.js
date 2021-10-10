@@ -172,7 +172,6 @@ const createPath = function (mazeWidth, mazeHeight, setNygmaMachine) {
 
 		if (possibleNygmaPosition.length !== 0) {
 			const nygmaCoordinates = possibleNygmaPosition[randomIndex];
-			console.log("possible locations:", possibleNygmaPosition)
 			changeWall(nygmaCoordinates, "nygma");
 			setNygmaMachine({
 				x: nygmaCoordinates[0],
