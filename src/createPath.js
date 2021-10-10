@@ -1,7 +1,7 @@
-const createPath = function() {
+const createPath = function(mazeWidth, mazeHeight, player) {
     const pathStack = [];
     const startPosition = [0, 0];
-    const newPathArray = createMazeWallArray(40 , 20);
+    const newPathArray = createMazeWallArray(mazeWidth , mazeHeight);
     //allows us to mark when the first dead end occurs
     let endOfFirstPath = true;
 

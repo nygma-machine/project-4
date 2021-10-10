@@ -6,7 +6,7 @@ const Maze = (props) => {
 
 	const [mazeMap, setMazeMap] = useState([])
 
-	const [player, setPlayer] = useState({})
+	const [player, setPlayer] = useState({x: 0, y: 0})
 
 	let nygmaMachine = {
 		x: 5,
@@ -14,7 +14,6 @@ const Maze = (props) => {
 	}
 
 	useEffect(() => {
-		setPlayer({ x: 0, y: 0 })
 		let tempMaze = [
 			[0, 0, 0, 0, 0, 0, 0],
 			[0, 1, 1, 0, 1, 0, 0],
@@ -73,8 +72,6 @@ const Maze = (props) => {
 
 	}, [mazeMap, player])
 
-
-
 	useEffect(() => {
 		const handleKeypress = (event) => {
 			event.preventDefault()
@@ -92,14 +89,12 @@ const Maze = (props) => {
 		document.addEventListener('keydown', handleKeypress)
 		return () => { document.removeEventListener('keydown', handleKeypress) }
 	}, [mazeMap, player, checkMovement])
-}
-
 
 	return (
 		<div>
 			<div className="wrapper">
 				<div className="maze">
-					<p>Player x: {player.x}, Player y: {player.y}</p>
+					
 					{
 						mazeMap.map((row, index) => {
 							return (

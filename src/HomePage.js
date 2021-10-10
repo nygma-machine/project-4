@@ -31,7 +31,7 @@ const HomePage = (props) => {
 						<fieldset>
 							<label htmlFor="userKeyword">What do you wish to learn about?</label>
 							<select name="userKeyword" id="userKeyword" onChange={handleTopicChange} value={userKeyWord}>
-                <option value="placeholder" disabled>Select One</option>
+                <option value="etc" disabled>Select One</option>
                 <option value="life">Life</option>
 								<option value="love">Love</option>
 								<option value="parent">Family</option>

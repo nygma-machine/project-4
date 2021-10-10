@@ -10,7 +10,7 @@ import questionMark from './questionMark.png'
 function App() {
 
 	const [userName, setUserName] = useState('');
-	const [userKeyWord, setUserKeyWord] = useState('placeholder');
+	const [userKeyWord, setUserKeyWord] = useState('etc');
 	const [userQuestion, setUserQuestion] = useState('');
 
 	// const [advice, setAdvice] = useState('')
