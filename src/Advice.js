@@ -22,32 +22,35 @@ const Advice = (props) => {
     })
   }, [])
 
-	return ( 
-        <>
-          <div className="wrapper">
-            <div className="results">
-            {name !== "" ? (
-              <div className="congrats">
-                <h2 className="congrats">Congratulations {name}! You Have Conquered the Maze</h2>
-				        <h2>That was a {difficulty} difficulty maze.</h2>
-                ) : (
-                <h2 className="congrats">Congradulations! You have Conquered the Maze</h2>
-				        <h2>That was a {difficulty} difficulty maze.</h2>                  
-                )}
-              {question !== "" ? (
-              <p className="repeatQuestion">You asked <span>{`"${question}"`}</span></p>
-              ) : (
-              <p className="repeatQuestion">You chose to not ask a Quesion...</p>
-              )}
-              <h3 className="adviceHead">The NYGMA Machine Advises You:</h3>
-              <p className="advice">{advice}</p>
-              <Link to='/'>
-                <button className="repeatGame">Play Again?</button>
-              </Link>
-            </div>
-          </div>
-        </>
-    )
+  return (
+		<>
+			<div className="wrapper">
+				<div className="results">
+					{name !== "" ? (
+						<div className="congrats">
+							<h2>Congratulations {name}! You Have Conquered the Maze</h2>
+							<h2>That was a {difficulty} maze.</h2>
+						</div>
+					) : (
+						<div className="congrats">
+							<h2>Congradulations! You have Conquered the Maze</h2>
+							<h2>That was a {difficulty} maze.</h2>
+						</div>
+					)}
+					{question !== "" ? (
+						<p className="repeatQuestion">You asked <span>{`"${question}"`}</span></p>
+					) : (
+						<p className="repeatQuestion">You chose to not ask a Quesion...</p>
+					)}
+					<h3 className="adviceHead">The NYGMA Machine Advises You:</h3>
+					<p className="advice">{advice}</p>
+					<Link to='/'>
+						<button className="repeatGame">Play Again?</button>
+					</Link>
+				</div>
+			</div>
+		</>
+	)        
   }
 
 export default Advice;

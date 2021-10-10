@@ -32,11 +32,15 @@ const Results = (props) => {
 			<div className="wrapper">
 				<div className="results">
 					{name !== "" ? (
-						<h2>Congratulations {name}! You Have Conquered the Maze</h2>
-					  <h2>That was a {difficulty} difficulty maze.</h2>
+						<div className="congrats">
+							<h2>Congratulations {name}! You Have Conquered the Maze</h2>
+							<h2>That was a {difficulty} maze.</h2>
+						</div>
 					) : (
-						<h2>Congradulations! You have Conquered the Maze</h2>
-            <h2>That was a {difficulty} difficulty maze.</h2>
+						<div className="congrats">
+							<h2>Congradulations! You have Conquered the Maze</h2>
+							<h2>That was a {difficulty} maze.</h2>
+						</div>
 					)}
 					{question !== "" ? (
 						<p className="repeatQuestion">You asked <span>{`"${question}"`}</span></p>
