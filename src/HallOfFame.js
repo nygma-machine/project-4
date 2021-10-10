@@ -11,7 +11,7 @@ const HallOfFame = (props) => {
 			const databaseRef = ref(realtime, '/users')
 			push(databaseRef, {usersName: name})
 		}
-	}, [])
+	}, [name])
 
 	return (
 		<div className="leaderboard">

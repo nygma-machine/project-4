@@ -14,7 +14,7 @@
     margin: 1rem auto;
     grid-column: 1 / span 3;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 .downArrow{
     margin: 0 auto;
@@ -23,7 +23,7 @@
 
 .leftArrow {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .keyButton {

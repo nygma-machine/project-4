@@ -631,7 +631,7 @@ ul li {
   margin: 1rem auto;
   grid-column: 1/span 3;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .downArrow {
@@ -641,7 +641,7 @@ ul li {
 
 .leftArrow {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .keyButton {

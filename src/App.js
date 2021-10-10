@@ -36,11 +36,9 @@ function App() {
 					key: propertyName,
 					usersName: myData[propertyName].usersName
 				}
-				console.log(myData);
 				tempArray.push(currentName)
 			}
 			setListOfNames(tempArray)
-			console.log(tempArray);
 		})
 	}, [])
 
