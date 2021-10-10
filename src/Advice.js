@@ -25,13 +25,23 @@ const Advice = (props) => {
 	return ( 
         <>
           <div className="wrapper">
-            <h2>Congratulations {name}! You Have Completed the Maze</h2>
-            <p>You asked "{question}"</p>
-            <p>The NYGMA Machine Advises You:</p>
-            <p>{advice}</p>
-            <Link to='/'>
-              <button>Play Again?</button>
-            </Link>
+            <div className="results">
+            {name !== "" ? (
+              <h2 className="congrats">Congratulations {name}! You Have Conquered the Maze</h2>
+              ) : (
+              <h2 className="congrats">Congradulations! You have Conquered the Maze</h2>
+              )}
+              {question !== "" ? (
+              <p className="repeatQuestion">You asked <span>{`"${question}"`}</span></p>
+              ) : (
+              <p className="repeatQuestion">You chose to not ask a Quesion...</p>
+              )}
+              <h3 className="adviceHead">The NYGMA Machine Advises You:</h3>
+              <p className="advice">{advice}</p>
+              <Link to='/'>
+                <button className="repeatGame">Play Again?</button>
+              </Link>
+            </div>
           </div>
         </>
     )

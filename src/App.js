@@ -111,7 +111,7 @@ function App() {
 			</div>
 			<footer>
 				<a href="https://junocollege.com">Created at Juno College by Brian Canuto, Hal Forrest, Solon Gee, and Corey Hamat</a>
-				<p>Commissioned by Edward Nigma</p>
+				<p>Commissioned by Edward Nygma</p>
 				<p>Built with the <span><a href="https://api.adviceslip.com/">advice slip API</a></span></p>
 			</footer>
 		</Router >
