@@ -1,3 +1,12 @@
+//this function creates an array of arrays representing the maze. Starting with a maze full of walls, it uses a randomized depth-first search algorithm (https://en.wikipedia.org/wiki/Maze_generation_algorithm) to create paths throughout the maze.
+	//1.creates a maze full of walls
+	//2. changes a start location to a path, and then pushes its position onto pathStack array as a set of coordinates
+	//3. while loop checks the last item in our pathStack array- checks if any of the squares around it (top, bottom, left, right) are wall squares
+	//4. If so, it randomly selects one of them to turn into a path square, then pushes its position onto the pathStack
+		//The while loop then checks the next square as it is the last item in pathStack
+	//5. If there are not any squares around it that can be turned into paths (top, bottom, left, right), it pops that position off the stack, and the while loop checks the previous position
+	//6. this repeats until it is impossible to create any more path squares, and the stack is empty
+
 const createPath = function (mazeWidth, mazeHeight, setNygmaMachine) {
 	const pathStack = [];
 	const startPosition = [0, 0];
@@ -22,17 +31,17 @@ const createPath = function (mazeWidth, mazeHeight, setNygmaMachine) {
 		return mazeWallArray;
 	};
 
-	//checks if a square is beside a path, also where it is checking from
+	//this function is used to check the four squares around the currentPosition in our while loop to see if they are beside a path
 	function checkPathAround(position, checkingFrom = "all") {
 		const x = position[0];
 		const y = position[1];
-		//check all eight blocks around possible path block for other path blocks/ outside of maze
+		
 		const onBottomRow = y === newPathArray.length - 1;
 		const onTopRow = y === 0;
 		const onLeftColumn = x === 0;
 		const onRightColumn = x === newPathArray[0].length - 1;
 
-		//each of these values checks if a square around possible path block is a wall or outside of the maze and will have a value of true if there's a wall
+		//each of these values checks if a square around possible path block is a wall or outside of the maze and will have a value of true if there's a wall / outside of the maze
 
 		const leftValue = onLeftColumn || newPathArray[y][x - 1] === 1;
 
@@ -63,12 +72,7 @@ const createPath = function (mazeWidth, mazeHeight, setNygmaMachine) {
 			onRightColumn ||
 			newPathArray[y - 1][x + 1] === 1;
 
-		//if all surrounding squares are walls/out of the maze, return true
-		//need to exclude certain squares on what is passed into the function eg. possibleTopPosition has to exclude the bottomValue b/ our last path square is guaranteed to be there
-		if (checkingFrom === "all") {
-			return (leftValue && topValue && bottomValue && rightValue && topRightValue && bottomRightValue && topLeftValue && bottomLeftValue);
-		}
-
+		//checks the squares around position based on its location relative to currentPosition
 		if (checkingFrom === "top") {
 			return (leftValue && topValue && rightValue && topRightValue && topLeftValue);
 		}
@@ -92,9 +96,6 @@ const createPath = function (mazeWidth, mazeHeight, setNygmaMachine) {
 		if (type === "wall") {
 			newPathArray[y][x] = 0;
 		}
-		if (type === "start") {
-			newPathArray[y][x] = 0;
-		}
 		if (type === "nygma") {
 			newPathArray[y][x] = 2;
 		}
@@ -102,7 +103,7 @@ const createPath = function (mazeWidth, mazeHeight, setNygmaMachine) {
 
 
 	//start at a wall block, and turn it to path block- push location onto stack
-	changeWall(startPosition, "start");
+	changeWall(startPosition, "wall");
 	pathStack.push(startPosition);
 
 
@@ -120,12 +121,6 @@ const createPath = function (mazeWidth, mazeHeight, setNygmaMachine) {
 		const possibleRightPosition = [x + 1, y];
 
 		const possibleChoices = [];
-		//prevent from pushing to possible answers if current position on top row
-		// console.log(
-		//   "checking top:", checkPathAround(possibleTopPosition, "top"),
-		//   "checking bottom:", checkPathAround(possibleBottomPosition),
-		// );
-
 
 		//each of these conditions checks that the possible position is not a path, that it is not outside of the maze, and that no other squares around it are paths
 		if (y !== 0 && newPathArray[y - 1][x] === 1 && checkPathAround(possibleTopPosition, "top")) {
@@ -141,14 +136,10 @@ const createPath = function (mazeWidth, mazeHeight, setNygmaMachine) {
 			possibleChoices.push(possibleRightPosition);
 		}
 
-		// console.log(`possible choices ${i}`, possibleChoices)
-
-		//randomly choose one to turn into a path block- push location onto stack
+		//randomly choose one to turn into a path block- push location onto pathStack
 		if (possibleChoices.length !== 0) {
 			const randomIndex = Math.floor(Math.random() * possibleChoices.length);
 			const newPathBlock = possibleChoices[randomIndex];
-			// console.log(`random index ${i}`, randomIndex)
-			// console.log(`newPathBlock ${i}`, newPathBlock);
 			changeWall(newPathBlock);
 			pathStack.push(newPathBlock);
 		} else {
@@ -156,64 +147,44 @@ const createPath = function (mazeWidth, mazeHeight, setNygmaMachine) {
 		}
 		//repeat this until no surrounding blocks can be made into path
 		//then pop a block off the stack and try this again
-		//when the stack is gone, the path is complete
-
-        //check 3 x 3 square of values in bottom right corner of PathArray for a path block to change into the nygma machine
-            //create an array of possible values from 3 x 3 array
-        
-        function checkIfPossible() {
-            const possibleNygmaPosition = [];    
-            const rightColumn = mazeWidth - 1;
-            const bottomRow = mazeHeight - 1;
-            //checks each of the nine spots to see if they are a path, if so it pushes that spot onto possibleNygmaPosition
-            for (let i = 0; i < 3; i++) {
-                if (newPathArray[bottomRow][rightColumn - i] === 0) {
-                    possibleNygmaPosition.push([rightColumn - i, bottomRow]);
-                }
-                if (newPathArray[bottomRow - 1][rightColumn - i] === 0) {
-                    possibleNygmaPosition.push([rightColumn - i, bottomRow - 1]);
-                }
-                if (newPathArray[bottomRow - 2][rightColumn - i] === 0) {
-                    possibleNygmaPosition.push([rightColumn - i, bottomRow - 2]);
-                }
-            }
-
-            //randomly selects a position from possibleNygmaPosition and calls setNygmaMachine using it
-            const randomIndex = Math.floor(Math.random() * possibleNygmaPosition.length);
-
-            //troubleshoot this
-            if (possibleNygmaPosition.length !== 0) {
-                const nygmaCoordinates = possibleNygmaPosition[randomIndex];
-                console.log(possibleNygmaPosition)
-                changeWall(nygmaCoordinates, "nygma");
-                setNygmaMachine({
-                    x: nygmaCoordinates[0],
-                    y: nygmaCoordinates[1]
-                })
-
-            }
-
-        }
-
-        checkIfPossible();
-        
+		//when the stack is gone, the path is complete        
 	}
 
+//check 3 x 3 square of values in bottom right corner of PathArray for a path block to change into the nygma machine
+	//create an array of possible values from 3 x 3 array
 
-	console.log('all done!')
+	function checkIfPossible() {
+		const possibleNygmaPosition = [];    
+		const rightColumn = mazeWidth - 1;
+		const bottomRow = mazeHeight - 1;
+		//checks each of the nine spots to see if they are a path, if so it pushes that spot onto possibleNygmaPosition
+		for (let i = 0; i < 3; i++) {
+			for (let j = 0; j < 3; j++) {
+				if (newPathArray[bottomRow - j][rightColumn - i] === 0) {
+					possibleNygmaPosition.push([rightColumn - i, bottomRow]);
+				}
+
+			}
+		}
+
+		//randomly selects a position from possibleNygmaPosition and calls setNygmaMachine using it
+		const randomIndex = Math.floor(Math.random() * possibleNygmaPosition.length);
+
+		if (possibleNygmaPosition.length !== 0) {
+			const nygmaCoordinates = possibleNygmaPosition[randomIndex];
+			console.log("possible locations:", possibleNygmaPosition)
+			changeWall(nygmaCoordinates, "nygma");
+			setNygmaMachine({
+				x: nygmaCoordinates[0],
+				y: nygmaCoordinates[1]
+			})
+		}
+	}
+
+	checkIfPossible();
+
 	//when done return new array
 	return newPathArray;
-
-	//   const mazeArray = createPath();
-
-
-	//remove these after testing?
-	//This doesn't work because arrays inside need to be destructured too or they are passed by reference
-	// const mazeArray = createMazeWallArray(4,4);
-	// const copy = [...mazeArray];
-	// copy[0][0] = "hello";
-	// console.log("mazeWallArray", mazeArray);
-	// console.log("copy", copy)
 }
 
 export default createPath;

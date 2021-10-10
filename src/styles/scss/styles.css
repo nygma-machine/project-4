@@ -432,7 +432,19 @@ ul li {
 }
 
 .answerButton {
-  margin: 1rem auto;
+  font-family: "Hind Siliguri", sans-serif;
+  text-transform: uppercase;
+  color: #f7fff6;
+  font-weight: 600;
+  background: #90e39a;
+  border: #f7fff6 solid 0.05rem;
+  padding: 15px 25px;
+}
+.answerButton:hover, .answerButton:focus {
+  color: #298776;
+}
+.answerButton:active {
+  background: #50c17f;
 }
 
 .maze {
@@ -553,6 +565,9 @@ ul li {
     background-position: 0% 100%;
   }
 }
+.resultsFlex {
+  display: flex;
+}
 
 .congrats {
   -webkit-animation: wait 0s, resultsFade 2s 0s;
@@ -577,7 +592,21 @@ ul li {
 .repeatGame {
   -webkit-animation: wait 10s, resultsFade 2s 10s;
           animation: wait 10s, resultsFade 2s 10s;
+  font-family: "Hind Siliguri", sans-serif;
+  text-transform: uppercase;
+  color: #f7fff6;
+  font-weight: 600;
+  background: #90e39a;
+  border: #f7fff6 solid 0.05rem;
+  padding: 15px 25px;
 }
+.repeatGame:hover, .repeatGame:focus {
+  color: #298776;
+}
+.repeatGame:active {
+  background: #50c17f;
+}
+
 .buttonContainer {
   margin: 2rem auto;
   display: grid;
