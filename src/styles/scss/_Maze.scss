@@ -27,9 +27,46 @@
 
   .block2 {
     background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .block2::before {
+    width: 100%;
+    height: 100%;
+    background:radial-gradient(white 10%, yellow 25%, lime 75%);
+    text-align: center;
+    border-radius: 50%;
+    color: black;
+    content:"?";
+  }
+
+  @keyframes glow {
+    0% {
+      background:radial-gradient(white 10%, yellow 25%, lime 75%);
+    }
+    100% {
+      background:radial-gradient(white 10%, yellow 25%, lime 75%);
+    }
   }
   
 .player {
 	background-color: yellow;
 	position: absolute;
+	background: linear-gradient(45deg, red, blue);
+	background-size: 500% 100%;
+	animation: shifting 5s ease infinite;
+}
+@keyframes shifting {
+	0% {
+		background: linear-gradient(45deg, green, yellow);
+		background-position: 0% 100%;
+	}
+	50% {
+		background: linear-gradient(90deg, blue, purple);
+	}
+	100% {
+		background: linear-gradient(45deg, orange, white);
+	}
 }

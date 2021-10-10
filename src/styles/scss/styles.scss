@@ -1,12 +1,14 @@
 @import 'setup';
+@import 'vars';
+@import 'typography'; 
 @import 'App';
 @import 'HomePage';
 @import 'Maze';
-@import 'vars';
-@import 'typography'; 
 
 
 html {
+  font-size:125%;
+  font-family:$bodyFont;
   background: linear-gradient(
     90deg,
     rgba(29, 53, 72, 1) 10%,

@@ -19,11 +19,11 @@ const Maze = (props) => {
 			[0, 0, 0, 0, 0, 0, 0],
 			[0, 1, 1, 0, 1, 0, 0],
 			[0, 0, 0, 0, 1, 1, 1],
-			[1, 0, 1, 0, 1, 0, 0],
-			[1, 0, 1, 0, 1, 0, 0],
+			[1, 0, 1, 1, 1, 0, 0],
+			[1, 0, 1, 0, 1, 1, 0],
 			[0, 0, 1, 0, 1, 0, 0],
-			[0, 0, 1, 0, 1, 0, 0],
-			[0, 0, 1, 0, 0, 0, 0],
+			[0, 1, 1, 0, 1, 0, 1],
+			[0, 0, 0, 0, 1, 0, 0],
 			[0, 1, 1, 0, 0, 0, 0]
 		]
 		tempMaze[nygmaMachine.y][nygmaMachine.x] = 2
@@ -45,6 +45,13 @@ const Maze = (props) => {
 				checkMovement("left")
 			}
 		}
+
+		const handleClick = (event) =>{
+			event.preventDefault()
+			
+		}
+
+
 		// make sure player can legally make the move
 		const checkMovement = (direction) => {
 
@@ -92,7 +99,7 @@ const Maze = (props) => {
 
 
 	return (
-		<>
+		<div>
 			<div className="wrapper">
 				<div className="maze">
 					<p>Player x: {player.x}, Player y: {player.y}</p>
@@ -109,27 +116,42 @@ const Maze = (props) => {
 						})
 					}
 				</div>
-				<div className="answerButton">
-					{player.x === nygmaMachine.x && player.y === nygmaMachine.y ? (
-						<>
-							{props.query !== "etc" ? (
-								<Link to={`/Results/${props.query}`}>
-									<button className="goToResults">Seek the Answer!</button>
-								</Link>
-							) : (
-								<Link to='/Advice'>
-									<button className="goToResults">Seek the Answer!</button>
-								</Link>
-							)
-							}
-						</>
-					) : (
-						<>
-						</>
-					)}
-				</div>
+				<div className="directionButtons">
+					<div className="topArrow">
+						<button>Up</button>
+					</div>
+					<div className="leftArrow">
+						<button>Left</button>
+					</div>
+					<div className="downArrow">
+						<button>Down</button>
+					</div>
+					<div className="rightArrow">
+						<button>Right</button>
+					</div></div>
 			</div>
-		</>
+			<div className="answerButton">
+				{player.x === nygmaMachine.x && player.y === nygmaMachine.y ? (
+					<>
+						{props.query !== "etc" ? (
+							<Link to={`/Results/${props.query}`}>
+								<button className="goToResults">Seek the Answer!</button>
+							</Link>
+						) : (
+							<Link to='/Advice'>
+								<button className="goToResults">Seek the Answer!</button>
+							</Link>
+						)
+						}
+					</>
+				) : (
+					<>
+					</>
+				)}
+			</div>
+		</div>
 	)
 }
+
+
 export default Maze;

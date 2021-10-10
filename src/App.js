@@ -39,7 +39,11 @@ function App() {
 	return (
 		<Router>
 			<div className="App">
-				<h1>Nygma</h1>
+				<div className="siteHeading wrapper">
+					<h1>The <span>Nygma</span> Machine</h1>
+					<p>What comes rows, but goes in stews, Astounds man, but challenges mice, has an ear that cannot hear and a heart that only the clever beat?
+					</p>
+				</div>
 				<nav>
 					<ul>
 						<li>
