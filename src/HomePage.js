@@ -28,10 +28,11 @@ const HomePage = (props) => {
 						<label htmlFor="userKeyword">What is your Question about?</label>
 						<select name="userKeyword" id="userKeyword" onChange={handleTopicChange} value={userKeyWord}>
 							<option value="placeholder" disabled>Select One</option>
-							<option value="time">Time</option>
-							<option value="love">Love</option>
-							<option value="money">Finance</option>
 							<option value="life">Life</option>
+							<option value="love">Love</option>
+							<option value="parent">Family</option>
+							<option value="time">Time</option>
+							<option value="money">Finance</option>
 							<option value="etc">Something Else</option>
 						</select>
 
