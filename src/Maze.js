@@ -46,10 +46,10 @@ const Maze = (props) => {
 			}
 		}
 
-		const handleClick = (event) =>{
-			event.preventDefault()
+		// const handleClick = (event) =>{
+		// 	event.preventDefault()
 			
-		}
+		// }
 
 
 		// make sure player can legally make the move
