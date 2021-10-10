@@ -674,7 +674,7 @@ ul li {
   transform: translateY(4px);
 }
 
-@media (min-width: 600px) {
+@media (max-width: 600px) {
   .buttonContainer {
     position: fixed;
     top: 0vh;
