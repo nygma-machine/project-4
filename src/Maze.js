@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import Row from './Row.js';
 import { Link } from 'react-router-dom'
-
 import createPath from './createPath.js';
+import hitWall from './sounds/SoundWall.js';
+import playerMove from './sounds/SoundMove.js';
 
 const Maze = (props) => {
 
@@ -14,6 +15,7 @@ const Maze = (props) => {
 		x: 5,
 		y: 3
 	});
+
 
 	useEffect(() => {
 		// let tempMaze = [
@@ -45,6 +47,9 @@ const Maze = (props) => {
 				mazeMap[playerY - 1][playerX] === 2
 			) {
 				setPlayer({ x: playerX, y: playerY - 1 });
+				playerMove()
+			} else {
+				hitWall()
 			}
 		}
 
@@ -53,6 +58,9 @@ const Maze = (props) => {
 				mazeMap[playerY + 1][playerX] === 2
 			) {
 				setPlayer({ x: playerX, y: playerY + 1 });
+				playerMove()
+			} else {
+				hitWall()
 			}
 		}
 
@@ -61,6 +69,9 @@ const Maze = (props) => {
 				mazeMap[playerY][playerX - 1] === 2
 			) {
 				setPlayer({ x: playerX - 1, y: playerY });
+				playerMove()
+			} else {
+				hitWall()
 			}
 		}
 
@@ -69,6 +80,9 @@ const Maze = (props) => {
 				mazeMap[playerY][playerX + 1] === 2
 			) {
 				setPlayer({ x: playerX + 1, y: playerY });
+				playerMove()
+			} else {
+				hitWall()
 			}
 		}
 
