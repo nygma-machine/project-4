@@ -35,7 +35,7 @@
     height: 25px;
 }
 .block {
-    opacity: 0;
+    // opacity: 0;
 }
 .block0 {
     background-color: #90e39a;
@@ -44,7 +44,7 @@
 .distance1,
 .distance2,
 .player {
-    opacity: 1;
+    // opacity: 1;
 }
 .distance3 {
     opacity: 0.8;
@@ -79,6 +79,10 @@
     color: black;
     content: "?";
     animation: glow 1s linear infinite;
+}
+
+.block3 {
+    background: red;
 }
 
 @keyframes glow {

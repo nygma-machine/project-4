@@ -98,6 +98,7 @@ function App() {
 				</Route>
 				<Route exact path='/Maze' >
 					<Maze
+						mazeDifficulty={mazeDifficulty}
 						query={userKeyWord} />
 				</Route>
 

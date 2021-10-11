@@ -7,10 +7,11 @@
 	//5. If there are not any squares around it that can be turned into paths (top, bottom, left, right), it pops that position off the stack, and the while loop checks the previous position
 	//6. this repeats until it is impossible to create any more path squares, and the stack is empty
 
-const createPath = function (mazeWidth, mazeHeight, setNygmaMachine) {
+const createPath = function (mazeWidth, mazeHeight, setNygmaMachine, mazeDifficulty) {
 	const pathStack = [];
 	const startPosition = [0, 0];
 	const newPathArray = createMazeWallArray(mazeWidth, mazeHeight);
+	console.log(mazeDifficulty);
 
 	//creates basic maze full of walls
 	function createMazeWallArray(width, height) {
@@ -89,7 +90,7 @@ const createPath = function (mazeWidth, mazeHeight, setNygmaMachine) {
 
 	}
 
-	function changeWall(position, type = "wall") {
+	function changeBlock(position, type = "wall") {
 		const x = position[0];
 		const y = position[1];
 
@@ -99,11 +100,14 @@ const createPath = function (mazeWidth, mazeHeight, setNygmaMachine) {
 		if (type === "nygma") {
 			newPathArray[y][x] = 2;
 		}
+		if (type === "trap") {
+			newPathArray[y][x] = 3;
+		}
 	}
 
 
 	//start at a wall block, and turn it to path block- push location onto stack
-	changeWall(startPosition, "wall");
+	changeBlock(startPosition, "wall");
 	pathStack.push(startPosition);
 
 
@@ -140,7 +144,7 @@ const createPath = function (mazeWidth, mazeHeight, setNygmaMachine) {
 		if (possibleChoices.length !== 0) {
 			const randomIndex = Math.floor(Math.random() * possibleChoices.length);
 			const newPathBlock = possibleChoices[randomIndex];
-			changeWall(newPathBlock);
+			changeBlock(newPathBlock);
 			pathStack.push(newPathBlock);
 		} else {
 			pathStack.pop();
@@ -161,27 +165,55 @@ const createPath = function (mazeWidth, mazeHeight, setNygmaMachine) {
 		for (let i = 0; i < 3; i++) {
 			for (let j = 0; j < 3; j++) {
 				if (newPathArray[bottomRow - j][rightColumn - i] === 0) {
-					possibleNygmaPosition.push([rightColumn - i, bottomRow]);
+					possibleNygmaPosition.push([rightColumn - i, bottomRow - j]);
 				}
 
 			}
 		}
+		console.log("possible nygma position:", possibleNygmaPosition);
 
 		//randomly selects a position from possibleNygmaPosition and calls setNygmaMachine using it
 		const randomIndex = Math.floor(Math.random() * possibleNygmaPosition.length);
 
 		if (possibleNygmaPosition.length !== 0) {
 			const nygmaCoordinates = possibleNygmaPosition[randomIndex];
-			changeWall(nygmaCoordinates, "nygma");
+			changeBlock(nygmaCoordinates, "nygma");
 			setNygmaMachine({
 				x: nygmaCoordinates[0],
 				y: nygmaCoordinates[1]
 			})
 		}
 	}
-
 	checkIfPossible();
 
+	//adds traps to maze by changing random walls to traps, if difficulty is set to hard
+	function addTraps() {
+		if(mazeDifficulty === "hard") {
+			const possibleTrapPositions =[];
+			const rightColumn = mazeWidth - 1;
+			const bottomRow = mazeHeight - 1;
+			const numberOfTraps = 10;
+
+			for (let i = 0; i < mazeWidth; i++) {
+				for (let j = 0; j < mazeHeight; j++) {
+					if (newPathArray[bottomRow - j][rightColumn - i] === 1) {
+						possibleTrapPositions.push([rightColumn - i, bottomRow - j]);
+					}
+	
+				}
+			}
+			console.log("possible trap positions before splice: ", possibleTrapPositions);
+			for (let i = 0; i < numberOfTraps; i++) {
+				const randomIndex = Math.floor(Math.random() * possibleTrapPositions.length);
+				const randomTrap = possibleTrapPositions[randomIndex];
+				console.log(randomTrap);
+				changeBlock(randomTrap, "trap");
+				possibleTrapPositions.splice(randomIndex, 1);
+			}
+			console.log("possible trap positions after splice: ", possibleTrapPositions);	
+		}
+	}
+	addTraps()
 	//when done return new array
 	return newPathArray;
 }

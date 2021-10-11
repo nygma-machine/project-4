@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import createPath from './createPath.js';
 
 const Maze = (props) => {
+	const {mazeDifficulty} = props;
 
 	const [mazeMap, setMazeMap] = useState([])
 
@@ -29,7 +30,7 @@ const Maze = (props) => {
 		// ]
 		// tempMaze[nygmaMachine.y][nygmaMachine.x] = 2
 		// setMazeMap(tempMaze)
-		const maze = createPath(20, 20, setNygmaMachine);
+		const maze = createPath(20, 20, setNygmaMachine, mazeDifficulty);
 		setMazeMap(maze);
 	}, [])
 
