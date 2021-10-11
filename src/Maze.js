@@ -35,7 +35,7 @@ const Maze = (props) => {
 		// setMazeMap(tempMaze)
 		const maze = createPath(20, 20, setNygmaMachine, mazeDifficulty);
 		setMazeMap(maze);
-	}, [])
+	}, [mazeDifficulty])
 
 	// make sure player can legally make the move, and move the player if so
 	const checkMovement = useCallback((direction) => {
