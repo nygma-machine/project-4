@@ -100,6 +100,7 @@
     background: linear-gradient(45deg, red, blue);
     background-size: 500% 100%;
     animation: shifting 5s ease infinite;
+	border-radius: 10px;
 }
 @keyframes shifting {
     0% {

@@ -580,6 +580,7 @@ ul li {
   background-size: 500% 100%;
   -webkit-animation: shifting 5s ease infinite;
           animation: shifting 5s ease infinite;
+  border-radius: 10px;
 }
 
 @-webkit-keyframes shifting {
