@@ -11,7 +11,6 @@ const createPath = function (mazeWidth, mazeHeight, setNygmaMachine, mazeDifficu
 	const pathStack = [];
 	const startPosition = [0, 0];
 	const newPathArray = createMazeWallArray(mazeWidth, mazeHeight);
-	console.log(mazeDifficulty);
 
 	//creates basic maze full of walls
 	function createMazeWallArray(width, height) {
@@ -157,10 +156,12 @@ const createPath = function (mazeWidth, mazeHeight, setNygmaMachine, mazeDifficu
 //check 3 x 3 square of values in bottom right corner of PathArray for a path block to change into the nygma machine
 	//create an array of possible values from 3 x 3 array
 
+	const rightColumn = mazeWidth - 1;
+	const bottomRow = mazeHeight - 1;
+
 	function checkIfPossible() {
 		const possibleNygmaPosition = [];    
-		const rightColumn = mazeWidth - 1;
-		const bottomRow = mazeHeight - 1;
+		
 		//checks each of the nine spots to see if they are a path, if so it pushes that spot onto possibleNygmaPosition
 		for (let i = 0; i < 3; i++) {
 			for (let j = 0; j < 3; j++) {
@@ -170,7 +171,6 @@ const createPath = function (mazeWidth, mazeHeight, setNygmaMachine, mazeDifficu
 
 			}
 		}
-		console.log("possible nygma position:", possibleNygmaPosition);
 
 		//randomly selects a position from possibleNygmaPosition and calls setNygmaMachine using it
 		const randomIndex = Math.floor(Math.random() * possibleNygmaPosition.length);
@@ -190,8 +190,6 @@ const createPath = function (mazeWidth, mazeHeight, setNygmaMachine, mazeDifficu
 	function addTraps() {
 		if(mazeDifficulty === "hard") {
 			const possibleTrapPositions =[];
-			const rightColumn = mazeWidth - 1;
-			const bottomRow = mazeHeight - 1;
 			const numberOfTraps = 10;
 
 			for (let i = 0; i < mazeWidth; i++) {
@@ -202,15 +200,12 @@ const createPath = function (mazeWidth, mazeHeight, setNygmaMachine, mazeDifficu
 	
 				}
 			}
-			console.log("possible trap positions before splice: ", possibleTrapPositions);
 			for (let i = 0; i < numberOfTraps; i++) {
 				const randomIndex = Math.floor(Math.random() * possibleTrapPositions.length);
 				const randomTrap = possibleTrapPositions[randomIndex];
-				console.log(randomTrap);
 				changeBlock(randomTrap, "trap");
 				possibleTrapPositions.splice(randomIndex, 1);
 			}
-			console.log("possible trap positions after splice: ", possibleTrapPositions);	
 		}
 	}
 	addTraps()

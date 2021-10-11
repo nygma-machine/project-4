@@ -495,8 +495,19 @@ ul li {
   height: 25px;
 }
 
+.block {
+  opacity: 0;
+}
+
 .block0 {
   background-color: #90e39a;
+}
+
+.distance0,
+.distance1,
+.distance2,
+.player {
+  opacity: 1;
 }
 
 .distance3 {
@@ -540,7 +551,15 @@ ul li {
 }
 
 .block3 {
-  background: red;
+  background-color: #90e39a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.block3.distance1::before {
+  content: "X";
+  color: red;
 }
 
 @-webkit-keyframes glow {
