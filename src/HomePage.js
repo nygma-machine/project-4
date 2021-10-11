@@ -26,7 +26,7 @@ const HomePage = (props) => {
 		<>
 			<div className="homePage">
 				<div className="wrapper">
-					<p className="description">Are you esurient for enlightnment? Insatiable for information? Craving knowledge? The <span>nygma</span> Machine can provide all the answers. But first, you must prove yourself worthy...</p>
+					<p className="description">Are you esurient for enlightnment? Have an insatiable appetite for information? Craving knowledge? The <span>nygma</span> Machine can provide all the answers. But first, you must prove yourself worthy...</p>
 					<form onSubmit={props.submitPrompts}>
 						<fieldset>
 							<label htmlFor="userName">What is your name?</label>

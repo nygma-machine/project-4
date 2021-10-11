@@ -1,5 +1,11 @@
 .resultsFlex {
-    display:flex;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.results {
+    flex: 2 1 calc(60% - 50px);
+    margin-right: 50px;
 }
 
 .congrats {
@@ -19,7 +25,13 @@
 }
 
 .leaderboard {
-    @include fadeIn('8s');
+    padding: 15px;
+    flex: 0 2 calc(40% - 50px);
+    margin: auto;
+    @include fadeIn("8s");
+    li {
+        padding: 0 10px;
+    }
 }
 
 .repeatGame {
