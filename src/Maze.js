@@ -6,6 +6,8 @@ import createPath from './createPath.js';
 
 const Maze = (props) => {
 
+	const {mazeDifficulty} = props
+
 	const [mazeMap, setMazeMap] = useState([])
 
 	const [player, setPlayer] = useState({x: 0, y: 0})
@@ -104,6 +106,7 @@ const Maze = (props) => {
 									rowValue={row}
 									rowIndex={index}
 									player={player}
+									mazeDifficulty={mazeDifficulty}
 								/>
 							)
 						})
