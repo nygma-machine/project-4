@@ -30,8 +30,7 @@ function App() {
 		onValue(databaseRef, (snapshot) => {
 			const myData = snapshot.val()
 			let tempArray = []
-			for (let propertyName in myData)
-			{
+			for (let propertyName in myData) {
 				const currentName = {
 					key: propertyName,
 					usersName: myData[propertyName].usersName
@@ -102,8 +101,8 @@ function App() {
 						query={userKeyWord} />
 				</Route>
 
-			{/* Conditional that takes 'etc' value and returns a different component link. Essentially, if user does not select etc use the value for a keyword in search Query. If etc get random advice. */}
-				
+				{/* Conditional that takes 'etc' value and returns a different component link. Essentially, if user does not select etc use the value for a keyword in search Query. If etc get random advice. */}
+
 				{userKeyWord !== "etc" ?
 					(
 						<Route exact path={`/Results/:query`}>
@@ -111,7 +110,7 @@ function App() {
 								question={userQuestion}
 								name={userName}
 								difficulty={mazeDifficulty}
-								hallOfFame={listOfNames} 
+								hallOfFame={listOfNames}
 							/>
 						</Route>
 					)

@@ -1,11 +1,15 @@
 import { useState, useEffect, useCallback } from 'react';
 import Row from './Row.js';
 import { Link } from 'react-router-dom'
-
 import createPath from './createPath.js';
+import hitWall from './sounds/SoundWall.js';
+import playerMove from './sounds/SoundMove.js';
+import playerWins from './sounds/SoundVictory.js';
 
 const Maze = (props) => {
 	const {mazeDifficulty} = props;
+
+	const {mazeDifficulty} = props
 
 	const [mazeMap, setMazeMap] = useState([])
 
@@ -15,6 +19,7 @@ const Maze = (props) => {
 		x: 5,
 		y: 3
 	});
+
 
 	useEffect(() => {
 		// let tempMaze = [
@@ -46,6 +51,9 @@ const Maze = (props) => {
 				mazeMap[playerY - 1][playerX] === 2
 			) {
 				setPlayer({ x: playerX, y: playerY - 1 });
+				playerMove()
+			} else {
+				hitWall()
 			}
 		}
 
@@ -54,6 +62,9 @@ const Maze = (props) => {
 				mazeMap[playerY + 1][playerX] === 2
 			) {
 				setPlayer({ x: playerX, y: playerY + 1 });
+				playerMove()
+			} else {
+				hitWall()
 			}
 		}
 
@@ -62,6 +73,9 @@ const Maze = (props) => {
 				mazeMap[playerY][playerX - 1] === 2
 			) {
 				setPlayer({ x: playerX - 1, y: playerY });
+				playerMove()
+			} else {
+				hitWall()
 			}
 		}
 
@@ -70,10 +84,14 @@ const Maze = (props) => {
 				mazeMap[playerY][playerX + 1] === 2
 			) {
 				setPlayer({ x: playerX + 1, y: playerY });
+				playerMove()
+			} else {
+				hitWall()
 			}
 		}
-
 	}, [mazeMap, player])
+
+
 
 	useEffect(() => {
 		const handleKeypress = (event) => {
@@ -93,6 +111,10 @@ const Maze = (props) => {
 		return () => { document.removeEventListener('keydown', handleKeypress) }
 	}, [mazeMap, player, checkMovement])
 
+	if (player.x === nygmaMachine.x && player.y === nygmaMachine.y ) {
+		playerWins()
+	}
+
 	return (
 		<div>
 			<div className="wrapper">
@@ -105,11 +127,13 @@ const Maze = (props) => {
 									rowValue={row}
 									rowIndex={index}
 									player={player}
+									mazeDifficulty={mazeDifficulty}
 								/>
 							)
 						})
 					}
-					{player.x === nygmaMachine.x && player.y === nygmaMachine.y ? (
+					{player.x === nygmaMachine.x && player.y === nygmaMachine.y ? 
+					(
 							<>
 								{props.query !== "etc" ? (
 								<Link to={`/Results/${props.query}`}>
