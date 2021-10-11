@@ -571,6 +571,12 @@ ul li {
 }
 .resultsFlex {
   display: flex;
+  flex-wrap: wrap;
+}
+
+.results {
+  flex: 2 1 calc(60% - 50px);
+  margin-right: 50px;
 }
 
 .congrats {
@@ -594,8 +600,14 @@ ul li {
 }
 
 .leaderboard {
+  padding: 15px;
+  flex: 0 2 calc(40% - 50px);
+  margin: auto;
   -webkit-animation: wait 8s, resultsFade 2s 8s;
           animation: wait 8s, resultsFade 2s 8s;
+}
+.leaderboard li {
+  padding: 0 10px;
 }
 
 .repeatGame {

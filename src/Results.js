@@ -62,9 +62,8 @@ const Results = (props) => {
 						<Link to='/'>
 							<button className="repeatGame">Play Again?</button>
 						</Link>
-						<HallOfFame hallOfFame={hallOfFame} name={name} />
-
 					</div>
+					<HallOfFame hallOfFame={hallOfFame} name={name} />
 				</div>
 			</div>
 		</>

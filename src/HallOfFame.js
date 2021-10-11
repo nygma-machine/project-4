@@ -15,15 +15,15 @@ const HallOfFame = (props) => {
 
 	return (
 		<div className="leaderboard">
-		<h2>Hall of Fame: </h2>
-		<ul>
-			{hallOfFame.map((element) => {
-				return (
-					<li key={element.key}>{element.usersName}</li>
-				)
-			})}
-		</ul>
-	</div>
+			<h2>Hall of Fame: </h2>
+			<ul>
+				{hallOfFame.map((element) => {
+					return (
+						<li key={element.key}>{element.usersName}</li>
+					)
+				})}
+			</ul>
+		</div>
 	)
 }
 
