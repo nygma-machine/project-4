@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import createPath from './createPath.js';
 import hitWall from './sounds/SoundWall.js';
 import playerMove from './sounds/SoundMove.js';
+import playerWins from './sounds/SoundVictory.js';
 
 const Maze = (props) => {
 
@@ -85,8 +86,9 @@ const Maze = (props) => {
 				hitWall()
 			}
 		}
-
 	}, [mazeMap, player])
+
+
 
 	useEffect(() => {
 		const handleKeypress = (event) => {
@@ -106,6 +108,10 @@ const Maze = (props) => {
 		return () => { document.removeEventListener('keydown', handleKeypress) }
 	}, [mazeMap, player, checkMovement])
 
+	if (player.x === nygmaMachine.x && player.y === nygmaMachine.y ) {
+		playerWins()
+	}
+
 	return (
 		<div>
 			<div className="wrapper">
@@ -122,7 +128,8 @@ const Maze = (props) => {
 							)
 						})
 					}
-					{player.x === nygmaMachine.x && player.y === nygmaMachine.y ? (
+					{player.x === nygmaMachine.x && player.y === nygmaMachine.y ? 
+					(
 							<>
 								{props.query !== "etc" ? (
 								<Link to={`/Results/${props.query}`}>
