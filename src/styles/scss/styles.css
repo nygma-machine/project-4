@@ -607,11 +607,11 @@ ul li {
 }
 .resultsFlex {
   display: flex;
-  flex-wrap: wrap;
+  margin: 50px 0;
 }
 
 .results {
-  flex: 2 1 calc(60% - 50px);
+  flex: 0 0 60%;
   margin-right: 50px;
 }
 
@@ -636,13 +636,20 @@ ul li {
 }
 
 .leaderboard {
+  max-width: 50%;
+  flex: 0 0 40%;
   padding: 15px;
-  flex: 0 2 calc(40% - 50px);
   margin: auto;
+  text-align: center;
   -webkit-animation: wait 8s, resultsFade 2s 8s;
           animation: wait 8s, resultsFade 2s 8s;
 }
+.leaderboard ul {
+  display: flex;
+  flex-wrap: wrap;
+}
 .leaderboard li {
+  flex: 0 2 auto;
   padding: 0 10px;
 }
 
