@@ -382,7 +382,35 @@ ul li {
   filter: blur(15px);
   margin: 50px auto;
 }
+.imgContainer img {
+  transform: scale(1);
+  -webkit-animation: pulse 2s infinite ease-in-out;
+          animation: pulse 2s infinite ease-in-out;
+}
 
+@-webkit-keyframes pulse {
+  0% {
+    transform: scale(0.95);
+  }
+  70% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.95);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+  }
+  70% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.95);
+  }
+}
 .homePage .description {
   font-size: 0.95rem;
   font-style: italic;
@@ -433,6 +461,9 @@ ul li {
 
 .answerButton {
   font-family: "Hind Siliguri", sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   text-transform: uppercase;
   color: #f7fff6;
   font-weight: 600;
@@ -450,6 +481,7 @@ ul li {
 .maze {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .row {
@@ -457,7 +489,8 @@ ul li {
   margin: 0 auto;
 }
 
-.block, .player {
+.block,
+.player {
   width: 25px;
   height: 25px;
 }
@@ -467,10 +500,13 @@ ul li {
 }
 
 .block0 {
-  background-color: #90E39A;
+  background-color: #90e39a;
 }
 
-.distance0, .distance1, .distance2, .player {
+.distance0,
+.distance1,
+.distance2,
+.player {
   opacity: 1;
 }
 
@@ -495,7 +531,7 @@ ul li {
 }
 
 .block2 {
-  background-color: #90E39A;
+  background-color: #90e39a;
   display: flex;
   justify-content: center;
   align-items: center;

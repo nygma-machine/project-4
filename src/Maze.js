@@ -96,7 +96,6 @@ const Maze = (props) => {
 		<div>
 			<div className="wrapper">
 				<div className="maze">
-					
 					{
 						mazeMap.map((row, index) => {
 							return (
@@ -109,6 +108,23 @@ const Maze = (props) => {
 							)
 						})
 					}
+					{player.x === nygmaMachine.x && player.y === nygmaMachine.y ? (
+							<>
+								{props.query !== "etc" ? (
+								<Link to={`/Results/${props.query}`}>
+									<button className="answerButton">Seek the Answer!</button>
+								</Link>
+								) : (
+								<Link to='/Advice'>
+									<button className="answerButton">Seek the Answer!</button>
+								</Link>
+								)
+								}
+							</>
+						) : (
+							<>
+							</>
+						)}
 				</div>
 				<div className="buttonContainer">
 					<div className="topArrow">
@@ -135,25 +151,6 @@ const Maze = (props) => {
 							value="right"
 						>Right</button>
 					</div></div>
-			</div>
-			<div className="answerButton">
-				{player.x === nygmaMachine.x && player.y === nygmaMachine.y ? (
-					<>
-						{props.query !== "etc" ? (
-							<Link to={`/Results/${props.query}`}>
-								<button className="goToResults">Seek the Answer!</button>
-							</Link>
-						) : (
-							<Link to='/Advice'>
-								<button className="goToResults">Seek the Answer!</button>
-							</Link>
-						)
-						}
-					</>
-				) : (
-					<>
-					</>
-				)}
 			</div>
 		</div>
 	)

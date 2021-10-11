@@ -1,107 +1,114 @@
-
-.answerButton{
-  font-family: $bodyFont;
-  text-transform: uppercase;
-  color: #f7fff6;
-  font-weight: 600;
-  background: #90e39a;
-  border: #f7fff6 solid 0.05rem;
-  padding: 15px 25px;
-  &:hover,
-  &:focus {
-      color: #298776;
-  }
-  &:active {
-      background: #50c17f;
-  }
+.answerButton {
+    font-family: $bodyFont;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-transform: uppercase;
+    color: #f7fff6;
+    font-weight: 600;
+    background: #90e39a;
+    border: #f7fff6 solid 0.05rem;
+    padding: 15px 25px;
+    &:hover,
+    &:focus {
+        color: #298776;
+    }
+    &:active {
+        background: #50c17f;
+    }
 }
 
 .maze {
     display: flex;
     flex-direction: column;
-  }
-  
-  .row {
+    position: relative;
+}
+
+.row {
     display: flex;
     margin: 0 auto;
-  }
-  
-  .block, .player {
+}
+
+.block,
+.player {
     width: 25px;
     height: 25px;
-  }
-.block {
-	opacity: 0;
 }
-  .block0 {
-    background-color: #90E39A;
-  }
-.distance0, .distance1, .distance2, .player {
-	opacity: 1;
+.block {
+    opacity: 0;
+}
+.block0 {
+    background-color: #90e39a;
+}
+.distance0,
+.distance1,
+.distance2,
+.player {
+    opacity: 1;
 }
 .distance3 {
-	opacity: 0.80;
+    opacity: 0.8;
 }
 .distance4 {
-	opacity: 0.6;
+    opacity: 0.6;
 }
 .distance5 {
-	opacity: 0.4;
+    opacity: 0.4;
 }
 .distance6 {
-	opacity: 0.2;
+    opacity: 0.2;
 }
-  .block1 {
+.block1 {
     background-color: black;
-  }
+}
 
-  .block2 {
-    background-color: #90E39A;
+.block2 {
+    background-color: #90e39a;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .block2::before {
+.block2::before {
     width: 100%;
     height: 100%;
     text-align: center;
-    background:radial-gradient(white 10%, yellow 25%, #00ff00 75%);
+    background: radial-gradient(white 10%, yellow 25%, #00ff00 75%);
     background-position: center;
     border-radius: 50%;
     color: black;
-    content:"?";
+    content: "?";
     animation: glow 1s linear infinite;
-  }
+}
 
-  @keyframes glow {
+@keyframes glow {
     0% {
-      background-size: 100% 100%;
+        background-size: 100% 100%;
     }
     50% {
-      background-size: 200% 200%;
+        background-size: 200% 200%;
     }
 
     100% {
-      background-size: 100% 100%;
+        background-size: 100% 100%;
     }
-  }
-  
+}
+
 .player {
-	background-color: yellow;
-	position: absolute;
-	background: linear-gradient(45deg, red, blue);
-	background-size: 500% 100%;
-	animation: shifting 5s ease infinite;
+    background-color: yellow;
+    position: absolute;
+    background: linear-gradient(45deg, red, blue);
+    background-size: 500% 100%;
+    animation: shifting 5s ease infinite;
 }
 @keyframes shifting {
-	0% {
-		background-position: 0% 100%;
-	}
-	50% {
-		background-position: 100% 0%;
-	}
-	100% {
-		background-position: 0% 100%;
-	}
+    0% {
+        background-position: 0% 100%;
+    }
+    50% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
 }
