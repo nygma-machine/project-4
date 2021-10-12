@@ -2,18 +2,20 @@
     .headerFlex {
         display: flex;
         align-items: center;
+        margin-bottom: 100px;
+    }
+    h1 {
+        font-size: 4rem;
     }
     .siteHeading {
         font-family: $headerFont;
-        h1 {
-            font-size: 4rem;
-        }
+        
         span {
             display: block;
             text-transform: uppercase;
             font-style: italic;
         }
-        p {
+        p { 
             line-height: 2rem;
             max-width: 65%;
         }
@@ -32,7 +34,7 @@
         font-size: 0.95rem;
         font-style: italic;
         line-height: 1.6rem;
-        margin: 0 auto;
+        margin: 0 auto 50px;
         width: 85vw;
         span {
             font-weight: 800;
@@ -53,7 +55,7 @@
             text-transform: uppercase;
         }
         fieldset {
-            flex: 1 1 100%;
+            width: 80%;
             border: none;
             margin: 0 0 35px 0;
             padding: 0;
@@ -68,6 +70,7 @@
                 text-align: right;
             }
             label {
+                min-width: 135px;
                 width: 35%;
                 margin-bottom: 0;
             }
@@ -98,6 +101,7 @@
         }
     }
     .buttonLink {
+        min-width: 165px;
         width: calc(35% + 30px);
     }
 }

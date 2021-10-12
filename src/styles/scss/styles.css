@@ -387,12 +387,13 @@ ul li {
 .homePage .headerFlex {
   display: flex;
   align-items: center;
+  margin-bottom: 100px;
+}
+.homePage h1 {
+  font-size: 4rem;
 }
 .homePage .siteHeading {
   font-family: "Poiret One", cursive;
-}
-.homePage .siteHeading h1 {
-  font-size: 4rem;
 }
 .homePage .siteHeading span {
   display: block;
@@ -416,7 +417,7 @@ ul li {
   font-size: 0.95rem;
   font-style: italic;
   line-height: 1.6rem;
-  margin: 0 auto;
+  margin: 0 auto 50px;
   width: 85vw;
 }
 .homePage .description span {
@@ -438,7 +439,7 @@ ul li {
   text-transform: uppercase;
 }
 .homePage form fieldset {
-  flex: 1 1 100%;
+  width: 80%;
   border: none;
   margin: 0 0 35px 0;
   padding: 0;
@@ -454,6 +455,7 @@ ul li {
   text-align: right;
 }
 .homePage form .radioButton label {
+  min-width: 135px;
   width: 35%;
   margin-bottom: 0;
 }
@@ -481,6 +483,7 @@ ul li {
   background: #50c17f;
 }
 .homePage .buttonLink {
+  min-width: 165px;
   width: calc(35% + 30px);
 }
 
@@ -775,15 +778,6 @@ ul li {
 
 .mazeFlex {
   display: flex;
-<<<<<<< HEAD
-}
-
-@media (max-width: 600px) {
-  .mazeFlex {
-    flex-direction: column;
-  }
-=======
->>>>>>> main
 }
 
 html {
@@ -815,6 +809,10 @@ footer {
     min-height: 89vh;
   }
 
+  .homePage .headerFlex {
+    margin-bottom: 50px;
+  }
+
   .siteHeading h1 {
     font-size: 2rem;
     text-align: center;
@@ -828,6 +826,7 @@ footer {
     max-width: inherit;
     text-align: center;
     line-height: 1rem;
+    margin: 0 auto;
   }
 
   .imgContainer {
@@ -844,6 +843,10 @@ footer p {
     font-size: 0.5rem;
     line-height: 1rem;
     margin: 0;
+  }
+
+  .description {
+    text-align: center;
   }
 
   .buttonContainer {
