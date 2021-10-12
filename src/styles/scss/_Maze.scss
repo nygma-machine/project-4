@@ -31,8 +31,10 @@
 
 .block,
 .player {
-    width: 25px;
+    width: 4vw;
     height: 25px;
+    max-width: 25px;
+    max-height: 25px;
 }
 .block {
     opacity: 0;

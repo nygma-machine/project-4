@@ -148,7 +148,7 @@ const Maze = (props) => {
 
 	return (
 		<div>
-			<div className="wrapper">
+			<div className="wrapper mazeFlex">
 				<div className="maze">
 					{
 						mazeMap.map((row, index) => {
