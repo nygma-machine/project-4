@@ -4,14 +4,14 @@ import { useEffect } from 'react'
 
 const HallOfFame = (props) => {
 
-	const {hallOfFame, name} = props
+	const {hallOfFame, name, score} = props
 
 	useEffect(() => {
 		if (name) {
 			const databaseRef = ref(realtime, '/users')
-			push(databaseRef, {usersName: name})
+			push(databaseRef, {usersName: name, score: score})
 		}
-	}, [name])
+	}, [name, score])
 
 	return (
 		<div className="leaderboard">
@@ -19,7 +19,7 @@ const HallOfFame = (props) => {
 			<ul>
 				{hallOfFame.map((element) => {
 					return (
-						<li key={element.key}>{element.usersName}</li>
+						<li key={element.key}>{element.usersName}: {element.score}</li>
 					)
 				})}
 			</ul>
