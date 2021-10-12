@@ -1,13 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
 import Row from './Row.js';
-import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import createPath from './createPath.js';
 import move from './sounds/movement.wav'
 import wall from './sounds/hitWall.wav'
 import victory from './sounds/foundNygma.wav'
 import trap from './sounds/hitTrap.wav'
 import playAudio from './sounds/PlaySound.js';
-
 
 const Maze = (props) => {
 	const {mazeDifficulty} = props;
@@ -160,13 +159,11 @@ const Maze = (props) => {
 					(
 							<>
 								{props.query !== "etc" ? (
-								<Link to={`/Results/${props.query}`}>
-									<button className="answerButton">Seek the Answer!</button>
-								</Link>
+								<Redirect to={`/Results/${props.query}`}>
+								</Redirect>
 								) : (
-								<Link to='/Advice'>
-									<button className="answerButton">Seek the Answer!</button>
-								</Link>
+								<Redirect to='/Advice'>
+								</Redirect>
 								)
 								}
 							</>
