@@ -1,11 +1,10 @@
 import './styles/scss/styles.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import HomePage from './HomePage'
 import Maze from './Maze'
 import Results from './Results'
 import Advice from './Advice';
 import { useEffect, useState } from 'react';
-import questionMark from './questionMark.png'
 import realtime from './firebase'
 import { ref, onValue } from "firebase/database";
 import setInput from './utils/HandleInput.js'
@@ -61,18 +60,6 @@ function App() {
 	return (
 		<Router>
 			<div className="App">
-				<div className="headerFlex wrapper">
-					<div className="siteHeading">
-						<Link to='/'>
-							<h1>The <span>Nygma</span> Machine</h1>
-						</Link>
-						<p>What astounds man, but challenges mice? Has an ear that cannot hear, and a heart that only the clever beat?
-						</p>
-					</div>
-					<div className="imgContainer">
-						<img src={questionMark} alt="a question mark" />
-					</div>
-				</div>
 				<Route exact path="/">
 					<HomePage
 						userName={userName}
@@ -120,9 +107,11 @@ function App() {
 					)}
 			</div>
 			<footer>
-				<a href="https://junocollege.com">Created at Juno College by Brian Canuto, Hal Forrest, Solon Gee, and Corey Hamat</a>
-				<p>Commissioned by Edward Nygma</p>
-				<p>Built with the <span><a href="https://api.adviceslip.com/">advice slip API</a></span></p>
+				<div className="wrapper">
+					<a href="https://junocollege.com">Created at Juno College by Brian Canuto, Hal Forrest, Solon Gee, and Corey Hamat</a>
+					<p>Commissioned by Edward Nygma</p>
+					<p>Built with the <span><a href="https://api.adviceslip.com/">advice slip API</a></span></p>
+				</div>
 			</footer>
 		</Router >
 	)

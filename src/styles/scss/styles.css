@@ -361,37 +361,6 @@ ul li {
   margin: 1%;
 }
 
-.headerFlex {
-  display: flex;
-  align-items: center;
-}
-
-.siteHeading {
-  font-family: "Poiret One", cursive;
-}
-.siteHeading h1 {
-  font-size: 4rem;
-}
-.siteHeading span {
-  display: block;
-  text-transform: uppercase;
-  font-style: italic;
-}
-.siteHeading p {
-  line-height: 2rem;
-  max-width: 65%;
-}
-
-.imgContainer {
-  filter: blur(15px);
-  margin: 50px auto;
-}
-.imgContainer img {
-  transform: scale(1);
-  -webkit-animation: pulse 2s infinite ease-in-out;
-          animation: pulse 2s infinite ease-in-out;
-}
-
 @-webkit-keyframes pulse {
   0% {
     transform: scale(0.95);
@@ -415,11 +384,40 @@ ul li {
     transform: scale(0.95);
   }
 }
+.homePage .headerFlex {
+  display: flex;
+  align-items: center;
+  margin-bottom: 100px;
+}
+.homePage h1 {
+  font-size: 4rem;
+}
+.homePage .siteHeading {
+  font-family: "Poiret One", cursive;
+}
+.homePage .siteHeading span {
+  display: block;
+  text-transform: uppercase;
+  font-style: italic;
+}
+.homePage .siteHeading p {
+  line-height: 2rem;
+  max-width: 65%;
+}
+.homePage .imgContainer {
+  filter: blur(15px);
+  margin: 50px auto;
+}
+.homePage .imgContainer img {
+  transform: scale(1);
+  -webkit-animation: pulse 2s infinite ease-in-out;
+          animation: pulse 2s infinite ease-in-out;
+}
 .homePage .description {
   font-size: 0.95rem;
   font-style: italic;
-  line-height: 1rem;
-  margin: 0 auto;
+  line-height: 1.6rem;
+  margin: 0 auto 50px;
   width: 85vw;
 }
 .homePage .description span {
@@ -441,16 +439,38 @@ ul li {
   text-transform: uppercase;
 }
 .homePage form fieldset {
-  flex: 1 1 50%;
+  width: 80%;
   border: none;
+  margin: 0 0 35px 0;
+  padding: 0;
+}
+.homePage form .radioButton {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.homePage form .radioButton input {
+  height: 30px;
+  width: 30px;
+  text-align: right;
+}
+.homePage form .radioButton label {
+  min-width: 135px;
+  width: 35%;
+  margin-bottom: 0;
 }
 .homePage form label {
-  margin-right: 10px;
+  display: block;
+  margin-bottom: 10px;
+}
+.homePage form input, .homePage form label, .homePage form select {
+  width: 100%;
 }
 .homePage button[type=submit] {
   font-family: "Hind Siliguri", sans-serif;
   text-transform: uppercase;
   color: #f7fff6;
+  width: 100%;
   font-weight: 600;
   background: #90e39a;
   border: #f7fff6 solid 0.05rem;
@@ -461,6 +481,10 @@ ul li {
 }
 .homePage button[type=submit]:active {
   background: #50c17f;
+}
+.homePage .buttonLink {
+  min-width: 165px;
+  width: calc(35% + 30px);
 }
 
 .answerButton {
@@ -756,7 +780,6 @@ ul li {
   display: flex;
 }
 
-
 html {
   font-size: 125%;
   font-family: "Hind Siliguri", sans-serif;
@@ -786,6 +809,10 @@ footer {
     min-height: 89vh;
   }
 
+  .homePage .headerFlex {
+    margin-bottom: 50px;
+  }
+
   .siteHeading h1 {
     font-size: 2rem;
     text-align: center;
@@ -799,6 +826,7 @@ footer {
     max-width: inherit;
     text-align: center;
     line-height: 1rem;
+    margin: 0 auto;
   }
 
   .imgContainer {
@@ -815,6 +843,10 @@ footer p {
     font-size: 0.5rem;
     line-height: 1rem;
     margin: 0;
+  }
+
+  .description {
+    text-align: center;
   }
 
   .buttonContainer {

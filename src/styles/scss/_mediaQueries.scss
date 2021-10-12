@@ -3,6 +3,14 @@
     .App{
         min-height: 89vh;
     }
+    
+    //Home Page Stying
+    .homePage {
+        .headerFlex {
+            margin-bottom: 50px;
+        }
+    }
+
     .siteHeading{
         h1{
             font-size: 2rem;
@@ -17,6 +25,7 @@
             max-width: inherit;
             text-align: center;
             line-height: 1rem;
+            margin: 0 auto;
         }
     }
     .imgContainer{
@@ -32,7 +41,11 @@
         line-height: 1rem;
         margin: 0;
     }
-    
+
+    .description {
+        text-align: center;
+    }
+
     // Maze Page styling
     
     .buttonContainer{
