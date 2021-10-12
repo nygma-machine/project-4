@@ -46,7 +46,7 @@ function App() {
 						</p>
 					</div>
 					<div className="imgContainer">
-						<img src={questionMark} alt="" />
+						<img src={questionMark} alt="a question mark" />
 					</div>
 				</div>
 				<Route exact path="/">
