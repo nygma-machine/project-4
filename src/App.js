@@ -9,6 +9,7 @@ import questionMark from './questionMark.png'
 import realtime from './firebase'
 import { ref, onValue } from "firebase/database";
 
+
 function App() {
 	// Top level states
 	const [userName, setUserName] = useState('');
@@ -18,12 +19,22 @@ function App() {
 	const [listOfNames, setListOfNames] = useState([])
 
 
-	const showValues = (event) => {
-		event.preventDefault();
-		console.log(userName);
-		console.log(userKeyWord);
-		console.log(userQuestion)
+	const handleTopicChange = (event) => {
+		setUserKeyWord(event.target.value)
 	}
+
+	const handleDifficultyChange = (event) => {
+		setMazeDifficulty(event.target.value)
+	}
+
+	const handleUserName = (event) => {
+		setUserName(event.target.value)
+	}
+
+	const handleQuestion = (event) => {
+		setUserQuestion(event.target.value)
+	}
+
 
 	useEffect(() => {
 		const databaseRef = ref(realtime, '/users')
@@ -84,15 +95,14 @@ function App() {
 				</nav>
 				<Route exact path="/">
 					<HomePage
-						setUserName={setUserName}
-						setUserKeyword={setUserKeyWord}
-						setUserQuestion={setUserQuestion}
-						submitPrompts={showValues}
 						userName={userName}
+						handleName={handleUserName}
 						userKeyWord={userKeyWord}
+						handleKeyWord={handleTopicChange}
 						userQuestion={userQuestion}
+						handleQuestion={handleQuestion}
 						mazeDifficulty={mazeDifficulty}
-						setMazeDifficulty={setMazeDifficulty}
+						handleDifficulty={handleDifficultyChange}
 					/>
 				</Route>
 				<Route exact path='/Maze' >

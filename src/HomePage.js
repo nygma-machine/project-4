@@ -2,25 +2,11 @@
 import { Link } from 'react-router-dom'
 
 const HomePage = (props) => {
-	//set state for all inputs and selects so that we can control our inputs
-	const { setUserName, setUserQuestion, setUserKeyword, setMazeDifficulty } = props
+	// Deconstruct all 'state' props
 	const { userName, userQuestion, userKeyWord, mazeDifficulty } = props
+	// Deconstruct all "Handle..." functions
+	const {handleName, handleKeyWord, handleQuestion, handleDifficulty} = props
 
-	const handleTopicChange = (event) => {
-		setUserKeyword(event.target.value)
-	}
-
-	const handleDifficultyChange = (event) => {
-		setMazeDifficulty(event.target.value)
-	}
-
-	const handleUserName = (event) => {
-		setUserName(event.target.value)
-	}
-
-	const handleQuestion = (event) => {
-		setUserQuestion(event.target.value)
-	}
 
 	return (
 		<>
@@ -30,11 +16,11 @@ const HomePage = (props) => {
 					<form onSubmit={props.submitPrompts}>
 						<fieldset>
 							<label htmlFor="userName">What is your name?</label>
-							<input type="text" name="userName" id="userName" value={userName} onChange={handleUserName} />
+							<input type="text" name="userName" id="userName" value={userName} onChange={handleName} />
 						</fieldset>
 						<fieldset>
 							<label htmlFor="userKeyword">What do you wish to learn about?</label>
-							<select name="userKeyword" id="userKeyword" onChange={handleTopicChange} value={userKeyWord}>
+							<select name="userKeyword" id="userKeyword" onChange={handleKeyWord} value={userKeyWord}>
 								<option value="etc" disabled>Select One</option>
 								<option value="life">Life</option>
 								<option value="love">Love</option>
@@ -66,7 +52,7 @@ const HomePage = (props) => {
 								type="radio" 
 								value="easy"
 								id="easy"
-								onChange={handleDifficultyChange}
+								onChange={handleDifficulty}
 								checked={mazeDifficulty === "easy"}
 							/>
 							<label 
@@ -77,7 +63,7 @@ const HomePage = (props) => {
 								type="radio" 
 								value="medium"
 								id="medium"
-								onChange={handleDifficultyChange}
+								onChange={handleDifficulty}
 								checked={mazeDifficulty === "medium"}
 							/>
 
@@ -89,7 +75,7 @@ const HomePage = (props) => {
 								type="radio" 
 								value="hard"
 								id="hard"
-								onChange={handleDifficultyChange}
+								onChange={handleDifficulty}
 								checked={mazeDifficulty === "hard"}
 							/>
 							
