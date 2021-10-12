@@ -16,7 +16,20 @@ function App() {
 	const [mazeDifficulty, setMazeDifficulty] = useState('easy');
 	const [userQuestion, setUserQuestion] = useState('');
 	const [listOfNames, setListOfNames] = useState([])
+	const [score, setScore] = useState(0)
 
+	const handleDifficultyChange = (event) => {
+		setMazeDifficulty(event.target.value)
+		// Set start score based on difficulty
+		if (event.target.value === 'easy') {
+			setScore(100)
+		} else if (event.target.value === 'medium') {
+			setScore(200)
+		} else {
+			setScore(300)
+		}
+	}
+  
 	useEffect(() => {
 		const databaseRef = ref(realtime, '/users')
 		onValue(databaseRef, (snapshot) => {
@@ -25,10 +38,21 @@ function App() {
 			for (let propertyName in myData) {
 				const currentName = {
 					key: propertyName,
-					usersName: myData[propertyName].usersName
+					usersName: myData[propertyName].usersName,
+					score: myData[propertyName].score
 				}
+				// console.log(currentName);
 				tempArray.push(currentName)
 			}
+			tempArray.sort((element1, element2) => {
+				if (element1.score < element2.score) {
+					return 1
+				}
+				if (element1.score > element2.score) {
+					return -1
+				}
+				return 0
+			})
 			setListOfNames(tempArray)
 		})
 	}, [])
@@ -45,12 +69,14 @@ function App() {
 						userQuestion={userQuestion}
 						handleQuestion={(event) => setInput(setUserQuestion, event)}
 						mazeDifficulty={mazeDifficulty}
-						handleDifficulty={(event) => setInput(setMazeDifficulty, event)}
+						handleDifficulty={handleDifficultyChange}
 					/>
 				</Route>
 				<Route exact path='/Maze' >
 					<Maze
 						mazeDifficulty={mazeDifficulty}
+						score={score}
+						setScore={setScore}
 						query={userKeyWord} />
 				</Route>
 
@@ -64,6 +90,7 @@ function App() {
 								name={userName}
 								difficulty={mazeDifficulty}
 								hallOfFame={listOfNames}
+								score={score}
 							/>
 						</Route>
 					)
@@ -74,6 +101,7 @@ function App() {
 								name={userName}
 								difficulty={mazeDifficulty}
 								hallOfFame={listOfNames}
+								score={score}
 							/>
 						</Route>
 					)}

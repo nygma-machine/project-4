@@ -9,7 +9,7 @@ const Advice = (props) => {
 
 
 	const [advice, setAdvice] = useState([])
-	const { question, name, difficulty, hallOfFame } = props
+	const { question, name, difficulty, hallOfFame, score } = props
 
 
 	useEffect(() => {
@@ -32,9 +32,9 @@ const Advice = (props) => {
 							<div className="congrats">
 								<h2>Congratulations {name}! You Have Conquered the Maze</h2>
 								{difficulty === "easy" ? (
-									<h2>That was an {difficulty} maze.</h2>
+									<h2>That was an {difficulty} maze.  You received a score of {score} based on your efficiency.</h2>
 								) : (
-									<h2>That was a {difficulty} maze.</h2>
+									<h2>That was a {difficulty} maze.  You received a score of {score} based on your efficiency.</h2>
 								)}
 							</div>
 						) : (
@@ -58,7 +58,11 @@ const Advice = (props) => {
 							<button className="repeatGame">Play Again?</button>
 						</Link>
 					</div>
-					<HallOfFame hallOfFame={hallOfFame} name={name} />
+					<HallOfFame 
+						hallOfFame={hallOfFame} 
+						name={name} 
+						score={score} 
+					/>
 				</div>
 			</div>
 		</>
