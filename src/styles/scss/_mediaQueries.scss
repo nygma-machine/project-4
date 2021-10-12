@@ -1,0 +1,56 @@
+@media (max-width: 600px) {
+    // General Styling
+    .App{
+        min-height: 89vh;
+    }
+    .siteHeading{
+        h1{
+            font-size: 2rem;
+            text-align: center;
+            margin: 0.4em 0;
+        }
+        span{
+            display: inline-block;
+        }
+        p{
+            font-size: 0.8rem;
+            max-width: inherit;
+            text-align: center;
+            line-height: 1rem;
+        }
+    }
+    .imgContainer{
+        display: none;
+    }
+    footer{
+        line-height: 0.5rem;
+        margin-top: 0;
+    }
+    footer a,
+    footer p {
+        font-size: 0.5rem;
+        line-height: 1rem;
+        margin: 0;
+    }
+    
+    // Maze Page styling
+    
+    .buttonContainer{
+        margin: 1rem 8%;
+        max-width: inherit;
+    }
+    .mazeFlex {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .keyButton{
+        line-height: 3.5rem;
+        font-size: 0.8rem;
+        height: 60px;
+        width: 60px;
+    }
+    .block,
+    .player {
+        height: 2vh
+    }
+}

@@ -322,6 +322,10 @@ a {
   text-decoration: none;
 }
 
+footer {
+  margin-top: 1rem;
+}
+
 p,
 footer a {
   font-size: 0.9rem;
@@ -491,8 +495,10 @@ ul li {
 
 .block,
 .player {
-  width: 25px;
+  width: 4vw;
   height: 25px;
+  max-width: 25px;
+  max-height: 25px;
 }
 
 .block {
@@ -689,6 +695,9 @@ ul li {
   display: grid;
   grid-template-columns: 1fr 0.3fr 1fr;
   width: 40%;
+  position: relative;
+  bottom: 1rem;
+  left: 1rem;
 }
 .buttonContainer button {
   border-style: none;
@@ -700,6 +709,7 @@ ul li {
   grid-column: 1/span 3;
   display: flex;
   justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .downArrow {
@@ -714,14 +724,14 @@ ul li {
 
 .keyButton {
   box-sizing: border-box;
-  line-height: 80px;
-  font-size: 22px;
+  line-height: 4rem;
+  font-size: 1.1rem;
   text-align: center;
-  width: 80px;
+  width: 4rem;
   color: #555;
   cursor: pointer;
   margin: 0 8px;
-  height: 80px;
+  height: 4rem;
   border-color: #f2f2f2;
   border-style: solid;
   text-shadow: 0 0.5px 1px #777, 0 2px 6px #f2f2f2;
@@ -750,7 +760,9 @@ ul li {
   .mazeFlex {
     flex-direction: column;
   }
+
 }
+
 html {
   font-size: 125%;
   font-family: "Hind Siliguri", sans-serif;
@@ -773,4 +785,63 @@ footer a {
 
 footer {
   min-height: 5vh;
+}
+
+@media (max-width: 600px) {
+  .App {
+    min-height: 89vh;
+  }
+
+  .siteHeading h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin: 0.4em 0;
+  }
+  .siteHeading span {
+    display: inline-block;
+  }
+  .siteHeading p {
+    font-size: 0.8rem;
+    max-width: inherit;
+    text-align: center;
+    line-height: 1rem;
+  }
+
+  .imgContainer {
+    display: none;
+  }
+
+  footer {
+    line-height: 0.5rem;
+    margin-top: 0;
+  }
+
+  footer a,
+footer p {
+    font-size: 0.5rem;
+    line-height: 1rem;
+    margin: 0;
+  }
+
+  .buttonContainer {
+    margin: 1rem 8%;
+    max-width: inherit;
+  }
+
+  .mazeFlex {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .keyButton {
+    line-height: 3.5rem;
+    font-size: 0.8rem;
+    height: 60px;
+    width: 60px;
+  }
+
+  .block,
+.player {
+    height: 2vh;
+  }
 }/*# sourceMappingURL=styles.css.map */
