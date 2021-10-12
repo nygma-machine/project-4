@@ -41,9 +41,9 @@ const Advice = (props) => {
 							<div className="congrats">
 								<h2>Congratulations! You have Conquered the Maze</h2>
 								{difficulty === "easy" ? (
-									<h2>That was an {difficulty} maze.</h2>
+									<h2>That was an {difficulty} maze.  You received a score of {score} based on your efficiency.</h2>
 								) : (
-									<h2>That was a {difficulty} maze.</h2>
+									<h2>That was a {difficulty} maze.  You received a score of {score} based on your efficiency.</h2>
 								)}
 							</div>
 						)}

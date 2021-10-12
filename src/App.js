@@ -20,16 +20,19 @@ function App() {
 
 	const handleDifficultyChange = (event) => {
 		setMazeDifficulty(event.target.value)
-		// Set start score based on difficulty
-		if (event.target.value === 'easy') {
-			setScore(100)
-		} else if (event.target.value === 'medium') {
-			setScore(200)
-		} else {
-			setScore(300)
-		}
 	}
-  
+
+	useEffect(() => {
+				// Set start score based on difficulty
+				if (mazeDifficulty === 'easy') {
+					setScore(100)
+				} else if (mazeDifficulty === 'medium') {
+					setScore(200)
+				} else {
+					setScore(300)
+				}
+	}, [mazeDifficulty])
+
 	useEffect(() => {
 		const databaseRef = ref(realtime, '/users')
 		onValue(databaseRef, (snapshot) => {
