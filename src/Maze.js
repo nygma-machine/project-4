@@ -2,9 +2,10 @@ import { useState, useEffect, useCallback } from 'react';
 import Row from './Row.js';
 import { Link } from 'react-router-dom'
 import createPath from './createPath.js';
-import hitWall from './sounds/SoundWall.js';
-import playerMove from './sounds/SoundMove.js';
-import playerWins from './sounds/SoundVictory.js';
+import move from './sounds/movement.wav'
+import wall from './sounds/hitWall.wav'
+import victory from './sounds/foundNygma.wav'
+import playAudio from './sounds/PlaySound.js';
 
 const Maze = (props) => {
 	const {mazeDifficulty} = props;
@@ -13,7 +14,7 @@ const Maze = (props) => {
 
 	const [player, setPlayer] = useState({x: 0, y: 0})
 
-	const [nygmaMachine, setNygmaMachine] =useState({
+	const [nygmaMachine, setNygmaMachine] = useState({
 		x: 5,
 		y: 3
 	});
@@ -37,6 +38,8 @@ const Maze = (props) => {
 		setMazeMap(maze);
 	}, [mazeDifficulty])
 
+
+
 	// make sure player can legally make the move, and move the player if so
 	const checkMovement = useCallback((direction) => {
 
@@ -44,18 +47,18 @@ const Maze = (props) => {
 		let playerX = playerTemp.x
 		let playerY = playerTemp.y
 
+
 		if (playerY !== 0 && direction === "up") {
 			if (mazeMap[playerY - 1][playerX] === 0 ||
 				mazeMap[playerY - 1][playerX] === 2
 			) {
 				setPlayer({ x: playerX, y: playerY - 1 });
-				playerMove()
+				playAudio(move)
 			} else if (mazeMap[playerY - 1][playerX] === 3) {
 				//needs trap sound
 				setPlayer({x: 0, y: 0});
-			}
-			else {
-				hitWall()
+      } else {
+      playAudio(wall)
 			}
 		}
 
@@ -64,13 +67,13 @@ const Maze = (props) => {
 				mazeMap[playerY + 1][playerX] === 2
 			) {
 				setPlayer({ x: playerX, y: playerY + 1 });
-				playerMove()
+				playAudio(move)
 			} else if (mazeMap[playerY + 1][playerX] === 3) {
 				//needs trap sound
 				setPlayer({x: 0, y: 0});
 			}
 			 else {
-				hitWall()
+        playAudio(wall)
 			}
 		}
 
@@ -79,13 +82,13 @@ const Maze = (props) => {
 				mazeMap[playerY][playerX - 1] === 2
 			) {
 				setPlayer({ x: playerX - 1, y: playerY });
-				playerMove()
+				playAudio(move)
 			} else if (mazeMap[playerY][playerX - 1] === 3) {
 				//needs trap sound
 				setPlayer({x: 0, y: 0});
 			}
 			else {
-				hitWall()
+				playAudio(wall)
 			}
 		}
 
@@ -94,16 +97,23 @@ const Maze = (props) => {
 				mazeMap[playerY][playerX + 1] === 2
 			) {
 				setPlayer({ x: playerX + 1, y: playerY });
-				playerMove()
+				playAudio(move)
 			} else if (mazeMap[playerY][playerX + 1] === 3) {
 				//needs trap sound
 				setPlayer({x: 0, y: 0});
 			}
 			else {
-				hitWall()
+				playAudio(wall)
 			}
 		}
 	}, [mazeMap, player])
+
+	const checkVictory = () => {
+		if (player.x === nygmaMachine.x && player.y === nygmaMachine.y ) {
+			playAudio(victory)
+		}
+	}
+
 
 
 
@@ -125,9 +135,7 @@ const Maze = (props) => {
 		return () => { document.removeEventListener('keydown', handleKeypress) }
 	}, [mazeMap, player, checkMovement])
 
-	if (player.x === nygmaMachine.x && player.y === nygmaMachine.y ) {
-		playerWins()
-	}
+	checkVictory()
 
 	return (
 		<div>
