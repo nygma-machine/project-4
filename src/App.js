@@ -1,5 +1,5 @@
 import './styles/scss/styles.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import HomePage from './HomePage'
 import Maze from './Maze'
 import Results from './Results'
