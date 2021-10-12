@@ -14,7 +14,7 @@ const Maze = (props) => {
 
 	const [player, setPlayer] = useState({x: 0, y: 0})
 
-	const [nygmaMachine, setNygmaMachine] =useState({
+	const [nygmaMachine, setNygmaMachine] = useState({
 		x: 5,
 		y: 3
 	});
@@ -36,7 +36,10 @@ const Maze = (props) => {
 		// setMazeMap(tempMaze)
 		const maze = createPath(20, 20, setNygmaMachine);
 		setMazeMap(maze);
+		
 	}, [])
+
+
 
 	// make sure player can legally make the move, and move the player if so
 	const checkMovement = useCallback((direction) => {
@@ -44,6 +47,7 @@ const Maze = (props) => {
 		let playerTemp = { ...player }
 		let playerX = playerTemp.x
 		let playerY = playerTemp.y
+
 
 		if (playerY !== 0 && direction === "up") {
 			if (mazeMap[playerY - 1][playerX] === 0 ||
@@ -90,6 +94,13 @@ const Maze = (props) => {
 		}
 	}, [mazeMap, player])
 
+	const checkVictory = () => {
+		if (player.x === nygmaMachine.x && player.y === nygmaMachine.y ) {
+			playerWins()
+		}
+	}
+
+
 
 
 	useEffect(() => {
@@ -110,9 +121,7 @@ const Maze = (props) => {
 		return () => { document.removeEventListener('keydown', handleKeypress) }
 	}, [mazeMap, player, checkMovement])
 
-	if (player.x === nygmaMachine.x && player.y === nygmaMachine.y ) {
-		playerWins()
-	}
+	checkVictory();
 
 	return (
 		<div>
