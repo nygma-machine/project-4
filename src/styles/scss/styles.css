@@ -550,6 +550,18 @@ ul li {
           animation: glow 1s linear infinite;
 }
 
+.block3 {
+  background-color: #90e39a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.block3.distance1::before {
+  content: "X";
+  color: red;
+}
+
 @-webkit-keyframes glow {
   0% {
     background-size: 100% 100%;

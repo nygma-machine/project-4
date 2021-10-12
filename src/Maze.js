@@ -7,8 +7,7 @@ import playerMove from './sounds/SoundMove.js';
 import playerWins from './sounds/SoundVictory.js';
 
 const Maze = (props) => {
-
-	const {mazeDifficulty} = props
+	const {mazeDifficulty} = props;
 
 	const [mazeMap, setMazeMap] = useState([])
 
@@ -34,9 +33,9 @@ const Maze = (props) => {
 		// ]
 		// tempMaze[nygmaMachine.y][nygmaMachine.x] = 2
 		// setMazeMap(tempMaze)
-		const maze = createPath(20, 20, setNygmaMachine);
+		const maze = createPath(20, 20, setNygmaMachine, mazeDifficulty);
 		setMazeMap(maze);
-	}, [])
+	}, [mazeDifficulty])
 
 	// make sure player can legally make the move, and move the player if so
 	const checkMovement = useCallback((direction) => {
@@ -51,7 +50,11 @@ const Maze = (props) => {
 			) {
 				setPlayer({ x: playerX, y: playerY - 1 });
 				playerMove()
-			} else {
+			} else if (mazeMap[playerY - 1][playerX] === 3) {
+				//needs trap sound
+				setPlayer({x: 0, y: 0});
+			}
+			else {
 				hitWall()
 			}
 		}
@@ -62,7 +65,11 @@ const Maze = (props) => {
 			) {
 				setPlayer({ x: playerX, y: playerY + 1 });
 				playerMove()
-			} else {
+			} else if (mazeMap[playerY + 1][playerX] === 3) {
+				//needs trap sound
+				setPlayer({x: 0, y: 0});
+			}
+			 else {
 				hitWall()
 			}
 		}
@@ -73,7 +80,11 @@ const Maze = (props) => {
 			) {
 				setPlayer({ x: playerX - 1, y: playerY });
 				playerMove()
-			} else {
+			} else if (mazeMap[playerY][playerX - 1] === 3) {
+				//needs trap sound
+				setPlayer({x: 0, y: 0});
+			}
+			else {
 				hitWall()
 			}
 		}
@@ -84,7 +95,11 @@ const Maze = (props) => {
 			) {
 				setPlayer({ x: playerX + 1, y: playerY });
 				playerMove()
-			} else {
+			} else if (mazeMap[playerY][playerX + 1] === 3) {
+				//needs trap sound
+				setPlayer({x: 0, y: 0});
+			}
+			else {
 				hitWall()
 			}
 		}

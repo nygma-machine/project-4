@@ -97,9 +97,8 @@ function App() {
 				</Route>
 				<Route exact path='/Maze' >
 					<Maze
-						query={userKeyWord}
 						mazeDifficulty={mazeDifficulty}
-					/>
+						query={userKeyWord} />
 				</Route>
 
 				{/* Conditional that takes 'etc' value and returns a different component link. Essentially, if user does not select etc use the value for a keyword in search Query. If etc get random advice. */}
