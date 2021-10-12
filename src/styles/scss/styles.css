@@ -742,11 +742,13 @@ ul li {
   transform: translateY(4px);
 }
 
+.mazeFlex {
+  display: flex;
+}
+
 @media (max-width: 600px) {
-  .buttonContainer {
-    position: fixed;
-    top: 0vh;
-    right: 0vw;
+  .mazeFlex {
+    flex-direction: column;
   }
 }
 html {

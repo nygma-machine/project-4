@@ -9,40 +9,32 @@ import trap from './sounds/hitTrap.wav'
 import playAudio from './utils/PlaySound.js';
 
 const Maze = (props) => {
-	const {mazeDifficulty} = props;
+	const { mazeDifficulty, score, setScore } = props;
 
 	const [mazeMap, setMazeMap] = useState([])
 
-	const [player, setPlayer] = useState({x: 0, y: 0})
+	const [player, setPlayer] = useState({ x: 0, y: 0 })
 
 	const [nygmaMachine, setNygmaMachine] = useState({
 		x: 5,
 		y: 3
 	});
 
+	const updateScore = useCallback((scoreChange) => {
+		setScore(score + scoreChange)
+	}, [setScore, score])
 
 	useEffect(() => {
-		// let tempMaze = [
-		// 	[0, 0, 0, 0, 0, 0, 0],
-		// 	[0, 1, 1, 0, 1, 0, 0],
-		// 	[0, 0, 0, 0, 1, 1, 1],
-		// 	[1, 0, 1, 1, 1, 0, 0],
-		// 	[1, 0, 1, 0, 1, 1, 0],
-		// 	[0, 0, 1, 0, 1, 0, 0],
-		// 	[0, 1, 1, 0, 1, 0, 1],
-		// 	[0, 0, 0, 0, 1, 0, 0],
-		// 	[0, 1, 1, 0, 0, 0, 0]
-		// ]
-		// tempMaze[nygmaMachine.y][nygmaMachine.x] = 2
-		// setMazeMap(tempMaze)
 		const maze = createPath(20, 20, setNygmaMachine, mazeDifficulty);
 		setMazeMap(maze);
-	}, [mazeDifficulty])
 
-
+	}, [mazeDifficulty]) 
 
 	// make sure player can legally make the move, and move the player if so
 	const checkMovement = useCallback((direction) => {
+
+		// score tracking, subtract points for move attempts
+		updateScore(-1)
 
 		let playerTemp = { ...player }
 		let playerX = playerTemp.x
@@ -56,10 +48,14 @@ const Maze = (props) => {
 				setPlayer({ x: playerX, y: playerY - 1 });
 				playAudio(move)
 			} else if (mazeMap[playerY - 1][playerX] === 3) {
+				// score tracking, subtract points for hitting a trap
+				updateScore(-10)
 				playAudio(trap)
-				setPlayer({x: 0, y: 0});
-      } else {
-      playAudio(wall)
+				setPlayer({ x: 0, y: 0 });
+			} else {
+				// score tracking, subtract points for walking into a wall
+				updateScore(-1)
+				playAudio(wall)
 			}
 		}
 
@@ -71,10 +67,14 @@ const Maze = (props) => {
 				playAudio(move)
 			} else if (mazeMap[playerY + 1][playerX] === 3) {
 				playAudio(trap)
-				setPlayer({x: 0, y: 0});
+				// score tracking, subtract points for hitting a trap
+				updateScore(-10)
+				setPlayer({ x: 0, y: 0 });
 			}
 			else {
-        playAudio(wall)
+				// score tracking, subtract points for walking into a wall
+				updateScore(-1)
+				playAudio(wall)
 			}
 		}
 
@@ -85,10 +85,14 @@ const Maze = (props) => {
 				setPlayer({ x: playerX - 1, y: playerY });
 				playAudio(move)
 			} else if (mazeMap[playerY][playerX - 1] === 3) {
+				// score tracking, subtract points for hitting a trap
+				updateScore(-10)
 				playAudio(trap)
-				setPlayer({x: 0, y: 0});
+				setPlayer({ x: 0, y: 0 });
 			}
 			else {
+				// score tracking, subtract points for walking into a wall
+				updateScore(-1)
 				playAudio(wall)
 			}
 		}
@@ -100,17 +104,21 @@ const Maze = (props) => {
 				setPlayer({ x: playerX + 1, y: playerY });
 				playAudio(move)
 			} else if (mazeMap[playerY][playerX + 1] === 3) {
+				// score tracking, subtract points for hitting a trap
+				updateScore(-10)
 				playAudio(trap)
-				setPlayer({x: 0, y: 0});
+				setPlayer({ x: 0, y: 0 });
 			}
 			else {
+				// score tracking, subtract points for walking into a wall
+				updateScore(-1)
 				playAudio(wall)
 			}
 		}
-	}, [mazeMap, player])
+	}, [mazeMap, player, updateScore])
 
 	const checkVictory = () => {
-		if (player.x === nygmaMachine.x && player.y === nygmaMachine.y ) {
+		if (player.x === nygmaMachine.x && player.y === nygmaMachine.y) {
 			playAudio(victory)
 		}
 	}
@@ -155,15 +163,15 @@ const Maze = (props) => {
 							)
 						})
 					}
-					{player.x === nygmaMachine.x && player.y === nygmaMachine.y ? 
-					(
+					{player.x === nygmaMachine.x && player.y === nygmaMachine.y ?
+						(
 							<>
 								{props.query !== "etc" ? (
-								<Redirect to={`/Results/${props.query}`}>
-								</Redirect>
+									<Redirect to={`/Results/${props.query}`}>
+									</Redirect>
 								) : (
-								<Redirect to='/Advice'>
-								</Redirect>
+									<Redirect to='/Advice'>
+									</Redirect>
 								)
 								}
 							</>
