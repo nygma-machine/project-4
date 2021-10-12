@@ -357,37 +357,6 @@ ul li {
   margin: 1%;
 }
 
-.headerFlex {
-  display: flex;
-  align-items: center;
-}
-
-.siteHeading {
-  font-family: "Poiret One", cursive;
-}
-.siteHeading h1 {
-  font-size: 4rem;
-}
-.siteHeading span {
-  display: block;
-  text-transform: uppercase;
-  font-style: italic;
-}
-.siteHeading p {
-  line-height: 2rem;
-  max-width: 65%;
-}
-
-.imgContainer {
-  filter: blur(15px);
-  margin: 50px auto;
-}
-.imgContainer img {
-  transform: scale(1);
-  -webkit-animation: pulse 2s infinite ease-in-out;
-          animation: pulse 2s infinite ease-in-out;
-}
-
 @-webkit-keyframes pulse {
   0% {
     transform: scale(0.95);
@@ -411,10 +380,38 @@ ul li {
     transform: scale(0.95);
   }
 }
+.homePage .headerFlex {
+  display: flex;
+  align-items: center;
+}
+.homePage .siteHeading {
+  font-family: "Poiret One", cursive;
+}
+.homePage .siteHeading h1 {
+  font-size: 4rem;
+}
+.homePage .siteHeading span {
+  display: block;
+  text-transform: uppercase;
+  font-style: italic;
+}
+.homePage .siteHeading p {
+  line-height: 2rem;
+  max-width: 65%;
+}
+.homePage .imgContainer {
+  filter: blur(15px);
+  margin: 50px auto;
+}
+.homePage .imgContainer img {
+  transform: scale(1);
+  -webkit-animation: pulse 2s infinite ease-in-out;
+          animation: pulse 2s infinite ease-in-out;
+}
 .homePage .description {
   font-size: 0.95rem;
   font-style: italic;
-  line-height: 1rem;
+  line-height: 1.6rem;
   margin: 0 auto;
   width: 85vw;
 }
@@ -437,16 +434,37 @@ ul li {
   text-transform: uppercase;
 }
 .homePage form fieldset {
-  flex: 1 1 50%;
+  flex: 1 1 100%;
   border: none;
+  margin: 0 0 35px 0;
+  padding: 0;
+}
+.homePage form .radioButton {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.homePage form .radioButton input {
+  height: 30px;
+  width: 30px;
+  text-align: right;
+}
+.homePage form .radioButton label {
+  width: 35%;
+  margin-bottom: 0;
 }
 .homePage form label {
-  margin-right: 10px;
+  display: block;
+  margin-bottom: 10px;
+}
+.homePage form input, .homePage form label, .homePage form select {
+  width: 100%;
 }
 .homePage button[type=submit] {
   font-family: "Hind Siliguri", sans-serif;
   text-transform: uppercase;
   color: #f7fff6;
+  width: 100%;
   font-weight: 600;
   background: #90e39a;
   border: #f7fff6 solid 0.05rem;
@@ -457,6 +475,9 @@ ul li {
 }
 .homePage button[type=submit]:active {
   background: #50c17f;
+}
+.homePage .buttonLink {
+  width: calc(35% + 30px);
 }
 
 .answerButton {
@@ -742,11 +763,13 @@ ul li {
   transform: translateY(4px);
 }
 
+.mazeFlex {
+  display: flex;
+}
+
 @media (max-width: 600px) {
-  .buttonContainer {
-    position: fixed;
-    top: 0vh;
-    right: 0vw;
+  .mazeFlex {
+    flex-direction: column;
   }
 }
 html {

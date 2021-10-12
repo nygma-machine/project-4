@@ -5,7 +5,6 @@ import Maze from './Maze'
 import Results from './Results'
 import Advice from './Advice';
 import { useEffect, useState } from 'react';
-import questionMark from './questionMark.png'
 import realtime from './firebase'
 import { ref, onValue } from "firebase/database";
 
@@ -55,44 +54,6 @@ function App() {
 	return (
 		<Router>
 			<div className="App">
-				<div className="headerFlex wrapper">
-					<div className="siteHeading">
-						<Link to='/'>
-							<h1>The <span>Nygma</span> Machine</h1>
-						</Link>
-						<p>What astounds man, but challenges mice? Has an ear that cannot hear, and a heart that only the clever beat?
-						</p>
-					</div>
-					<div className="imgContainer">
-						<img src={questionMark} alt="" />
-					</div>
-				</div>
-				<nav>
-					<ul>
-						<li>
-							<Link to="/">
-								<p>HomePage</p>
-							</Link>
-						</li>
-						<li>
-							<Link to="/Maze">
-								<p>Maze</p>
-							</Link>
-						</li>
-						<li>
-							{userKeyWord !== "etc" ? (
-								<Link to={`/Results/${userKeyWord}`}>
-									<p>Results</p>
-								</Link>
-							) : (
-								<Link to='/Advice'>
-									<p>Results</p>
-								</Link>
-							)
-							}
-						</li>
-					</ul>
-				</nav>
 				<Route exact path="/">
 					<HomePage
 						userName={userName}
