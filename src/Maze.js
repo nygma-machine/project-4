@@ -2,9 +2,10 @@ import { useState, useEffect, useCallback } from 'react';
 import Row from './Row.js';
 import { Link } from 'react-router-dom'
 import createPath from './createPath.js';
-import hitWall from './sounds/SoundWall.js';
-import playerMove from './sounds/SoundMove.js';
-import playerWins from './sounds/SoundVictory.js';
+import move from './sounds/movement.wav'
+import wall from './sounds/hitWall.wav'
+import victory from './sounds/foundNygma.wav'
+import playAudio from './sounds/PlaySound.js';
 
 const Maze = (props) => {
 
@@ -54,9 +55,9 @@ const Maze = (props) => {
 				mazeMap[playerY - 1][playerX] === 2
 			) {
 				setPlayer({ x: playerX, y: playerY - 1 });
-				playerMove()
+				playAudio(move)
 			} else {
-				hitWall()
+				playAudio(wall)
 			}
 		}
 
@@ -65,9 +66,9 @@ const Maze = (props) => {
 				mazeMap[playerY + 1][playerX] === 2
 			) {
 				setPlayer({ x: playerX, y: playerY + 1 });
-				playerMove()
+				playAudio(move)
 			} else {
-				hitWall()
+				playAudio(wall)
 			}
 		}
 
@@ -76,9 +77,9 @@ const Maze = (props) => {
 				mazeMap[playerY][playerX - 1] === 2
 			) {
 				setPlayer({ x: playerX - 1, y: playerY });
-				playerMove()
+				playAudio(move)
 			} else {
-				hitWall()
+				playAudio(wall)
 			}
 		}
 
@@ -87,16 +88,16 @@ const Maze = (props) => {
 				mazeMap[playerY][playerX + 1] === 2
 			) {
 				setPlayer({ x: playerX + 1, y: playerY });
-				playerMove()
+				playAudio(move)
 			} else {
-				hitWall()
+				playAudio(wall)
 			}
 		}
 	}, [mazeMap, player])
 
 	const checkVictory = () => {
 		if (player.x === nygmaMachine.x && player.y === nygmaMachine.y ) {
-			playerWins()
+			playAudio(victory)
 		}
 	}
 
@@ -121,7 +122,7 @@ const Maze = (props) => {
 		return () => { document.removeEventListener('keydown', handleKeypress) }
 	}, [mazeMap, player, checkMovement])
 
-	checkVictory();
+	checkVictory()
 
 	return (
 		<div>
