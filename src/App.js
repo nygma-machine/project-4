@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import questionMark from './questionMark.png'
 import realtime from './firebase'
 import { ref, onValue } from "firebase/database";
-
+import setInput from './utils/HandleInput.js'
 
 function App() {
 	// Top level states
@@ -17,24 +17,6 @@ function App() {
 	const [mazeDifficulty, setMazeDifficulty] = useState('easy');
 	const [userQuestion, setUserQuestion] = useState('');
 	const [listOfNames, setListOfNames] = useState([])
-
-
-	const handleTopicChange = (event) => {
-		setUserKeyWord(event.target.value)
-	}
-
-	const handleDifficultyChange = (event) => {
-		setMazeDifficulty(event.target.value)
-	}
-
-	const handleUserName = (event) => {
-		setUserName(event.target.value)
-	}
-
-	const handleQuestion = (event) => {
-		setUserQuestion(event.target.value)
-	}
-
 
 	useEffect(() => {
 		const databaseRef = ref(realtime, '/users')
@@ -64,45 +46,19 @@ function App() {
 						</p>
 					</div>
 					<div className="imgContainer">
-						<img src={questionMark} alt="" />
+						<img src={questionMark} alt="a question mark" />
 					</div>
 				</div>
-				<nav>
-					<ul>
-						<li>
-							<Link to="/">
-								<p>HomePage</p>
-							</Link>
-						</li>
-						<li>
-							<Link to="/Maze">
-								<p>Maze</p>
-							</Link>
-						</li>
-						<li>
-							{userKeyWord !== "etc" ? (
-								<Link to={`/Results/${userKeyWord}`}>
-									<p>Results</p>
-								</Link>
-							) : (
-								<Link to='/Advice'>
-									<p>Results</p>
-								</Link>
-							)
-							}
-						</li>
-					</ul>
-				</nav>
 				<Route exact path="/">
 					<HomePage
 						userName={userName}
-						handleName={handleUserName}
+						handleName={(event) => setInput(setUserName, event)}
 						userKeyWord={userKeyWord}
-						handleKeyWord={handleTopicChange}
+						handleKeyWord={(event) => setInput(setUserKeyWord, event)}
 						userQuestion={userQuestion}
-						handleQuestion={handleQuestion}
+						handleQuestion={(event) => setInput(setUserQuestion, event)}
 						mazeDifficulty={mazeDifficulty}
-						handleDifficulty={handleDifficultyChange}
+						handleDifficulty={(event) => setInput(setMazeDifficulty, event)}
 					/>
 				</Route>
 				<Route exact path='/Maze' >
