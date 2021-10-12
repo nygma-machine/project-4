@@ -6,7 +6,7 @@ import move from './sounds/movement.wav'
 import wall from './sounds/hitWall.wav'
 import victory from './sounds/foundNygma.wav'
 import trap from './sounds/hitTrap.wav'
-import playAudio from './sounds/PlaySound.js';
+import playAudio from './utils/PlaySound.js';
 
 const Maze = (props) => {
 	const {mazeDifficulty} = props;
@@ -140,7 +140,7 @@ const Maze = (props) => {
 
 	return (
 		<div>
-			<div className="wrapper mazeFlex">
+			<div className="wrapper">
 				<div className="maze">
 					{
 						mazeMap.map((row, index) => {
