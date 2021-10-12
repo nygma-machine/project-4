@@ -1,10 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
 import Row from './Row.js';
-import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import createPath from './createPath.js';
 import move from './sounds/movement.wav'
 import wall from './sounds/hitWall.wav'
 import victory from './sounds/foundNygma.wav'
+import trap from './sounds/hitTrap.wav'
 import playAudio from './sounds/PlaySound.js';
 
 const Maze = (props) => {
@@ -55,7 +56,7 @@ const Maze = (props) => {
 				setPlayer({ x: playerX, y: playerY - 1 });
 				playAudio(move)
 			} else if (mazeMap[playerY - 1][playerX] === 3) {
-				//needs trap sound
+				playAudio(trap)
 				setPlayer({x: 0, y: 0});
       } else {
       playAudio(wall)
@@ -69,10 +70,10 @@ const Maze = (props) => {
 				setPlayer({ x: playerX, y: playerY + 1 });
 				playAudio(move)
 			} else if (mazeMap[playerY + 1][playerX] === 3) {
-				//needs trap sound
+				playAudio(trap)
 				setPlayer({x: 0, y: 0});
 			}
-			 else {
+			else {
         playAudio(wall)
 			}
 		}
@@ -84,7 +85,7 @@ const Maze = (props) => {
 				setPlayer({ x: playerX - 1, y: playerY });
 				playAudio(move)
 			} else if (mazeMap[playerY][playerX - 1] === 3) {
-				//needs trap sound
+				playAudio(trap)
 				setPlayer({x: 0, y: 0});
 			}
 			else {
@@ -99,7 +100,7 @@ const Maze = (props) => {
 				setPlayer({ x: playerX + 1, y: playerY });
 				playAudio(move)
 			} else if (mazeMap[playerY][playerX + 1] === 3) {
-				//needs trap sound
+				playAudio(trap)
 				setPlayer({x: 0, y: 0});
 			}
 			else {
@@ -158,13 +159,11 @@ const Maze = (props) => {
 					(
 							<>
 								{props.query !== "etc" ? (
-								<Link to={`/Results/${props.query}`}>
-									<button className="answerButton">Seek the Answer!</button>
-								</Link>
+								<Redirect to={`/Results/${props.query}`}>
+								</Redirect>
 								) : (
-								<Link to='/Advice'>
-									<button className="answerButton">Seek the Answer!</button>
-								</Link>
+								<Redirect to='/Advice'>
+								</Redirect>
 								)
 								}
 							</>
