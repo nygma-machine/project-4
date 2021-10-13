@@ -1,5 +1,5 @@
 // import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 // import { useEffect } from 'react/cjs/react.development'
 
 import questionMark from './questionMark.png'
@@ -9,6 +9,12 @@ const HomePage = (props) => {
 	const { userName, userQuestion, userKeyWord, mazeDifficulty } = props;
 	// Deconstruct all "Handle..." functions
 	const {handleName, handleKeyWord, handleQuestion, handleDifficulty} = props;
+	let history = useHistory()
+
+	const startMaze = (event) => {
+		event.preventDefault();
+		history.push('/Maze')
+	}
 
 
 	return (
@@ -16,9 +22,7 @@ const HomePage = (props) => {
 			<div className="homePage">
 				<div className="headerFlex wrapper">
 						<div className="siteHeading">
-							<Link to='/'>
-								<h1>The <span>Nygma</span> Machine</h1>
-							</Link>
+							<h1>The <span>Nygma</span> Machine</h1>
 							<p>What astounds man, but challenges mice? Has an ear that cannot hear, and a heart that only the clever beat?
 							</p>
 						</div>
@@ -28,7 +32,7 @@ const HomePage = (props) => {
 					</div>
 				<div className="wrapper">
 					<p className="description">Are you esurient for enlightnment? Have an insatiable appetite for information? Craving knowledge? The <span>nygma</span> Machine can provide all the answers. But first, you must prove yourself worthy...</p>
-					<form onSubmit={props.submitPrompts}>
+					<form onSubmit={startMaze}>
 						<fieldset>
 							<label htmlFor="userName">What is your name?</label>
 							<input type="text" name="userName" id="userName" value={userName} onChange={handleName} />
@@ -93,9 +97,7 @@ const HomePage = (props) => {
 							</div>
 							
 						</fieldset>
-						<Link className="buttonLink" to="/Maze">
-							<button type="Submit">Submit</button>
-						</Link>
+						<button className="buttonLink" type="Submit">Submit</button>
 					</form>
 				</div>
 			</div>
