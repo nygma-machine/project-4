@@ -602,9 +602,11 @@ ul li {
   align-items: center;
 }
 
-.block3.distance1::before {
-  content: "X";
-  color: red;
+.block3.distance1 {
+  background: linear-gradient(0deg, red, yellow);
+  background-size: 200% 200%;
+  -webkit-animation: shifting 0.5s ease infinite;
+          animation: shifting 0.5s ease infinite;
 }
 
 @-webkit-keyframes glow {
@@ -633,11 +635,11 @@ ul li {
 .player {
   background-color: yellow;
   position: absolute;
-  background: linear-gradient(45deg, red, blue);
+  background: linear-gradient(45deg, green, blue);
   background-size: 500% 100%;
   -webkit-animation: shifting 5s ease infinite;
           animation: shifting 5s ease infinite;
-  border-radius: 10px;
+  border-radius: 50px;
 }
 
 @-webkit-keyframes shifting {
