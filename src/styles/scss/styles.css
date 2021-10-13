@@ -612,11 +612,16 @@ ul li {
   align-items: center;
 }
 
-.block3.distance1 {
+.block3.distance1,
+.trapLegend {
   background: linear-gradient(0deg, red, yellow);
   background-size: 200% 200%;
   -webkit-animation: shifting 0.5s ease infinite;
           animation: shifting 0.5s ease infinite;
+}
+
+.trapLegend {
+  padding: 0 0.5rem;
 }
 
 @-webkit-keyframes glow {
