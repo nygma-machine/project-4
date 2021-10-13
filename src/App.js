@@ -23,6 +23,12 @@ function App() {
 		setMazeDifficulty(event.target.value)
 	}
 
+	const resetForm = () => {
+		setMazeDifficulty('easy')
+		setUserName('')
+		setUserKeyWord('etc')
+		setUserQuestion('')
+	}
 
 	useEffect(() => {
 		if (mazeDifficulty === 'easy') {
@@ -98,6 +104,7 @@ function App() {
 								score={score}
 								newGame={newGame}
 								setNewGame={setNewGame}
+								resetForm={resetForm}
 							/>
 						</Route>
 					)
@@ -111,6 +118,7 @@ function App() {
 								score={score}
 								setNewGame={setNewGame}
 								newGame={newGame}
+								resetForm={resetForm}
 							/>
 						</Route>
 					)}
