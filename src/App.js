@@ -22,16 +22,15 @@ function App() {
 		setMazeDifficulty(event.target.value)
 	}
 
-	useEffect(() => {
-				// Set start score based on difficulty
-				if (mazeDifficulty === 'easy') {
-					setScore(100)
-				} else if (mazeDifficulty === 'medium') {
-					setScore(200)
-				} else {
-					setScore(300)
-				}
-	}, [mazeDifficulty])
+	const setScoreBasedOnDifficulty = () => {
+		if (mazeDifficulty === 'easy') {
+			setScore(100)
+		} else if (mazeDifficulty === 'medium') {
+			setScore(200)
+		} else {
+			setScore(300)
+		}
+	}
 
 	useEffect(() => {
 		const databaseRef = ref(realtime, '/users')
@@ -56,7 +55,8 @@ function App() {
 				}
 				return 0
 			})
-			setListOfNames(tempArray)
+			let tempTempArray = tempArray.slice(0, 20)
+			setListOfNames(tempTempArray)
 		})
 	}, [])
 
@@ -73,6 +73,7 @@ function App() {
 						handleQuestion={(event) => setInput(setUserQuestion, event)}
 						mazeDifficulty={mazeDifficulty}
 						handleDifficulty={handleDifficultyChange}
+						setScoreBasedOnDifficulty={setScoreBasedOnDifficulty}
 					/>
 				</Route>
 				<Route exact path='/Maze' >
