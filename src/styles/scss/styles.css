@@ -607,10 +607,14 @@ ul li {
 
 .block3.distance1,
 .trapLegend {
-  background: linear-gradient(0deg, red, yellow);
-  background-size: 200% 200%;
-  -webkit-animation: shifting 0.5s ease infinite;
-          animation: shifting 0.5s ease infinite;
+    background: linear-gradient(0deg, red, yellow);
+    background-size: 200% 200%;
+    -webkit-animation: shifting 0.5s ease infinite;
+    animation: shifting 0.5s ease infinite;
+}
+
+.trapLegend {
+    padding: 0 0.5rem;
 }
 
 @-webkit-keyframes glow {
@@ -637,13 +641,13 @@ ul li {
     }
 }
 .player {
-  background-color: yellow;
-  position: absolute;
-  background: linear-gradient(45deg, green, blue);
-  background-size: 500% 100%;
-  -webkit-animation: shifting 5s ease infinite;
-          animation: shifting 5s ease infinite;
-  border-radius: 50px;
+    background-color: yellow;
+    position: absolute;
+    background: linear-gradient(45deg, green, blue);
+    background-size: 500% 100%;
+    -webkit-animation: shifting 5s ease infinite;
+    animation: shifting 5s ease infinite;
+    border-radius: 50px;
 }
 
 @-webkit-keyframes shifting {

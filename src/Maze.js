@@ -152,7 +152,7 @@ const Maze = (props) => {
 				<p>The NYGMA Machine <span className="nygmaLegend"></span> is located somewhere in this maze. Find it, and you shall receive the answers you so dearly desire</p>
 				{mazeDifficulty === 'hard' ? (
 					<>
-					<p>Make sure to watch out for any traps (<span className="trapLegend"></span>), as they will send you all the way back to the start of the maze if you touch them!</p>
+					<p>Make sure to watch out for any traps <span className="trapLegend"></span>, as they will send you all the way back to the start of the maze if you touch them!</p>
 					</>
 				) : (
 					<>
