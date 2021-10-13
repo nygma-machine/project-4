@@ -1,13 +1,15 @@
 .homePage {
     .headerFlex {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
-        margin-bottom: 100px;
+        height: 100vh;
     }
     h1 {
         font-size: 4rem;
     }
     .siteHeading {
+        width: 50%;
         font-family: $headerFont;
         
         span {
@@ -22,6 +24,7 @@
     }
     
     .imgContainer {
+        width: 50%;
         filter: blur(15px);
         margin: 50px auto;
         img {
@@ -29,12 +32,17 @@
             animation: pulse 2s infinite ease-in-out;
         }
     }
+
+    .downArrow {
+        width: 100%;
+        font-size: 2rem;
+    }
     
     .description {
         font-size: 0.95rem;
         font-style: italic;
         line-height: 1.6rem;
-        margin: 0 auto 50px;
+        margin: 50px auto;
         width: 85vw;
         span {
             font-weight: 800;

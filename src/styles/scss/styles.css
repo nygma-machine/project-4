@@ -386,13 +386,15 @@ ul li {
 }
 .homePage .headerFlex {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 100px;
+  height: 100vh;
 }
 .homePage h1 {
   font-size: 4rem;
 }
 .homePage .siteHeading {
+  width: 50%;
   font-family: "Poiret One", cursive;
 }
 .homePage .siteHeading span {
@@ -405,6 +407,7 @@ ul li {
   max-width: 65%;
 }
 .homePage .imgContainer {
+  width: 50%;
   filter: blur(15px);
   margin: 50px auto;
 }
@@ -413,11 +416,15 @@ ul li {
   -webkit-animation: pulse 2s infinite ease-in-out;
           animation: pulse 2s infinite ease-in-out;
 }
+.homePage .downArrow {
+  width: 100%;
+  font-size: 2rem;
+}
 .homePage .description {
   font-size: 0.95rem;
   font-style: italic;
   line-height: 1.6rem;
-  margin: 0 auto 50px;
+  margin: 50px auto;
   width: 85vw;
 }
 .homePage .description span {

@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 
 import questionMark from './questionMark.png'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronCircleDown } from "@fortawesome/free-solid-svg-icons";
+
 const HomePage = (props) => {
 	// Deconstruct all 'state' props
 	const { userName, userQuestion, userKeyWord, mazeDifficulty } = props
@@ -14,17 +17,18 @@ const HomePage = (props) => {
 		<>
 			<div className="homePage">
 				<div className="headerFlex wrapper">
-						<div className="siteHeading">
-							<Link to='/'>
-								<h1>The <span>Nygma</span> Machine</h1>
-							</Link>
-							<p>What astounds man, but challenges mice? Has an ear that cannot hear, and a heart that only the clever beat?
-							</p>
-						</div>
-						<div className="imgContainer">
-							<img src={questionMark} alt="" />
-						</div>
+					<div className="siteHeading">
+						<Link to='/'>
+							<h1>The <span>Nygma</span> Machine</h1>
+						</Link>
+						<p>What astounds man, but challenges mice? Has an ear that cannot hear, and a heart that only the clever beat?
+						</p>
 					</div>
+					<div className="imgContainer">
+						<img src={questionMark} alt="" />
+					</div>
+					<FontAwesomeIcon className="downArrow" icon={faChevronCircleDown} />
+				</div>
 				<div className="wrapper">
 					<p className="description">Are you esurient for enlightnment? Have an insatiable appetite for information? Craving knowledge? The <span>nygma</span> Machine can provide all the answers. But first, you must prove yourself worthy...</p>
 					<form onSubmit={props.submitPrompts}>
