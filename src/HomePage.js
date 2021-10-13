@@ -1,8 +1,11 @@
-// import { useState } from 'react';
+import {Link as ScrollLink} from 'react-scroll';
 import { useHistory } from 'react-router-dom'
 // import { useEffect } from 'react/cjs/react.development'
 
 import questionMark from './questionMark.png'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronCircleDown } from "@fortawesome/free-solid-svg-icons";
 
 const HomePage = (props) => {
 	// Deconstruct all 'state' props
@@ -21,17 +24,27 @@ const HomePage = (props) => {
 		<>
 			<div className="homePage">
 				<div className="headerFlex wrapper">
-						<div className="siteHeading">
-							<h1>The <span>Nygma</span> Machine</h1>
-							<p>What astounds man, but challenges mice? Has an ear that cannot hear, and a heart that only the clever beat?
-							</p>
-						</div>
-						<div className="imgContainer">
-							<img src={questionMark} alt="" />
-						</div>
+					<div className="siteHeading">
+						<h1>The <span>Nygma</span> Machine</h1>
+						<p>What astounds man, but challenges mice? Has an ear that cannot hear, and a heart that only the clever beat?
+						</p>
 					</div>
+					<div className="imgContainer">
+						<img src={questionMark} alt="" />
+					</div>
+					<ScrollLink 
+						className="downArrow"
+						to="description"
+						smooth={true}
+						duration={700}
+					>
+						<span className="sr-only">Go to Description</span>
+						<FontAwesomeIcon className="icon" icon={faChevronCircleDown} />
+					</ScrollLink>
+				</div>
+
 				<div className="wrapper">
-					<p className="description">Are you esurient for enlightnment? Have an insatiable appetite for information? Craving knowledge? The <span>nygma</span> Machine can provide all the answers. But first, you must prove yourself worthy...</p>
+					<p className="description" id="description">Are you esurient for enlightnment? Have an insatiable appetite for information? Craving knowledge? The <span>nygma</span> Machine can provide all the answers. But first, you must prove yourself worthy...</p>
 					<form onSubmit={startMaze}>
 						<fieldset>
 							<label htmlFor="userName">What is your name?</label>
