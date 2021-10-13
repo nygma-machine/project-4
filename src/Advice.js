@@ -9,7 +9,7 @@ const Advice = (props) => {
 
 
 	const [advice, setAdvice] = useState([])
-	const { question, name, difficulty, hallOfFame, score } = props
+	const { question, name, difficulty, hallOfFame, score, newGame, setNewGame } = props
 	let history = useHistory()
 
 
@@ -26,6 +26,7 @@ const Advice = (props) => {
 
 	const playAgain = () => {
 		history.push('/')
+		setNewGame(!newGame)
 	}
 
 	return (
