@@ -1,18 +1,15 @@
 // import { useState } from 'react';
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react/cjs/react.development'
+// import { useEffect } from 'react/cjs/react.development'
 
 import questionMark from './questionMark.png'
 
 const HomePage = (props) => {
 	// Deconstruct all 'state' props
-	const { userName, userQuestion, userKeyWord, mazeDifficulty } = props
+	const { userName, userQuestion, userKeyWord, mazeDifficulty } = props;
 	// Deconstruct all "Handle..." functions
-	const {handleName, handleKeyWord, handleQuestion, handleDifficulty, setScoreBasedOnDifficulty} = props
+	const {handleName, handleKeyWord, handleQuestion, handleDifficulty} = props;
 
-	useEffect(() => {
-		setScoreBasedOnDifficulty()
-	}, [mazeDifficulty, setScoreBasedOnDifficulty])
 
 	return (
 		<>

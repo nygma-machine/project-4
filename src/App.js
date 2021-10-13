@@ -17,12 +17,13 @@ function App() {
 	const [userQuestion, setUserQuestion] = useState('');
 	const [listOfNames, setListOfNames] = useState([])
 	const [score, setScore] = useState(0)
+	// const [newGame, setNewGame] = useState(false)
 
 	const handleDifficultyChange = (event) => {
 		setMazeDifficulty(event.target.value)
 	}
 
-	const setScoreBasedOnDifficulty = () => {
+	useEffect(() => {
 		if (mazeDifficulty === 'easy') {
 			setScore(100)
 		} else if (mazeDifficulty === 'medium') {
@@ -30,7 +31,7 @@ function App() {
 		} else {
 			setScore(300)
 		}
-	}
+	}, [mazeDifficulty])
 
 	useEffect(() => {
 		const databaseRef = ref(realtime, '/users')
@@ -73,7 +74,6 @@ function App() {
 						handleQuestion={(event) => setInput(setUserQuestion, event)}
 						mazeDifficulty={mazeDifficulty}
 						handleDifficulty={handleDifficultyChange}
-						setScoreBasedOnDifficulty={setScoreBasedOnDifficulty}
 					/>
 				</Route>
 				<Route exact path='/Maze' >
@@ -88,7 +88,7 @@ function App() {
 
 				{userKeyWord !== "etc" ?
 					(
-						<Route exact path={`/Results/:query`}>
+						<Route exact path='/Results/:query'>
 							<Results
 								question={userQuestion}
 								name={userName}
@@ -99,7 +99,7 @@ function App() {
 						</Route>
 					)
 					: (
-						<Route exact path={`/Advice`}>
+						<Route exact path='/Advice'>
 							<Advice
 								question={userQuestion}
 								name={userName}
