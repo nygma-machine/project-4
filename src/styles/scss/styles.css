@@ -402,27 +402,17 @@ ul li {
     }
 }
 .homePage .headerFlex {
-<<<<<<< HEAD
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   height: 100vh;
-=======
-    display: flex;
-    align-items: center;
-    margin-bottom: 100px;
->>>>>>> main
 }
 .homePage h1 {
     font-size: 4rem;
 }
 .homePage .siteHeading {
-<<<<<<< HEAD
   width: 50%;
   font-family: "Poiret One", cursive;
-=======
-    font-family: "Poiret One", cursive;
->>>>>>> main
 }
 .homePage .siteHeading span {
     display: block;
@@ -434,14 +424,9 @@ ul li {
     max-width: 65%;
 }
 .homePage .imgContainer {
-<<<<<<< HEAD
   width: 50%;
   filter: blur(15px);
   margin: 50px auto;
-=======
-    filter: blur(15px);
-    margin: 50px auto;
->>>>>>> main
 }
 .homePage .imgContainer img {
     transform: scale(1);
@@ -456,19 +441,11 @@ ul li {
   font-size: 2rem;
 }
 .homePage .description {
-<<<<<<< HEAD
-  font-size: 0.95rem;
-  font-style: italic;
-  line-height: 1.6rem;
-  margin: 50px auto;
-  width: 85vw;
-=======
     font-size: 0.95rem;
     font-style: italic;
     line-height: 1.6rem;
     margin: 0 auto 50px;
     width: 85vw;
->>>>>>> main
 }
 .homePage .description span {
     font-weight: 800;
@@ -638,12 +615,10 @@ ul li {
     align-items: center;
 }
 
-.block3.distance1,
-.trapLegend {
-  background: linear-gradient(0deg, red, yellow);
-  background-size: 200% 200%;
-  -webkit-animation: shifting 0.5s ease infinite;
-          animation: shifting 0.5s ease infinite;
+.block3.distance1::before,
+.trapLegend::before {
+    content: "X";
+    color: red;
 }
 
 @-webkit-keyframes glow {
@@ -670,13 +645,13 @@ ul li {
     }
 }
 .player {
-  background-color: yellow;
-  position: absolute;
-  background: linear-gradient(45deg, green, blue);
-  background-size: 500% 100%;
-  -webkit-animation: shifting 5s ease infinite;
-          animation: shifting 5s ease infinite;
-  border-radius: 50px;
+    background-color: yellow;
+    position: absolute;
+    background: linear-gradient(45deg, red, blue);
+    background-size: 500% 100%;
+    -webkit-animation: shifting 5s ease infinite;
+    animation: shifting 5s ease infinite;
+    border-radius: 10px;
 }
 
 @-webkit-keyframes shifting {
