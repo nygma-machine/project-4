@@ -1,27 +1,11 @@
-.answerButton {
-    font-family: $bodyFont;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    text-transform: uppercase;
-    color: #f7fff6;
-    font-weight: 600;
-    background: #90e39a;
-    border: #f7fff6 solid 0.05rem;
-    padding: 15px 25px;
-    &:hover,
-    &:focus {
-        color: #298776;
-    }
-    &:active {
-        background: #50c17f;
-    }
-}
-
 .maze {
     display: flex;
     flex-direction: column;
     position: relative;
+}
+
+.mazeHeading {
+    margin: 50px auto;
 }
 
 .row {
@@ -71,7 +55,8 @@
     align-items: center;
 }
 
-.block2::before {
+.block2::before,
+.nygmaLegend::before {
     width: 100%;
     height: 100%;
     text-align: center;
@@ -81,6 +66,18 @@
     color: black;
     content: "?";
     animation: glow 1s linear infinite;
+}
+
+.nygmaLegend {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
+    margin-right: 10px;
+    &::before {
+        padding: 5px 12px;
+        content: "?";
+    }
 }
 
 .block3 {
@@ -93,7 +90,6 @@
 .block3.distance1::before {
     content: "X";
     color: red;
-
 }
 
 @keyframes glow {
@@ -115,7 +111,7 @@
     background: linear-gradient(45deg, red, blue);
     background-size: 500% 100%;
     animation: shifting 5s ease infinite;
-	border-radius: 10px;
+    border-radius: 10px;
 }
 @keyframes shifting {
     0% {

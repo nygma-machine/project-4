@@ -1,6 +1,4 @@
 .homePage {
-    scroll-behavior: smooth;
-
     .headerFlex {
         display: flex;
         flex-wrap: wrap;
@@ -33,6 +31,10 @@
             transform: scale(1);
             animation: pulse 2s infinite ease-in-out;
         }
+    }
+
+    .icon {
+        width: 100%;
     }
 
     .downArrow {

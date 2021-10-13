@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import axios from "axios";
 import HallOfFame from "./HallOfFame";
 
@@ -10,6 +10,8 @@ const Results = (props) => {
 	const [advice, setAdvice] = useState([])
 
 	const { question, name, difficulty, hallOfFame, score } = props
+
+	let history = useHistory()
 
 	useEffect(() => {
 		axios({
@@ -26,6 +28,10 @@ const Results = (props) => {
 	const random = (array) => {
 		const index = Math.floor(Math.random() * array.length)
 		return array[index]
+	}
+
+	const playAgain = () => {
+		history.push('/')
 	}
 
 	return (
@@ -59,9 +65,7 @@ const Results = (props) => {
 						)}
 						<h3 className="adviceHead">The NYGMA Machine Advises You:</h3>
 						<p className="advice">{advice.advice}</p>
-						<Link to='/'>
-							<button className="repeatGame">Play Again?</button>
-						</Link>
+						<button className="repeatGame" onClick={playAgain}>Play Again?</button>
 					</div>
 					<HallOfFame 
 						hallOfFame={hallOfFame} 

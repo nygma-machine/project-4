@@ -19,7 +19,7 @@ const HallOfFame = (props) => {
 			<ul>
 				{hallOfFame.map((element) => {
 					return (
-						<li key={element.key}>{element.usersName}: {element.score}</li>
+						<li key={element.key}><span className="hofName">{element.usersName}</span>: {element.score}</li>
 					)
 				})}
 			</ul>

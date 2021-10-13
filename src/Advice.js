@@ -1,7 +1,7 @@
 // Page that renders if the user does not select one of the suggested keywords
 
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import axios from "axios";
 import HallOfFame from "./HallOfFame";
 
@@ -10,6 +10,7 @@ const Advice = (props) => {
 
 	const [advice, setAdvice] = useState([])
 	const { question, name, difficulty, hallOfFame, score } = props
+	let history = useHistory()
 
 
 	useEffect(() => {
@@ -22,6 +23,10 @@ const Advice = (props) => {
 			setAdvice(adviceResult.advice)
 		})
 	}, [])
+
+	const playAgain = () => {
+		history.push('/')
+	}
 
 	return (
 		<>
@@ -54,9 +59,7 @@ const Advice = (props) => {
 						)}
 						<h3 className="adviceHead">The NYGMA Machine Advises You:</h3>
 						<p className="advice">{advice}</p>
-						<Link to='/'>
-							<button className="repeatGame">Play Again?</button>
-						</Link>
+						<button className="repeatGame" onClick={playAgain}>Play Again?</button>
 					</div>
 					<HallOfFame 
 						hallOfFame={hallOfFame} 

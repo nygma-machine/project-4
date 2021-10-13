@@ -8,7 +8,14 @@ a {
     text-decoration: none;
 }
 
-footer{
+h2,
+h3 {
+    font-family: $headerFont;
+    // color: #f7fff6;
+    letter-spacing: 0.2rem;
+}
+
+footer {
     margin-top: 1rem;
 }
 
@@ -24,10 +31,22 @@ footer a {
     }
 }
 
-h2,
-h3 {
-    // color: #f7fff6;
-    letter-spacing: 0.2rem;
+.leaderboard {
+    h2 {
+        text-transform: uppercase;
+    }
+    .hofName {
+        text-transform: uppercase;
+        font-weight: 700;
+    }
 }
 
-
+.mazeHeading {
+    h2 {
+        text-transform: uppercase;
+    }
+    p {
+        line-height: 1.15rem;
+        font-weight: 300;
+    }
+}

@@ -147,8 +147,12 @@ const Maze = (props) => {
 	checkVictory()
 
 	return (
-		<div>
-			<div className="wrapper mazeFlex">
+		<div className="wrapper">
+			<div className="mazeHeading">
+				<h2>In order to achieve true enlightement, you must first prove yourself worthy</h2>
+				<p>The NYGMA Machine <span className="nygmaLegend"></span> is located somewhere in this maze. Find it, and you shall receive the answers you so dearly desire</p>
+			</div>
+			<div className="mazeFlex">
 				<div className="maze">
 					{
 						mazeMap.map((row, index) => {
