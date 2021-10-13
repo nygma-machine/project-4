@@ -27,7 +27,6 @@ const Maze = (props) => {
 	useEffect(() => {
 		const maze = createPath(20, 20, setNygmaMachine, mazeDifficulty);
 		setMazeMap(maze);
-
 	}, [mazeDifficulty]) 
 
 	// make sure player can legally make the move, and move the player if so
@@ -151,6 +150,14 @@ const Maze = (props) => {
 			<div className="mazeHeading">
 				<h2>In order to achieve true enlightement, you must first prove yourself worthy</h2>
 				<p>The NYGMA Machine <span className="nygmaLegend"></span> is located somewhere in this maze. Find it, and you shall receive the answers you so dearly desire</p>
+				{mazeDifficulty === 'hard' ? (
+					<>
+					<p>Make sure to watch out for any traps (<span className="trapLegend"></span>), as they will send you all the way back to the start of the maze if you touch them!</p>
+					</>
+				) : (
+					<>
+					</>
+				)} 
 			</div>
 			<div className="mazeFlex">
 				<div className="maze">
