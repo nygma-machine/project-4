@@ -1,5 +1,7 @@
 // import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
+import {Link as ScrollLink} from 'react-scroll';
 
 import questionMark from './questionMark.png'
 
@@ -27,10 +29,17 @@ const HomePage = (props) => {
 					<div className="imgContainer">
 						<img src={questionMark} alt="" />
 					</div>
-					<FontAwesomeIcon className="downArrow" icon={faChevronCircleDown} />
+					<ScrollLink 
+						to="description"
+						smooth={true}
+						duration={700}
+					>
+						<span className="sr-only">Go to Description</span>
+						<FontAwesomeIcon className="downArrow" icon={faChevronCircleDown} />
+					</ScrollLink>
 				</div>
 				<div className="wrapper">
-					<p className="description">Are you esurient for enlightnment? Have an insatiable appetite for information? Craving knowledge? The <span>nygma</span> Machine can provide all the answers. But first, you must prove yourself worthy...</p>
+					<p className="description" id="description">Are you esurient for enlightnment? Have an insatiable appetite for information? Craving knowledge? The <span>nygma</span> Machine can provide all the answers. But first, you must prove yourself worthy...</p>
 					<form onSubmit={props.submitPrompts}>
 						<fieldset>
 							<label htmlFor="userName">What is your name?</label>
