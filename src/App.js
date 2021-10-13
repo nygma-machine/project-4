@@ -17,11 +17,12 @@ function App() {
 	const [userQuestion, setUserQuestion] = useState('');
 	const [listOfNames, setListOfNames] = useState([])
 	const [score, setScore] = useState(0)
-	// const [newGame, setNewGame] = useState(false)
+	const [newGame, setNewGame] = useState(false)
 
 	const handleDifficultyChange = (event) => {
 		setMazeDifficulty(event.target.value)
 	}
+
 
 	useEffect(() => {
 		if (mazeDifficulty === 'easy') {
@@ -31,7 +32,7 @@ function App() {
 		} else {
 			setScore(300)
 		}
-	}, [mazeDifficulty])
+	}, [mazeDifficulty, newGame])
 
 	useEffect(() => {
 		const databaseRef = ref(realtime, '/users')
@@ -95,6 +96,8 @@ function App() {
 								difficulty={mazeDifficulty}
 								hallOfFame={listOfNames}
 								score={score}
+								newGame={newGame}
+								setNewGame={setNewGame}
 							/>
 						</Route>
 					)
@@ -106,6 +109,8 @@ function App() {
 								difficulty={mazeDifficulty}
 								hallOfFame={listOfNames}
 								score={score}
+								setNewGame={setNewGame}
+								newGame={newGame}
 							/>
 						</Route>
 					)}
