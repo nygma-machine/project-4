@@ -322,6 +322,12 @@ a {
   text-decoration: none;
 }
 
+h2,
+h3 {
+  font-family: "Poiret One", cursive;
+  letter-spacing: 0.2rem;
+}
+
 footer {
   margin-top: 1rem;
 }
@@ -338,9 +344,20 @@ footer a {
   font-family: "Hind Siliguri", sans-serif;
 }
 
-h2,
-h3 {
-  letter-spacing: 0.2rem;
+.leaderboard h2 {
+  text-transform: uppercase;
+}
+.leaderboard .hofName {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.mazeHeading h2 {
+  text-transform: uppercase;
+}
+.mazeHeading p {
+  line-height: 1.15rem;
+  font-weight: 300;
 }
 
 ul,
@@ -487,29 +504,14 @@ ul li {
   width: calc(35% + 30px);
 }
 
-.answerButton {
-  font-family: "Hind Siliguri", sans-serif;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  text-transform: uppercase;
-  color: #f7fff6;
-  font-weight: 600;
-  background: #90e39a;
-  border: #f7fff6 solid 0.05rem;
-  padding: 15px 25px;
-}
-.answerButton:hover, .answerButton:focus {
-  color: #298776;
-}
-.answerButton:active {
-  background: #50c17f;
-}
-
 .maze {
   display: flex;
   flex-direction: column;
   position: relative;
+}
+
+.mazeHeading {
+  margin: 50px auto;
 }
 
 .row {
@@ -567,7 +569,8 @@ ul li {
   align-items: center;
 }
 
-.block2::before {
+.block2::before,
+.nygmaLegend::before {
   width: 100%;
   height: 100%;
   text-align: center;
@@ -578,6 +581,18 @@ ul li {
   content: "?";
   -webkit-animation: glow 1s linear infinite;
           animation: glow 1s linear infinite;
+}
+
+.nygmaLegend {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+.nygmaLegend::before {
+  padding: 5px 12px;
+  content: "?";
 }
 
 .block3 {
@@ -650,7 +665,6 @@ ul li {
 }
 .resultsFlex {
   display: flex;
-  margin: 50px 0;
 }
 
 .results {
@@ -796,8 +810,9 @@ footer a {
   line-height: 1rem;
 }
 
-.App {
-  min-height: 95vh;
+.mazeFlex,
+.resultsFlex {
+  margin: 100px auto;
 }
 
 footer {

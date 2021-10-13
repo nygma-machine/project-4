@@ -28,12 +28,13 @@ footer {
     }
 }
 
-.App {
-    min-height: 95vh;
+.mazeFlex,
+.resultsFlex {
+    margin: 100px auto;
 }
 
 footer {
     min-height: 5vh;
 }
 
-@import "mediaQueries"
+@import "mediaQueries";
