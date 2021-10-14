@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
 import Row from './Row.js';
 import { Redirect } from 'react-router-dom'
-import createPath from './createPath.js';
-import move from './sounds/movement.wav'
-import wall from './sounds/hitWall.wav'
-import victory from './sounds/foundNygma.wav'
-import trap from './sounds/hitTrap.wav'
-import playAudio from './utils/PlaySound.js';
+import createPath from '../utils/createPath.js';
+import move from '../sounds/movement.wav'
+import wall from '../sounds/hitWall.wav'
+import victory from '../sounds/foundNygma.wav'
+import trap from '../sounds/hitTrap.wav'
+import playAudio from '../utils/PlaySound.js';
 
 const Maze = (props) => {
 	// get variables and set functions from props via destructure

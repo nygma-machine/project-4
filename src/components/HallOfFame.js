@@ -1,4 +1,4 @@
-import realtime from './firebase'
+import realtime from '../utils/firebase.js'
 import { ref, push } from 'firebase/database'
 import { useEffect } from 'react'
 
