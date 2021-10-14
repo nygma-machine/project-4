@@ -1,11 +1,11 @@
 import './styles/scss/styles.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import HomePage from './HomePage'
-import Maze from './Maze'
-import Results from './Results'
-import Advice from './Advice';
+import HomePage from './components/HomePage'
+import Maze from './components/Maze'
+import Results from './components/Results'
+import Advice from './components/Advice';
 import { useEffect, useState } from 'react';
-import realtime from './firebase'
+import realtime from './utils/firebase'
 import { ref, onValue } from "firebase/database";
 import setInput from './utils/HandleInput.js'
 
