@@ -68,7 +68,7 @@ const HomePage = (props) => {
 							<label htmlFor="userQuestion">What do you want to ask <span>The Nygma Machine</span>? </label>
 							<input type="text" name="userQuestion" id="userQuestion" onChange={handleQuestion} value={userQuestion} />
 						</fieldset>
-						<fieldset>
+						<fieldset className="radioButtons">
 							<div className="radioButton">
 								<label 
 									htmlFor="easy"

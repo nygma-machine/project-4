@@ -477,15 +477,13 @@ ul li {
   text-transform: uppercase;
 }
 .homePage form fieldset {
-  max-width: 600px;
-  width: 80%;
+  width: 550px;
   border: none;
-  margin: 0 0 35px 0;
+  margin: 0 10px 35px 10px;
   padding: 0;
 }
 .homePage form .radioButton {
   display: flex;
-  justify-content: center;
   margin-bottom: 10px;
 }
 .homePage form .radioButton input {
@@ -951,5 +949,10 @@ footer {
   .App {
     width: 1440px;
     margin: auto;
+  }
+}
+@media (max-width: 1085px) {
+  .radioButton {
+    justify-content: center;
   }
 }/*# sourceMappingURL=styles.css.map */
