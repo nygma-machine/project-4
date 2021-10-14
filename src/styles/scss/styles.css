@@ -946,4 +946,10 @@ footer {
     margin: 0;
     padding: 0 0.5rem;
   }
+}
+@media (min-width: 1440px) {
+  .App {
+    width: 1440px;
+    margin: auto;
+  }
 }/*# sourceMappingURL=styles.css.map */
