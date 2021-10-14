@@ -41,6 +41,7 @@
         flex-wrap: wrap;
     }
     li {
+        max-width: 272px;
         flex: 0 2 auto;
         padding: 0 10px;
     }

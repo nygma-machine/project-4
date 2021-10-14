@@ -740,6 +740,7 @@ ul li {
   flex-wrap: wrap;
 }
 .leaderboard li {
+  max-width: 272px;
   flex: 0 2 auto;
   padding: 0 10px;
 }
