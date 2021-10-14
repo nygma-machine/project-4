@@ -99,8 +99,14 @@
 }
 
 @media (min-width: 1440px) {
-	.App {
-		width: 1440px;
+    .App {
+        width: 1440px;
 		margin: auto;
 	}
+}
+
+@media (max-width: 1085px) {
+    .radioButton {
+        justify-content: center;
+    }
 }
