@@ -71,7 +71,8 @@
     }
     .block,
     .player {
-        height: 2vh
+        height: calc(1.3vh + 1.3vw);
+		width: calc(1.3vh + 1.3vw);
     }
 
     //Results and Advice
@@ -96,6 +97,9 @@
         margin:0;
         padding: 0 0.5rem;
     }
+	.block2::before {
+		font-size: calc(1.3vh + 1.3vw);
+	}
 }
 
 @media (min-width: 1440px) {
