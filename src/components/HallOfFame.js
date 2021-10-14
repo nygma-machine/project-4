@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 const HallOfFame = (props) => {
 
 	// destructure props for variables
-	const {hallOfFame, name, score} = props
+	const {hallOfFame, hallOfShame, name, score} = props
 
 	// hall of fame only loads when the user reaches the results/advice page, so they've completed the maze, so add their name and score to the database
 	useEffect(() => {
@@ -21,6 +21,14 @@ const HallOfFame = (props) => {
 			<h2>Hall of Fame: </h2>
 			<ul>
 				{hallOfFame.map((element) => {
+					return (
+						<li key={element.key}><span className="hofName">{element.usersName}</span>: <span className="userScore">{element.score}</span></li>
+					)
+				})}
+			</ul>
+			<h2>Hall of Shame: </h2>
+			<ul>
+				{hallOfShame.map((element) => {
 					return (
 						<li key={element.key}><span className="hofName">{element.usersName}</span>: <span className="userScore">{element.score}</span></li>
 					)
