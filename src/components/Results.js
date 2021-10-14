@@ -11,7 +11,7 @@ const Results = (props) => {
 	const [advice, setAdvice] = useState([])
 
 	// deconstruct props passed in from App.js
-	const { question, name, difficulty, hallOfFame, score, newGame, setNewGame, resetForm } = props
+	const { question, name, difficulty, hallOfFame, hallOfShame, score, newGame, setNewGame, resetForm } = props
 
 	// create a variable for useHistory()
 	let history = useHistory()
@@ -80,6 +80,7 @@ const Results = (props) => {
 					{/* display HallofFame component with the leaderboard, user's name, and user's score passed in as props */}
 					<HallOfFame 
 						hallOfFame={hallOfFame} 
+						hallOfShame={hallOfShame} 
 						name={name} 
 						score={score} 
 					/>

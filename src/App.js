@@ -16,6 +16,7 @@ function App() {
 	const [mazeDifficulty, setMazeDifficulty] = useState('easy');
 	const [userQuestion, setUserQuestion] = useState('');
 	const [listOfNames, setListOfNames] = useState([])
+	const [listOfShames, setListOfShames] = useState([])
 	const [score, setScore] = useState(0)
 	const [newGame, setNewGame] = useState(false)
 
@@ -67,6 +68,17 @@ function App() {
 			})
 			let tempTempArray = tempArray.slice(0, 20)
 			setListOfNames(tempTempArray)
+			tempArray.sort((element1, element2) => {
+				if (element1.score < element2.score) {
+					return -1
+				}
+				if (element1.score > element2.score) {
+					return 1
+				}
+				return 0
+			})
+			let tempTempTempArray = tempArray.slice(0, 20)
+			setListOfShames(tempTempTempArray)
 		})
 	}, [])
 
@@ -104,6 +116,7 @@ function App() {
 								name={userName}
 								difficulty={mazeDifficulty}
 								hallOfFame={listOfNames}
+								hallOfShame={listOfShames}
 								score={score}
 								newGame={newGame}
 								setNewGame={setNewGame}
@@ -118,6 +131,7 @@ function App() {
 								name={userName}
 								difficulty={mazeDifficulty}
 								hallOfFame={listOfNames}
+								hallOfShame={listOfShames}
 								score={score}
 								setNewGame={setNewGame}
 								newGame={newGame}
