@@ -351,6 +351,10 @@ footer a {
   text-transform: uppercase;
   font-weight: 700;
 }
+.leaderboard .userScore {
+  letter-spacing: 0.1rem;
+  font-weight: 200;
+}
 
 .mazeHeading h2 {
   text-transform: uppercase;
@@ -473,6 +477,7 @@ ul li {
   text-transform: uppercase;
 }
 .homePage form fieldset {
+  max-width: 600px;
   width: 80%;
   border: none;
   margin: 0 0 35px 0;
@@ -504,11 +509,11 @@ ul li {
   font-family: "Hind Siliguri", sans-serif;
   text-transform: uppercase;
   color: #f7fff6;
-  width: 100%;
   font-weight: 600;
   background: #90e39a;
   border: #f7fff6 solid 0.05rem;
   padding: 15px 25px;
+  transition: color 0.2s;
 }
 .homePage button[type=submit]:hover, .homePage button[type=submit]:focus {
   color: #298776;
@@ -608,7 +613,7 @@ ul li {
   margin-right: 10px;
 }
 .nygmaLegend::before {
-  padding: 5px 12px;
+  display: inline-block;
   content: "?";
 }
 
@@ -628,7 +633,9 @@ ul li {
 }
 
 .trapLegend {
-  padding: 0 0.5rem;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
 }
 
 @-webkit-keyframes glow {
@@ -714,13 +721,18 @@ ul li {
 .advice {
   -webkit-animation: wait 6s, resultsFade 2s 6s;
           animation: wait 6s, resultsFade 2s 6s;
+  width: 100%;
+}
+
+.congrats {
+  margin-bottom: 2rem;
 }
 
 .leaderboard {
   max-width: 50%;
   flex: 0 0 40%;
   padding: 15px;
-  margin: auto;
+  margin: 2rem auto;
   text-align: center;
   -webkit-animation: wait 8s, resultsFade 2s 8s;
           animation: wait 8s, resultsFade 2s 8s;
@@ -743,6 +755,7 @@ ul li {
   font-weight: 600;
   background: #90e39a;
   border: #f7fff6 solid 0.05rem;
+  margin-top: 1rem;
   padding: 15px 25px;
 }
 .repeatGame:hover, .repeatGame:focus {
@@ -911,5 +924,26 @@ footer {
   .block,
 .player {
     height: 2vh;
+  }
+
+  .resultsFlex {
+    flex-direction: column;
+  }
+
+  .leaderboard {
+    max-width: 100%;
+    padding: 0;
+  }
+  .leaderboard li {
+    flex: 0 0 auto;
+  }
+
+  .results {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0 0.5rem;
   }
 }/*# sourceMappingURL=styles.css.map */

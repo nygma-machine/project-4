@@ -23,6 +23,7 @@ function App() {
 		setMazeDifficulty(event.target.value)
 	}
 
+	// resets the form when submitted
 	const resetForm = () => {
 		setMazeDifficulty('easy')
 		setUserName('')
@@ -30,6 +31,7 @@ function App() {
 		setUserQuestion('')
 	}
 
+	// sets the initial score of the user based on the difficulty
 	useEffect(() => {
 		if (mazeDifficulty === 'easy') {
 			setScore(100)
@@ -40,6 +42,7 @@ function App() {
 		}
 	}, [mazeDifficulty, newGame])
 
+	// creates listener for the firebase array, to grab the list of high scores, only keeping the top 20
 	useEffect(() => {
 		const databaseRef = ref(realtime, '/users')
 		onValue(databaseRef, (snapshot) => {
@@ -51,7 +54,6 @@ function App() {
 					usersName: myData[propertyName].usersName,
 					score: myData[propertyName].score
 				}
-				// console.log(currentName);
 				tempArray.push(currentName)
 			}
 			tempArray.sort((element1, element2) => {
@@ -68,6 +70,7 @@ function App() {
 		})
 	}, [])
 
+	// main jsx return
 	return (
 		<Router>
 			<div className="App">

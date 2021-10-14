@@ -75,7 +75,7 @@
     margin-left: 5px;
     margin-right: 10px;
     &::before {
-        padding: 5px 12px;
+        display:inline-block;
         content: "?";
     }
 }
@@ -95,7 +95,9 @@
 }
 
 .trapLegend {
-    padding: 0 0.5rem;
+    display:inline-block;
+    width: 25px;
+    height: 25px;
 }
 
 @keyframes glow {

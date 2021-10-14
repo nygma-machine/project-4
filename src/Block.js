@@ -1,9 +1,9 @@
 const Block = ({ blockValue, x, y, player, mazeDifficulty}) => {
-
+// Variable that returns player coordinates
 	const playerHere = () => {
 		return (player.x === x && player.y === y)
 	}
-
+// Variable that controls the amount of lighting around the player coordinates
 	const playerNear = () => {
 		const xDist = x - player.x
 		const yDist = y - player.y

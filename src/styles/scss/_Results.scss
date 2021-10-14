@@ -21,13 +21,19 @@
 
 .advice {
     @include fadeIn("6s");
+    width: 100%;
+}
+
+.congrats {
+	margin-bottom: 2rem;
+
 }
 
 .leaderboard {
     max-width: 50%;
     flex: 0 0 40%;
     padding: 15px;
-    margin: auto;
+    margin: 2rem auto;
     text-align: center;
     @include fadeIn("8s");
     ul {
@@ -48,6 +54,7 @@
     font-weight: 600;
     background: #90e39a;
     border: #f7fff6 solid 0.05rem;
+	margin-top: 1rem;
     padding: 15px 25px;
     &:hover,
     &:focus {

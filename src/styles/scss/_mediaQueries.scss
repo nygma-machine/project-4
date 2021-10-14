@@ -73,4 +73,27 @@
     .player {
         height: 2vh
     }
+
+    //Results and Advice
+    .resultsFlex {
+        flex-direction: column;
+    }
+
+    .leaderboard {
+        max-width: 100%;
+        li {
+            flex: 0 0 auto;
+            // padding:0;
+        }
+        padding:0;
+    }
+
+    .results {
+		align-items: center;
+		justify-content: center;
+		display: flex;
+		flex-direction: column;
+        margin:0;
+        padding: 0 0.5rem;
+    }
 }

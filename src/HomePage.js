@@ -22,8 +22,8 @@ const HomePage = (props) => {
 
 	return (
 		<>
-			<div className="homePage">
-				<div className="headerFlex wrapper">
+			<main className="homePage">
+				<header className="headerFlex wrapper">
 					<div className="siteHeading">
 						<h1>The <span>Nygma</span> Machine</h1>
 						<p>What astounds man, but challenges mice? Has an ear that cannot hear, and a heart that only the clever beat?
@@ -41,15 +41,17 @@ const HomePage = (props) => {
 						<span className="sr-only">Go to Description</span>
 						<FontAwesomeIcon className="icon" icon={faChevronCircleDown} />
 					</ScrollLink>
-				</div>
+				</header>
 
 				<div className="wrapper">
 					<p className="description" id="description">Are you esurient for enlightnment? Have an insatiable appetite for information? Craving knowledge? The <span>nygma</span> Machine can provide all the answers. But first, you must prove yourself worthy...</p>
+					{/* Form that takes UserInput */}
 					<form onSubmit={startMaze}>
 						<fieldset>
 							<label htmlFor="userName">What is your name?</label>
 							<input type="text" name="userName" id="userName" value={userName} onChange={handleName} />
 						</fieldset>
+						{/* Values are passed to userKeyword state that is passed as props to /Results and /Advice components */}
 						<fieldset>
 							<label htmlFor="userKeyword">What do you wish to learn about?</label>
 							<select name="userKeyword" id="userKeyword" onChange={handleKeyWord} value={userKeyWord}>
@@ -113,7 +115,7 @@ const HomePage = (props) => {
 						<button className="buttonLink" type="Submit">Submit</button>
 					</form>
 				</div>
-			</div>
+			</main>
 		</>
 	)
 }

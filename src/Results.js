@@ -4,15 +4,19 @@ import axios from "axios";
 import HallOfFame from "./HallOfFame";
 
 const Results = (props) => {
-
+	// set 'query' as useParams() variable
 	const { query } = useParams()
 
+	// set a state that will render the data gathered from the advice API
 	const [advice, setAdvice] = useState([])
 
+	// deconstruct props passed in from App.js
 	const { question, name, difficulty, hallOfFame, score, newGame, setNewGame, resetForm } = props
 
+	// create a variable for useHistory()
 	let history = useHistory()
 
+	// API Call to gather data from advice API using the user's keyword as the search param
 	useEffect(() => {
 		axios({
 			url: `https://api.adviceslip.com/advice/search/${query}`,
@@ -25,11 +29,13 @@ const Results = (props) => {
 		})
 	}, [query])
 
+	// "random" function to select a random index# from array, which will then select a random piece of advice to display
 	const random = (array) => {
 		const index = Math.floor(Math.random() * array.length)
 		return array[index]
 	}
 
+	// When user selects 'play again' button, redirect to main page, switch the newGame state, and clear all input data from form
 	const playAgain = () => {
 		history.push('/')
 		setNewGame(!newGame)
@@ -41,9 +47,11 @@ const Results = (props) => {
 			<div className="wrapper">
 				<div className="resultsFlex">
 					<div className="results">
+						{/* Depending on whether the user enters their name, asks a question, etc., render the correct phrase*/}
 						{name !== "" ? (
 							<div className="congrats">
 								<h2>Congratulations {name}! You Have Conquered the Maze</h2>
+								{/* if the difficulty was set to 'easy', make the following statement grammatically correct */}
 								{difficulty === "easy" ? (
 									<h2>That was an {difficulty} maze.  You received a score of {score} based on your efficiency.</h2>
 								) : (
@@ -69,6 +77,7 @@ const Results = (props) => {
 						<p className="advice">{advice.advice}</p>
 						<button className="repeatGame" onClick={playAgain}>Play Again?</button>
 					</div>
+					{/* display HallofFame component with the leaderboard, user's name, and user's score passed in as props */}
 					<HallOfFame 
 						hallOfFame={hallOfFame} 
 						name={name} 

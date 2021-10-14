@@ -9,25 +9,25 @@ import trap from './sounds/hitTrap.wav'
 import playAudio from './utils/PlaySound.js';
 
 const Maze = (props) => {
+	// get variables and set functions from props via destructure
 	const { mazeDifficulty, score, setScore } = props;
 
+	// set state variables
 	const [mazeMap, setMazeMap] = useState([])
-
 	const [player, setPlayer] = useState({ x: 0, y: 0 })
+	const [nygmaMachine, setNygmaMachine] = useState({});
 
-	const [nygmaMachine, setNygmaMachine] = useState({
-		x: 5,
-		y: 3
-	});
 
+	// updates the score by adding the value input
 	const updateScore = useCallback((scoreChange) => {
 		setScore(score + scoreChange)
 	}, [setScore, score])
 
+	// sets up the maze
 	useEffect(() => {
 		const maze = createPath(20, 20, setNygmaMachine, mazeDifficulty);
 		setMazeMap(maze);
-	}, [mazeDifficulty]) 
+	}, [mazeDifficulty])
 
 	// make sure player can legally make the move, and move the player if so
 	const checkMovement = useCallback((direction) => {
@@ -39,7 +39,7 @@ const Maze = (props) => {
 		let playerX = playerTemp.x
 		let playerY = playerTemp.y
 
-
+		// checks if the player can move up, and if so, moves and applies score changes
 		if (playerY !== 0 && direction === "up") {
 			if (mazeMap[playerY - 1][playerX] === 0 ||
 				mazeMap[playerY - 1][playerX] === 2
@@ -58,6 +58,7 @@ const Maze = (props) => {
 			}
 		}
 
+		// checks if the player can move down, and if so, moves and applies score changes
 		if (playerY !== mazeMap.length - 1 && direction === "down") {
 			if (mazeMap[playerY + 1][playerX] === 0 ||
 				mazeMap[playerY + 1][playerX] === 2
@@ -77,6 +78,7 @@ const Maze = (props) => {
 			}
 		}
 
+		// checks if the player can move left, and if so, moves and applies score changes
 		if (direction === "left" && playerX !== 0) {
 			if (mazeMap[playerY][playerX - 1] === 0 ||
 				mazeMap[playerY][playerX - 1] === 2
@@ -96,6 +98,7 @@ const Maze = (props) => {
 			}
 		}
 
+		// checks if the player can move right, and if so, moves and applies score changes
 		if (playerX !== mazeMap[0].length - 1 && direction === "right") {
 			if (mazeMap[playerY][playerX + 1] === 0 ||
 				mazeMap[playerY][playerX + 1] === 2
@@ -116,15 +119,14 @@ const Maze = (props) => {
 		}
 	}, [mazeMap, player, updateScore])
 
+	// checks if the player has won by reaching the nygma machine, if so play victory sound
 	const checkVictory = () => {
 		if (player.x === nygmaMachine.x && player.y === nygmaMachine.y) {
 			playAudio(victory)
 		}
 	}
 
-
-
-
+	// listens for key presses and calls the checkMovement function for a key that represents that direction
 	useEffect(() => {
 		const handleKeypress = (event) => {
 			event.preventDefault()
@@ -143,25 +145,30 @@ const Maze = (props) => {
 		return () => { document.removeEventListener('keydown', handleKeypress) }
 	}, [mazeMap, player, checkMovement])
 
+	// // checks on every render if the user has won
 	checkVictory()
 
+	// the jsx for the maze page
 	return (
 		<div className="wrapper">
-			<div className="mazeHeading">
-				<h2>In order to achieve true enlightement, you must first prove yourself worthy</h2>
+			<header className="mazeHeading">
+				<h1>In order to achieve true enlightement, you must first prove yourself worthy</h1>
 				<p>The NYGMA Machine <span className="nygmaLegend"></span> is located somewhere in this maze. Find it, and you shall receive the answers you so dearly desire</p>
-				{mazeDifficulty === 'hard' ? (
+				{
+					// Displays explanation of traps with a picture, if it's on hard mode
+				mazeDifficulty === 'hard' ? (
 					<>
-					<p>Make sure to watch out for any traps (<span className="trapLegend"></span>), as they will send you all the way back to the start of the maze if you touch them!</p>
+						<p>Make sure to watch out for any traps <span className="trapLegend"></span>, as they will send you all the way back to the start of the maze if you touch them!</p>
 					</>
 				) : (
 					<>
 					</>
-				)} 
-			</div>
-			<div className="mazeFlex">
+				)}
+			</header>
+			<main className="mazeFlex">
 				<div className="maze">
 					{
+						// render the entire maze
 						mazeMap.map((row, index) => {
 							return (
 								<Row
@@ -175,18 +182,20 @@ const Maze = (props) => {
 						})
 					}
 					{player.x === nygmaMachine.x && player.y === nygmaMachine.y ?
-						(
-							<>
-								{props.query !== "etc" ? (
-									<Redirect to={`/Results/${props.query}`}>
-									</Redirect>
-								) : (
-									<Redirect to='/Advice'>
-									</Redirect>
-								)
-								}
-							</>
-						) : (
+							(
+								<>
+									{
+										// check if the user reached the nygma machine, if so direct them to the appropriate results/advice page
+										props.query !== "etc" ? (
+											<Redirect to={`/Results/${props.query}`}>
+											</Redirect>
+										) : (
+											<Redirect to='/Advice'>
+											</Redirect>
+										)
+									}
+								</>
+							) : (
 							<>
 							</>
 						)}
@@ -216,7 +225,7 @@ const Maze = (props) => {
 							value="right"
 						>Right</button>
 					</div></div>
-			</div>
+			</main>
 		</div>
 	)
 }

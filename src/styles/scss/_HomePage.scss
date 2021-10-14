@@ -75,6 +75,7 @@
             text-transform: uppercase;
         }
         fieldset {
+            max-width: 600px;
             width: 80%;
             border: none;
             margin: 0 0 35px 0;
@@ -107,11 +108,11 @@
         font-family: $bodyFont;
         text-transform: uppercase;
         color: #f7fff6;
-        width: 100%;
         font-weight: 600;
         background: #90e39a;
         border: #f7fff6 solid 0.05rem;
         padding: 15px 25px;
+        transition: color 0.2s;
         &:hover,
         &:focus {
             color: #298776;
