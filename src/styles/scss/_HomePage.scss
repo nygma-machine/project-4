@@ -3,6 +3,7 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        min-height: 600px;
         height: 100vh;
     }
     h1 {
@@ -38,8 +39,15 @@
     }
 
     .downArrow {
+        top: -70px;
+        position: relative;
         width: 100%;
-        font-size: 2rem;
+        font-size: 3rem;
+        transition: color 0.2s;
+    }
+
+    .downArrow:hover {
+        color: grey;
     }
     
     .description {
@@ -47,7 +55,7 @@
         font-style: italic;
         line-height: 1.6rem;
         margin: 50px auto;
-        width: 85vw;
+        padding-top: 30px;
         span {
             font-weight: 800;
             text-transform: uppercase;

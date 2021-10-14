@@ -8,43 +8,50 @@
     .homePage {
         .headerFlex {
             margin-bottom: 50px;
+            align-content: center;
         }
-    }
-
-    .siteHeading{
-        h1{
-            font-size: 2rem;
-            text-align: center;
-            margin: 0.4em 0;
+        .siteHeading{
+            width: 100%;
+    
+            h1{
+                font-size: 2rem;
+                text-align: center;
+                margin: 0.4em 0;
+            }
+            span{
+                display: inline-block;
+            }
+            p{
+                font-size: 0.8rem;
+                max-width: inherit;
+                text-align: center;
+                line-height: 1rem;
+                margin: 0 auto;
+            }
         }
-        span{
-            display: inline-block;
+        .downArrow {
+            padding-top: 25px;
+            top: 0;
         }
-        p{
-            font-size: 0.8rem;
-            max-width: inherit;
-            text-align: center;
+        .imgContainer{
+            display: none;
+        }
+        footer{
+            line-height: 0.5rem;
+            margin-top: 0;
+        }
+        footer a,
+        footer p {
+            font-size: 0.5rem;
             line-height: 1rem;
-            margin: 0 auto;
+            margin: 0;
+        }
+    
+        .description {
+            text-align: center;
         }
     }
-    .imgContainer{
-        display: none;
-    }
-    footer{
-        line-height: 0.5rem;
-        margin-top: 0;
-    }
-    footer a,
-    footer p {
-        font-size: 0.5rem;
-        line-height: 1rem;
-        margin: 0;
-    }
 
-    .description {
-        text-align: center;
-    }
 
     // Maze Page styling
     

@@ -405,6 +405,7 @@ ul li {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  min-height: 600px;
   height: 100vh;
 }
 .homePage h1 {
@@ -437,15 +438,21 @@ ul li {
   width: 100%;
 }
 .homePage .downArrow {
+  top: -70px;
+  position: relative;
   width: 100%;
-  font-size: 2rem;
+  font-size: 3rem;
+  transition: color 0.2s;
+}
+.homePage .downArrow:hover {
+  color: grey;
 }
 .homePage .description {
   font-size: 0.95rem;
   font-style: italic;
   line-height: 1.6rem;
   margin: 50px auto;
-  width: 85vw;
+  padding-top: 30px;
 }
 .homePage .description span {
   font-weight: 800;
@@ -843,41 +850,44 @@ footer {
 
   .homePage .headerFlex {
     margin-bottom: 50px;
+    align-content: center;
   }
-
-  .siteHeading h1 {
+  .homePage .siteHeading {
+    width: 100%;
+  }
+  .homePage .siteHeading h1 {
     font-size: 2rem;
     text-align: center;
     margin: 0.4em 0;
   }
-  .siteHeading span {
+  .homePage .siteHeading span {
     display: inline-block;
   }
-  .siteHeading p {
+  .homePage .siteHeading p {
     font-size: 0.8rem;
     max-width: inherit;
     text-align: center;
     line-height: 1rem;
     margin: 0 auto;
   }
-
-  .imgContainer {
+  .homePage .downArrow {
+    padding-top: 25px;
+    top: 0;
+  }
+  .homePage .imgContainer {
     display: none;
   }
-
-  footer {
+  .homePage footer {
     line-height: 0.5rem;
     margin-top: 0;
   }
-
-  footer a,
-footer p {
+  .homePage footer a,
+.homePage footer p {
     font-size: 0.5rem;
     line-height: 1rem;
     margin: 0;
   }
-
-  .description {
+  .homePage .description {
     text-align: center;
   }
 
