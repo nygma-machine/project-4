@@ -36,14 +36,39 @@
     margin: 2rem auto;
     text-align: center;
     @include fadeIn("8s");
+	h2 {
+		text-shadow: 2px 2px 2px rgba(29, 53, 72, 1), 
+		-2px 2px 2px rgba(29, 53, 72, 1), 
+		2px -2px 2px rgba(29, 53, 72, 1), 
+		-2px -2px 2px rgba(29, 53, 72, 1);
+	}
     ul {
         display: flex;
         flex-wrap: wrap;
+		justify-content: left;
+		border-radius: 6px;
+		border: 2px solid white;
+		background: linear-gradient(
+			90deg,
+			rgba(29, 53, 72, 1) 0%,
+			rgba(41, 135, 118, 1) 50%,
+			rgba(41, 135, 118, 1) 75%,
+			rgba(29, 53, 72, 1) 100%
+		);
     }
     li {
         max-width: 272px;
         flex: 0 2 auto;
         padding: 0 10px;
+		margin: 2% auto;
+		width: 40%;
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		border: 2px solid white;
+		span {
+			// width: 40%;
+		}
     }
 }
 

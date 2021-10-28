@@ -22,7 +22,7 @@ const HallOfFame = (props) => {
 			<ul>
 				{hallOfFame.map((element) => {
 					return (
-						<li key={element.key}><span className="hofName">{element.usersName}</span>: <span className="userScore">{element.score}</span></li>
+						<li key={element.key}><span className="hofName">{element.usersName}:</span><span className="userScore">{element.score}</span></li>
 					)
 				})}
 			</ul>
@@ -30,7 +30,7 @@ const HallOfFame = (props) => {
 			<ul>
 				{hallOfShame.map((element) => {
 					return (
-						<li key={element.key}><span className="hofName">{element.usersName}</span>: <span className="userScore">{element.score}</span></li>
+						<li key={element.key}><span className="hofName">{element.usersName}:</span><span className="userScore">{element.score}</span></li>
 					)
 				})}
 			</ul>
