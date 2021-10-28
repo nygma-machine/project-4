@@ -735,16 +735,28 @@ ul li {
   -webkit-animation: wait 8s, resultsFade 2s 8s;
           animation: wait 8s, resultsFade 2s 8s;
 }
+.leaderboard h2 {
+  text-shadow: 2px 2px 2px #1d3548, -2px 2px 2px #1d3548, 2px -2px 2px #1d3548, -2px -2px 2px #1d3548;
+}
 .leaderboard ul {
   display: flex;
   flex-wrap: wrap;
+  justify-content: left;
+  border-radius: 6px;
+  border: 2px solid white;
+  background: linear-gradient(90deg, #1d3548 0%, #298776 50%, #298776 75%, #1d3548 100%);
 }
 .leaderboard li {
   max-width: 272px;
   flex: 0 2 auto;
   padding: 0 10px;
+  margin: 2% auto;
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border: 2px solid white;
 }
-
 .repeatGame {
   -webkit-animation: wait 10s, resultsFade 2s 10s;
           animation: wait 10s, resultsFade 2s 10s;
